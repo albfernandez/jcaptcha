@@ -57,7 +57,6 @@ public class SimpleBufferedEngineContainer extends BufferedEngineContainer {
     }
 
     /**
-     * @see com.octo.captcha.engine.bufferedengine.BufferedEngineContainer#startScheduler()
      */
     protected void startScheduler() {
         clockDaemonFeed = new ClockDaemon();

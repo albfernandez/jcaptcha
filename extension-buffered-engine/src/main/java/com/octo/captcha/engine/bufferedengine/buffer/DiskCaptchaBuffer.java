@@ -570,7 +570,6 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     /**
-     * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#maxSize()
      */
     public int maxSize() {
         return (int) this.maxDataSize;

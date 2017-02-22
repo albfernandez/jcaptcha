@@ -45,7 +45,7 @@ import com.octo.captcha.Captcha;
 /**
  * A database Captcha Buffer.
 
- * The database should have the following structure : default Column Name , type </p> <ul> <li> timemillis , long </li>
+ * <p>The database should have the following structure : default Column Name , type </p><ul> <li> timemillis , long </li>
  * <li> hashCode , long </li> <li> locale , string </li> <li> captcha , object </li> </ul>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>

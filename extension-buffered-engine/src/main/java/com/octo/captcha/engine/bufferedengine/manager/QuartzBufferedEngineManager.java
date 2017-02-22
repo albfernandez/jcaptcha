@@ -283,7 +283,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     }
 
     /**
-     * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#getLocaleRatio
+
      */
     public HashedMap getLocaleRatio() {
         return config.getLocaleRatio();
@@ -328,7 +328,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     }
 
     /**
-     * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#getLocaleFromName
+     
      */
     protected Locale getLocaleFromName(String localeName) {
         StringTokenizer tokenizer = new StringTokenizer(localeName, "_");
@@ -351,7 +351,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     }
 
     /**
-     * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#removeLocaleRatio
+     
      */
     public synchronized void removeLocaleRatio(String localeName) {
         Locale locale = getLocaleFromName(localeName);
