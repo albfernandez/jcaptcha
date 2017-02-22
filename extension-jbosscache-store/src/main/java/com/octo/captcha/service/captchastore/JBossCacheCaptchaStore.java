@@ -22,7 +22,7 @@ import com.octo.captcha.service.CaptchaServiceException;
 
 /**
  * JBossCache 3.2 implementation of the captcha store. Needs JDK 5.0
- * @see http://community.jboss.org/wiki/JBossCacheOfficialDocumentation
+ * http://community.jboss.org/wiki/JBossCacheOfficialDocumentation
  * @author <a href="mailto:antoine.veret@gmail.com">Antoine Véret</a>
  * @version 2.0
  */
