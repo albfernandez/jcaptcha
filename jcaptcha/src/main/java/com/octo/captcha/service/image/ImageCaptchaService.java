@@ -13,8 +13,7 @@ import com.octo.captcha.service.CaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 
 /**
- * <p/>
- * Specialize a Captcha service that return Image Captchas </p>
+ * Specialize a Captcha service that return Image Captchas
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0

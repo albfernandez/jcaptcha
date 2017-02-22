@@ -19,7 +19,6 @@ import com.octo.captcha.component.image.textpaster.TextPaster;
  * <p>Base class for composed WordToImage</p> It extends the AbstractWord to image and uses three others Components :
  * <ul> <li>a FontGenerator to implement the getFont() method</li> <li>a BackgroundGenerator to implement the
  * getBackround() method</li> <li>a TextParser to implement the pasteText() method</li> </ul>
- * <p/>
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0

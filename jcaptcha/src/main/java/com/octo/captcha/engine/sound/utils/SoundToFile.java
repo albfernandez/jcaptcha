@@ -25,8 +25,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
 /**
- * <p/>
- * Create a wave file from an AudioInputStream </p>
+ * Create a wave file from an AudioInputStream 
  *
  * @author Benoit
  * @version 1.0

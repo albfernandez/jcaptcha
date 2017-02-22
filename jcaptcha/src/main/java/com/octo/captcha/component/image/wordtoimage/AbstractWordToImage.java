@@ -14,12 +14,11 @@ import java.text.AttributedString;
 import com.octo.captcha.CaptchaException;
 
 /**
- * <p/>
  * Implementation skeleton for the WordToImage component </p> Basically this class implements the imageFromWord method
  * proceding as folow : <ul> <li>Checks the word length</li> <li>Creates an java.text.AttributedString from the
  * word</li> <li>Apply font to the AttributedString using the abstract method getFont</li> <li>Create an image for the
  * background using the abstact method getBackround</li> <li>Put the text on the backround using the abstact method
- * pasteText</li> <li>Return the newly created image</li> </ul> <p/>This class implements the Template method pattern
+ * pasteText</li> <li>Return the newly created image</li> </ul> This class implements the Template method pattern
  * from the GOF design patterns.
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue </a>

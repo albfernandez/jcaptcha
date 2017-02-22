@@ -17,7 +17,6 @@ import com.octo.captcha.CaptchaException;
  * of the class name of another implementation of Toolkit, this factory return an implementation of this class. For
  * exemple if you set to your virtual machine -Dtoolkit.implementation=com.eteks.awt.PJAToolkit, the factory returns an
  * implementation of com.eteks.awt.PJAToolkit </p>
- * <p/>
  * see http://www.geocities.com/marcoschmidt.geo/java-image-faq.html#x for more info.
  *
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>

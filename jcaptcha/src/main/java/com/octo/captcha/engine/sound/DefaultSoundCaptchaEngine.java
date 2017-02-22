@@ -22,9 +22,6 @@ import java.util.Arrays;
 import com.octo.captcha.sound.SoundCaptchaFactory;
 
 /**
- * <p/>
- * <p/>
- * </p>
  *
  * @author Benoit Doumas
  */

@@ -17,8 +17,7 @@ import com.octo.captcha.component.word.wordgenerator.WordGenerator;
 import com.octo.captcha.sound.gimpy.GimpySoundFactory;
 
 /**
- * <p/>
- * Description: </p>
+ * Description: 
  *
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin </a>
  * @author Antoine Véret

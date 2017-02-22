@@ -21,7 +21,6 @@ import com.octo.captcha.component.image.color.SingleColorGenerator;
 import com.octo.captcha.component.image.textpaster.Glyphs;
 
 /**
- * <p/>
  * text decorator that paint holes on the string (erase some parts) </p> You may specify the number of holes per glyph :
  * 3 by default. You may specify the color of holes : white by default.
  *

@@ -47,11 +47,8 @@ import com.octo.captcha.engine.image.ListImageCaptchaEngine;
 import com.octo.captcha.image.gimpy.GimpyFactory;
 
 /**
- * <p/>
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is
  * based on the Baffle SPARC Captcha.
- * <p/>
- * </p>
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0

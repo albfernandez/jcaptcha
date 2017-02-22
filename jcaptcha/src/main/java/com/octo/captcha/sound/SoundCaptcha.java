@@ -19,8 +19,7 @@ import com.octo.captcha.Captcha;
 import com.octo.captcha.CaptchaException;
 
 /**
- * <p/>
- * Description: String question about a Line challenge, this class is abstract. </p>
+ * Description: String question about a Line challenge, this class is abstract.
  *
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin </a>
  * @author Benoit Doumas

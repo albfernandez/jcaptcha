@@ -14,7 +14,6 @@ import com.octo.captcha.component.image.color.ColorGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
 
 /**
- * <p/>
  * Three color gradient background with randomization </p>
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue </a>

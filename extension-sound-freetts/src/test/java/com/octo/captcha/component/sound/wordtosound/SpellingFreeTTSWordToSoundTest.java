@@ -23,8 +23,7 @@ import junit.framework.TestCase;
 import com.octo.captcha.component.sound.soundconfigurator.FreeTTSSoundConfigurator;
 
 /**
- * <p/>
- * Description: </p>
+ * Description: 
  *
  * @author Benoit Doumas
  * @version 1.0

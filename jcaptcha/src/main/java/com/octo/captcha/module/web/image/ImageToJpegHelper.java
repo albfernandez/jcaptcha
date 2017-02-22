@@ -31,11 +31,12 @@ public class ImageToJpegHelper {
 
 
     /**
-     * retrieve a new ImageCaptcha using ImageCaptchaService and flush it to the response.<br/> Captcha are localized
-     * using request locale.<br/>
-     * <p/>
+     * retrieve a new ImageCaptcha using ImageCaptchaService and flush it to the response. Captcha are localized
+     * using request locale.
+     * <p>
      * This method returns a 404 to the client instead of the image if the request isn't correct (missing parameters,
-     * etc...)..<br/> The log may be null.<br/>
+     * etc...)..<br></br> The log may be null.<br></br>
+     * </p>
      *
      * @param theRequest  the request
      * @param theResponse the response

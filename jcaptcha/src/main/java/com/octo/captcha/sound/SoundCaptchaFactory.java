@@ -12,8 +12,7 @@ import com.octo.captcha.Captcha;
 import com.octo.captcha.CaptchaFactory;
 
 /**
- * <p/>
- * Description: </p> This class is for building a sound captcha. This class is abstract.
+ * Description: This class is for building a sound captcha. This class is abstract.
  *
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin </a>
  * @version 1.0

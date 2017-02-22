@@ -13,8 +13,8 @@ import javax.sound.sampled.AudioInputStream;
 import com.octo.captcha.CaptchaException;
 
 /**
- * <p/>
- * Provides methods to tranform a word to a sound </p>.
+
+ * Provides methods to tranform a word to a sound.
  *
  * @author Gandin Mathieu
  * @author Doumas Benoit

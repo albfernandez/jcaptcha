@@ -15,7 +15,7 @@ import com.octo.captcha.text.TextCaptcha;
 import com.octo.captcha.text.TextCaptchaFactory;
 
 /**
- * The simpliest text captcha<br/> <b>Do not use this in production!!!</b>
+ * The simpliest text captcha <b>Do not use this in production!!!</b>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version 1.0

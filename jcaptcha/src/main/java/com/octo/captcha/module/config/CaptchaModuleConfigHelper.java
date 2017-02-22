@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CaptchaModuleConfigHelper {
 
     /**
-     * method that get an id using the plugin configuration.<br/> It may be retrieved from the session via the getId()
+     * method that get an id using the plugin configuration. It may be retrieved from the session via the getId()
      * native method if the idType is set to 'session' or retrieved from the request using the 'idKey' parameter if the
      * idType is set to 'generated';
      */

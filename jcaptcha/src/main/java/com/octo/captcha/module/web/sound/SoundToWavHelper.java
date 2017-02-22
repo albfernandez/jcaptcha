@@ -31,9 +31,9 @@ import com.octo.captcha.service.sound.SoundCaptchaService;
 public class SoundToWavHelper {
 
     /**
-     * retrieve a new SoundCaptcha using SoundCaptchaService and flush it to the response. <br/> Captcha are localized
-     * using request locale. <br/>This method returns a 404 to the client instead of the image if the request isn't
-     * correct (missing parameters, etc...).. <br/>The log may be null. <br/>
+     * retrieve a new SoundCaptcha using SoundCaptchaService and flush it to the response.  Captcha are localized
+     * using request locale. This method returns a 404 to the client instead of the image if the request isn't
+     * correct (missing parameters, etc...).. The log may be null. 
      *
      * @param theRequest  the request
      * @param theResponse the response

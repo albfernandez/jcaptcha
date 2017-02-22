@@ -25,8 +25,7 @@ import com.octo.captcha.engine.sound.ListSoundCaptchaEngine;
 import com.octo.captcha.sound.speller.SpellerSoundFactory;
 
 /**
- * <p/>
- * Engine to generate a SpellerSound captcha. This captcha provide a sound that is the spelling of a word </p>
+ * Engine to generate a SpellerSound captcha. This captcha provide a sound that is the spelling of a word 
  *
  * @author Benoit Doumas
  * @version 1.0

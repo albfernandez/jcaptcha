@@ -18,7 +18,6 @@ import com.octo.captcha.component.image.color.ColorGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
 
 /**
- * <p/>
  * Draw mutliple different shape with different colors. see attributes to construct it in a proper way. </p>
  *
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin </a>

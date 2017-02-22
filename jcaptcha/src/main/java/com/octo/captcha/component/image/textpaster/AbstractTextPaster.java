@@ -18,7 +18,6 @@ import com.octo.captcha.component.image.color.ColorGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
 
 /**
- * <p/>
  * Base class for Test pasters. Sub classes must implement the pasteText(BufferedImage background, AttributedString
  * attributedWord) method that return an image containing the pasted string.</br> use constructor to specify your paster
  * properties. This base class use two Integers, maxAcceptedWordLength and minAcceptedWordLength by wich are the length

@@ -14,20 +14,20 @@ import java.util.Locale;
  * method to retrieve a question concerning a challenge and present it to the final user.(could be localized)</li> <li>Call the
  * getChallengeForID method to retrive a challenge and present it to the final user.(could be localized)</li> <li>Call
  * the validateResponseForID method to know if the final user is a human or not.</li> </ul>
- * <p/>
+ * </p><p>
  * Developpers should implement this interface using the following rules :
- * <br/> When the getChallengeForID method is
+ * </p><p>When the getChallengeForID method is
  * called, If no captcha exist for this id, create a new captcha return the challenge.
- * <p/>
+ * </p><p>
  * else if the getChallenge method has been called on the stored captcha, generate a new captcha, else return this
  * captcha challenge.
- * <br/> When the getQuestionForId method is
+ * </p><p> When the getQuestionForId method is
  * called, If no captcha exist for this id, create a new captcha return the challenge.
- * <p/>
+ * </p><p>
  * else if the a captcha with this id exist, verify the locale (if specified). If the locale match return the same question, else regenerate a captcha and returns the corresponding question.
- * <p/>
- * <br/>Throw a CaptchaServiceException if
- * the ID is invalid else return a boolean, and free the ID (remove the captcha). <br/> All method may throw a
+ * </p><p>
+ * Throw a CaptchaServiceException if
+ * the ID is invalid else return a boolean, and free the ID (remove the captcha).  All method may throw a
  * CaptchaException if an error occurs during Captcha Generation. </p>
  *
  * @author Marc-Antoine Garrigue

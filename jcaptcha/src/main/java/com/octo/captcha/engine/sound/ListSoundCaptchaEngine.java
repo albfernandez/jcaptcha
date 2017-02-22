@@ -24,9 +24,8 @@ import com.octo.captcha.CaptchaException;
 import com.octo.captcha.sound.SoundCaptchaFactory;
 
 /**
- * <p/>
  * This engine is based on a java.util.List of factories. It has a default constructor. Sub class must implements the
- * buildInitialFactories() method that should build an initial set of factories. </p>
+ * buildInitialFactories() method that should build an initial set of factories. 
  *
  * @author Benoit Doumas
  * @version 1.0

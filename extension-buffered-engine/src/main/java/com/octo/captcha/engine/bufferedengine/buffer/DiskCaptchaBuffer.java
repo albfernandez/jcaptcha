@@ -272,7 +272,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     /**
-     * Removes all cached items from the cache. <p/>
+     * Removes all cached items from the cache. 
      */
     public synchronized void clearFile() throws IOException {
         try {
@@ -295,7 +295,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
 
     /**
-     * Shuts down the disk store in preparation for cache shutdown <p/>If a VM crash happens, the shutdown hook will not
+     * Shuts down the disk store in preparation for cache shutdown If a VM crash happens, the shutdown hook will not
      * run. The data file and the index file will be out of synchronisation. At initialisation we always delete the
      * index file after we have read the elements, so that it has a zero length. On a dirty restart, it still will have
      * and the data file will automatically be deleted, thus preserving safety.
@@ -326,7 +326,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     /**
-     * Writes the Index to disk on shutdown <p/>The index consists of the elements Map and the freeSpace List <p/>Note
+     * Writes the Index to disk on shutdown The index consists of the elements Map and the freeSpace List Note
      * that the cache is locked for the entire time that the index is being written
      */
     private synchronized void writeIndex() throws IOException {
@@ -348,7 +348,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     /**
-     * Reads Index to disk on startup. <p/>if the index file does not exist, it creates a new one. <p/>Note that the
+     * Reads Index to disk on startup. if the index file does not exist, it creates a new one. Note that the
      * cache is locked for the entire time that the index is being written
      */
     private synchronized void readIndex() throws IOException {
@@ -480,7 +480,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
     /**
      * When elements are deleted, spaces are left in the file. These spaces are tracked and are reused when new elements
-     * need to be written. <p/>This method indicates the actual size used for data, excluding holes. It can be compared
+     * need to be written. This method indicates the actual size used for data, excluding holes. It can be compared
      * with {@link #getDataFileSize()}as a measure of fragmentation.
      */
     public long getUsedDataSize() {
