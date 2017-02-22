@@ -18,7 +18,6 @@ import java.util.HashMap;
 
 /**
  * @author mag
- * @Date 13 nov. 2008
  */
 public class JcaptchaImageServlet extends javax.servlet.http.HttpServlet {
 

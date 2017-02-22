@@ -23,7 +23,6 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 
 /**
  * @author mag
- * @Date 14 feb. 2009
  */
 public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 	

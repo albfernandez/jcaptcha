@@ -27,7 +27,6 @@ import org.springframework.core.io.ByteArrayResource;
 
 /**
  * @author mag
- * @Date 13 nov. 2008
  */
 public class JcaptchaImageMacro extends BaseMacro  {
 

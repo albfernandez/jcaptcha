@@ -17,7 +17,6 @@ import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
 /**
  * @author mag
- * @Date 14 feb 2009
  */
 public class SubmitActionServlet extends HttpServlet{
 

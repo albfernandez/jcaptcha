@@ -21,7 +21,6 @@ import com.octo.captcha.component.sound.wordtosound.WordToSound;
  * Allow to test Sound captcha support without a real implementation
  *
  * @author <a href="mailto:antoine.veret@gmail.com">Antoine Véret</a>
- * @date 19 avr. 2007
  */
 public class WordToSoundMock implements WordToSound {
 
