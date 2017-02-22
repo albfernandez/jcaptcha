@@ -13,7 +13,6 @@ import com.octo.captcha.CaptchaFactory;
 import com.octo.captcha.MockCaptcha;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0

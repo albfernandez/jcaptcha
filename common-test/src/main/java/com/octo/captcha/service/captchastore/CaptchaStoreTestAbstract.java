@@ -15,7 +15,6 @@ import com.octo.captcha.Captcha;
 import com.octo.captcha.MockCaptcha;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version 1.0

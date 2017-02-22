@@ -14,7 +14,6 @@ package com.octo.captcha;
 import java.util.Locale;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
