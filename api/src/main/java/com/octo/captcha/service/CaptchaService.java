@@ -10,11 +10,11 @@ import java.util.Locale;
 
 /**
  * <p>Main interface of the package. Used by client applications to expose Captchas Challenge validate the response in a
- * transparent and easy way. The flow of operations for using this service is : <ul> <li>Call the getQuestionForID
+ * transparent and easy way. The flow of operations for using this service is : </p><ul> <li>Call the getQuestionForID
  * method to retrieve a question concerning a challenge and present it to the final user.(could be localized)</li> <li>Call the
  * getChallengeForID method to retrive a challenge and present it to the final user.(could be localized)</li> <li>Call
  * the validateResponseForID method to know if the final user is a human or not.</li> </ul>
- * </p><p>
+ * <p>
  * Developpers should implement this interface using the following rules :
  * </p><p>When the getChallengeForID method is
  * called, If no captcha exist for this id, create a new captcha return the challenge.
