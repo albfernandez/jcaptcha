@@ -31,7 +31,7 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 
 
 	@Override
-	protected void doGet(HttpServletRequest httpServletRequest,	HttpServletResponse httpServletResponse) throws ServletException,	IOException {	
+	protected void doGet(HttpServletRequest httpServletRequest,	HttpServletResponse httpServletResponse) throws ServletException, IOException {	
 		// Set to expire far in the past.
 		httpServletResponse.setDateHeader("Expires", 0);
 		// Set standard HTTP/1.1 no-cache headers.
@@ -47,20 +47,22 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 		// create the image with the text
 		BufferedImage bi = service.getImageChallengeForID(httpServletRequest.getSession(true).getId());
 
-		ServletOutputStream out = httpServletResponse.getOutputStream();
-
-		// write the data out
-		ImageIO.write(bi, "jpg", out);
+		ServletOutputStream out = null; 
 		try {
+			out = httpServletResponse.getOutputStream();
+			// write the data out
+			ImageIO.write(bi, "jpg", out);
 			out.flush();
 		} finally {
-			out.close();
+			if (out != null) {
+				out.close();
+			}
 		}
 	}
 
      public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse){
-         //if no session found
          if(request.getSession(false)==null) {
+        	 //if no session found
         	 return false;
          }
          try {
@@ -68,6 +70,5 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
          } catch (CaptchaServiceException e) {
         	 return false;
          }
-
      }
  }
