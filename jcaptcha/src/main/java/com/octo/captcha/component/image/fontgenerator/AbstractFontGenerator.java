@@ -7,10 +7,10 @@
 package com.octo.captcha.component.image.fontgenerator;
 
 /**
- * Base class for Font generators. Sub classes must implement the getFont() method that return a Font.</br> use
+ * Base class for Font generators. Sub classes must implement the getFont() method that return a Font.<br> use
  * constructor to specify your generator properties. This base class only use two parameters, minFontSize and
  * maxFontsize wich are the size font boundaries returned by the implementation. By default minFontSize=10 and
- * maxFontSize = 14. </p>
+ * maxFontSize = 14. 
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue </a>
  * @version 1.0

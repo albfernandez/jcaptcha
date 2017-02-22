@@ -9,7 +9,6 @@ import com.octo.captcha.component.image.textpaster.Glyphs;
 /**
  *
  * @author mag
- * @Date 6 mars 2008
  */
 public class TranslateAllToRandomPointVisitor implements GlyphsVisitors {
     private Random myRandom = new SecureRandom();

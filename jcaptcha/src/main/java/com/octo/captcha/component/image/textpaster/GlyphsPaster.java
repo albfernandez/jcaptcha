@@ -19,7 +19,6 @@ import com.octo.captcha.component.image.textpaster.glyphsvisitor.GlyphsVisitors;
  * Use Glyphs to draw, much more powerfull and efficient than using AttributedString
  *
  * @author mag
- * @Date 6 mars 2008
  */
 public class GlyphsPaster extends AbstractTextPaster{
 

@@ -12,8 +12,6 @@ import com.octo.captcha.service.CaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 
 /**
- * <p><ul><li></li></ul></p>
- *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version 1.0
  */

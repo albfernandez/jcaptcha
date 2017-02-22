@@ -22,7 +22,6 @@ import com.octo.captcha.sound.SoundCaptchaFactory;
 import com.octo.captcha.sound.speller.SpellerSound;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version $Id$

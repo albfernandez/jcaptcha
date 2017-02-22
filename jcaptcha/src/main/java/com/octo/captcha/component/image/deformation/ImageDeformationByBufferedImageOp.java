@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * @author mag
- * @Date 5 mars 2008
  */
 public class ImageDeformationByBufferedImageOp implements ImageDeformation{
 

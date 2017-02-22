@@ -143,7 +143,7 @@ public abstract class AbstractManageableCaptchaService
 
     /**
      * Get the number of captcha generated since the service is up WARNING : this value won't be significant if the real
-     * number is > Long.MAX_VALUE
+     * number is &gt; Long.MAX_VALUE
      *
      * @return the number of captcha generated since the service is up
      */
@@ -153,7 +153,7 @@ public abstract class AbstractManageableCaptchaService
 
     /**
      * Get the number of correct responses to captcha challenges since the service is up. WARNING : this value won't be
-     * significant if the real number is > Long.MAX_VALUE
+     * significant if the real number is &gt; Long.MAX_VALUE
      *
      * @return the number of correct responses since the service is up
      */
@@ -163,7 +163,7 @@ public abstract class AbstractManageableCaptchaService
 
     /**
      * Get the number of uncorrect responses to captcha challenges since the service is up. WARNING : this value won't
-     * be significant if the real number is > Long.MAX_VALUE
+     * be significant if the real number is &gt; Long.MAX_VALUE
      *
      * @return the number of uncorrect responses since the service is up
      */
@@ -192,7 +192,7 @@ public abstract class AbstractManageableCaptchaService
 
     /**
      * Get the number of captcha garbage collected since the service is up WARNING : this value won't be significant if
-     * the real number is > Long.MAX_VALUE
+     * the real number is &gt; Long.MAX_VALUE
      *
      * @return the number of captcha garbage collected since the service is up
      */

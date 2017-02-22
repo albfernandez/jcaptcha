@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Container class for a list of GlyphVector
  * @author mag
- * @Date 6 mars 2008
  */
 public class Glyphs {
 

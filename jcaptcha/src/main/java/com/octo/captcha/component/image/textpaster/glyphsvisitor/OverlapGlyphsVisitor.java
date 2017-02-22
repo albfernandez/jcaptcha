@@ -6,7 +6,6 @@ import com.octo.captcha.component.image.textpaster.Glyphs;
 
 /**
  * @author mag
- * @Date 6 mars 2008
  */
 public class OverlapGlyphsVisitor implements GlyphsVisitors {
 

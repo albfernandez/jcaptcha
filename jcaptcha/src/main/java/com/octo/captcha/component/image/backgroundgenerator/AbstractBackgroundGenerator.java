@@ -10,8 +10,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 /**
- * <p>Abstract base class for background generator.</br> Sub classes must implement the getBackground() method that
- * return a newly generated background.</br> use constructor to specify your backgroundGenerator properties. This base
+ * <p>Abstract base class for background generator.<br> Sub classes must implement the getBackground() method that
+ * return a newly generated background.<br> use constructor to specify your backgroundGenerator properties. This base
  * class only use two parameter, width and height of the generated background. By default widht = 200 and height=
  * 100.</p>
  *

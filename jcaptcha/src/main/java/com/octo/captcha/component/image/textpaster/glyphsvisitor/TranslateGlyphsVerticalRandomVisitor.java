@@ -8,7 +8,6 @@ import com.octo.captcha.component.image.textpaster.Glyphs;
 
 /**
  * @author mag
- * @Date 7 mars 2008
  */
 public class TranslateGlyphsVerticalRandomVisitor implements GlyphsVisitors {
 

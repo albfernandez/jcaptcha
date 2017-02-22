@@ -14,7 +14,7 @@ import com.octo.captcha.component.image.color.ColorGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
 
 /**
- * Contructs uniform painted background, with default wolor White. </p>
+ * Contructs uniform painted background, with default wolor White. 
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue </a>
  * @version 1.0

@@ -19,8 +19,8 @@ import com.octo.captcha.component.image.fontgenerator.FontGenerator;
 import com.octo.captcha.component.image.textpaster.TextPaster;
 
 /**
- * <p>This implementation uses deformation components to distord the image. </br>It takes three array of deformations :
- * for the background image, for the text only, and for the final image it proceeds as folows : <ul> <li>Checks the word
+ * <p>This implementation uses deformation components to distord the image. <br>It takes three array of deformations :
+ * for the background image, for the text only, and for the final image it proceeds as folows :</p> <ul> <li>Checks the word
  * length</li> <li>Creates an java.text.AttributedString from the word</li> <li>Create an image for the background a
  * BackgroundGenerator component</li> <li>Apply background deformations</li> <li>Apply font to the AttributedString
  * using the abstract method getFont</li> <li>Create a transparent backround </li> <li>Put the text on the transparent

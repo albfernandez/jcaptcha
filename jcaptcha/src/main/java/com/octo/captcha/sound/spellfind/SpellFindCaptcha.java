@@ -11,7 +11,6 @@ import javax.sound.sampled.AudioInputStream;
 import com.octo.captcha.sound.SoundCaptcha;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version $Id$

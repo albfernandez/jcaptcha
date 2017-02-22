@@ -16,7 +16,6 @@ import com.octo.captcha.component.image.textpaster.Glyphs;
 
 /**
  * @author mag
- * @Date 11 mars 2008
  */
 public class RandomLinesGlyphsDecorator implements GlyphsDecorator {
      private static final double SQRT_2=Math.sqrt(2);

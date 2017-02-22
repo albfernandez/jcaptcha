@@ -6,7 +6,6 @@ import com.octo.captcha.CaptchaException;
 
 /**
  * @author mag
- * @Date 7 mars 2008
  */
 public class ConstantWordGenerator implements WordGenerator{
     String constantString;

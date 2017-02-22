@@ -14,7 +14,7 @@ import java.text.AttributedString;
 import com.octo.captcha.CaptchaException;
 
 /**
- * Implementation skeleton for the WordToImage component </p> Basically this class implements the imageFromWord method
+ * Implementation skeleton for the WordToImage component <p> Basically this class implements the imageFromWord method
  * proceding as folow : <ul> <li>Checks the word length</li> <li>Creates an java.text.AttributedString from the
  * word</li> <li>Apply font to the AttributedString using the abstract method getFont</li> <li>Create an image for the
  * background using the abstact method getBackround</li> <li>Put the text on the backround using the abstact method

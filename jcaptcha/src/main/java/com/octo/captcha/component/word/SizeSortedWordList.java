@@ -9,7 +9,6 @@ package com.octo.captcha.component.word;
 import java.util.Locale;
 
 /**
- * <p><ul><li></li></ul></p>
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version $Id$

@@ -35,7 +35,7 @@ public class ImageToJpegHelper {
      * using request locale.
      * <p>
      * This method returns a 404 to the client instead of the image if the request isn't correct (missing parameters,
-     * etc...)..<br></br> The log may be null.<br></br>
+     * etc...)..<br> The log may be null.<br>
      * </p>
      *
      * @param theRequest  the request

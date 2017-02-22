@@ -45,8 +45,8 @@ public class SpellerSoundFactory extends SoundCaptchaFactory {
     /**
      * Construct a GimpySoundFactory from a word generator component and a wordtosound component
      *
-     * @param thewordGenerator component
-     * @param theword2Sound    component
+     * @param wordGenerator component
+     * @param word2Sound    component
      */
     public SpellerSoundFactory(WordGenerator wordGenerator, WordToSound word2Sound,
                                SpellerWordDecorator wordDecorator) {

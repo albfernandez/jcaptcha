@@ -17,7 +17,7 @@ import com.octo.captcha.component.image.color.ColorGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
 
 /**
- * Gradient background. Use the constructor to specify colors. Default color are Black and Gray </p>
+ * Gradient background. Use the constructor to specify colors. Default color are Black and Gray
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue </a>
  * @version 1.0
