@@ -67,6 +67,10 @@ public class RandomRangeColorGenerator implements ColorGenerator {
 
     /**
      * Constructs a randomRangeColorGenerator with all components
+     * @param redComponentRange red
+     * @param greenComponentRange green
+     * @param blueComponentRange blue
+     * @param alphaComponentRange alpha
      */
     public RandomRangeColorGenerator(int[] redComponentRange, int[] greenComponentRange,
                                      int[] blueComponentRange, int[] alphaComponentRange) {
@@ -85,6 +89,9 @@ public class RandomRangeColorGenerator implements ColorGenerator {
 
     /**
      * Constructs a randomColorGenerator with no alpha
+     * @param redComponentRange red
+     * @param greenComponentRange green
+     * @param blueComponentRange blue
      */
     public RandomRangeColorGenerator(int[] redComponentRange, int[] greenComponentRange,
                                      int blueComponentRange[]) {

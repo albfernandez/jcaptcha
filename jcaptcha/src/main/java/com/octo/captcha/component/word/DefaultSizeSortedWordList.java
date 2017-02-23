@@ -29,6 +29,7 @@ public class DefaultSizeSortedWordList implements SizeSortedWordList {
 
     /**
      * A word list has to be constructed with a locale
+     * @param locale locale
      */
     public DefaultSizeSortedWordList(Locale locale) {
         this.locale = locale;

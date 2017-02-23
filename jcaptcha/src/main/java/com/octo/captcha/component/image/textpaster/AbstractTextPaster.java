@@ -169,7 +169,7 @@ public abstract class AbstractTextPaster implements TextPaster {
     }
 
     /**
-     * @param colorGenerator
+     * @param colorGenerator colorGenerator
      */
     public void setColorGenerator(ColorGenerator colorGenerator) {
         this.colorGenerator = colorGenerator;

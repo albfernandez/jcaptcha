@@ -50,6 +50,7 @@ public interface WordToImage {
     /**
      * Main method for this service Return an image with the specified
      *
+     * @param word word
      * @return the generated image
      *
      * @throws com.octo.captcha.CaptchaException

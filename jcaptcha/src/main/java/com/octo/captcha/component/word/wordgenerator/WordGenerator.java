@@ -18,6 +18,8 @@ public interface WordGenerator {
 
     /**
      * Return a word of length between min and max length
+     * 
+     * @param length the word length
      *
      * @return a String of length between min and max length
      */
@@ -26,6 +28,7 @@ public interface WordGenerator {
     /**
      * Return a word of length between min and max length according to the given locale
      *
+     * @param locale locale to use
      * @param length the word length
      *
      * @return a String of length between min and max length according to the given locale

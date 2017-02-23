@@ -146,7 +146,7 @@ public class RandomFontGenerator extends AbstractFontGenerator {
     /**
      * Provides a way for children class to customize the generated font array
      *
-     * @param font
+     * @param font font
      * @return a customized font
      */
     protected Font applyCustomDeformationOnGeneratedFont(Font font) {
@@ -157,6 +157,7 @@ public class RandomFontGenerator extends AbstractFontGenerator {
     /**
      * Create an array of fonts that is known to properly represent all the characters in requiredCharacters.
      *
+     * @param uncheckFonts uncheckFonts
      * @return array of fonts
      * @see #requiredCharacters
      */

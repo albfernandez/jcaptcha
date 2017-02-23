@@ -21,6 +21,7 @@ public abstract class DefaultImageCaptchaEngine extends ImageCaptchaEngine {
 
     /**
      * Default constructor : takes an array of ImageCaptchaFactories.
+     * @param factories array of ImageCaptchaFactories
      */
     public DefaultImageCaptchaEngine(final ImageCaptchaFactory[] factories) {
     	checkNotNullOrEmpty(factories);

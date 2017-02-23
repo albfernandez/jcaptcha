@@ -27,7 +27,7 @@ public class DeformedRandomFontGenerator extends RandomFontGenerator {
     /**
      * Provides a way for children class to customize the generated font array
      *
-     * @param font
+     * @param font font
      * @return a customized font
      */
     protected Font applyCustomDeformationOnGeneratedFont(Font font) {

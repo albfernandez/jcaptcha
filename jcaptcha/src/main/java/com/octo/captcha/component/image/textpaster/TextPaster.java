@@ -34,6 +34,8 @@ public interface TextPaster {
      * Pastes the attributed string on the backround image and return the final image. Implementation must take into
      * account the fact that the text must be readable by human and non by programs
      *
+     * @param background background
+     * @param attributedWord attributedWord
      * @return the final image
      *
      * @throws com.octo.captcha.CaptchaException

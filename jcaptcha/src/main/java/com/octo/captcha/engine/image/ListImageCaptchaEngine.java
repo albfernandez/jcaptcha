@@ -34,7 +34,9 @@ public abstract class ListImageCaptchaEngine
     /**
      * Add a factory to the gimpy list
      *
+     * @param factory factory
      * @return true if added false otherwise
+     * 
      */
     public boolean addFactory(
             com.octo.captcha.image.ImageCaptchaFactory factory) {
@@ -43,6 +45,7 @@ public abstract class ListImageCaptchaEngine
 
     /**
      * Add an array of factories to the gimpy list
+     * @param factories array of factories 
      */
     public void addFactories(
             com.octo.captcha.image.ImageCaptchaFactory[] factories) {

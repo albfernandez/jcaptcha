@@ -40,6 +40,7 @@ public class GenericCaptchaEngine implements CaptchaEngine {
 
     /**
      * Default constructor : takes an array of ImageCaptchaFactories.
+     * @param factories array of ImageCaptchaFactories.
      */
     public GenericCaptchaEngine(CaptchaFactory[] factories) {
         this.factories = factories;

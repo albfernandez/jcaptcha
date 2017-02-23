@@ -57,7 +57,9 @@ public class BaffleGlyphsDecorator implements GlyphsDecorator {
 
 
     /**
+     * @param numberOfHolesPerGlyph numberOfHolesPerGlyph
      * @param holesColor Color of the holes
+     * 
      */
     public BaffleGlyphsDecorator(Integer numberOfHolesPerGlyph, Color holesColor) {
         this.numberOfHolesPerGlyph = numberOfHolesPerGlyph != null ? numberOfHolesPerGlyph
@@ -82,6 +84,7 @@ public class BaffleGlyphsDecorator implements GlyphsDecorator {
     /**
      * @param numberOfHolesPerGlyph Number of holes around glyphes
      * @param holesColorGenerator   The colors for holes
+     * @param alphaCompositeType alphaCompositeType
      */
     public BaffleGlyphsDecorator(Integer numberOfHolesPerGlyph, ColorGenerator holesColorGenerator, Integer alphaCompositeType) {
         this(numberOfHolesPerGlyph, holesColorGenerator);
