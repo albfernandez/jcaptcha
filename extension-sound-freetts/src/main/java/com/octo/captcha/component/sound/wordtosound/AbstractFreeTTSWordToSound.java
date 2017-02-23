@@ -208,7 +208,7 @@ public abstract class AbstractFreeTTSWordToSound implements WordToSound {
 
         private int totBytes = 0;
 
-        private Vector outputList;
+        private Vector<InputStream> outputList;
 
         private AudioInputStream audioInputStream;
 
@@ -217,7 +217,7 @@ public abstract class AbstractFreeTTSWordToSound implements WordToSound {
          *
          */
         public InputStreamAudioPlayer() {
-            outputList = new Vector();
+            outputList = new Vector<InputStream>();
         }
 
         /**
