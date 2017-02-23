@@ -24,10 +24,9 @@ public class DefaultManageableSoundCaptchaService extends AbstractManageableSoun
     /**
      * Construct a new SoundCaptchaService with a {@link FastHashMapCaptchaStore} and a {@link SpellerSoundCaptchaEngine}
      *
-     * @param minGuarantedStorageDelayInSeconds
-     *
-     * @param maxCaptchaStoreSize
-     * @param captchaStoreLoadBeforeGarbageCollection
+     * @param minGuarantedStorageDelayInSeconds minGuarantedStorageDelayInSeconds
+     * @param maxCaptchaStoreSize maxCaptchaStoreSize
+     * @param captchaStoreLoadBeforeGarbageCollection captchaStoreLoadBeforeGarbageCollection
      *
      */
     public DefaultManageableSoundCaptchaService(int minGuarantedStorageDelayInSeconds, int maxCaptchaStoreSize, int captchaStoreLoadBeforeGarbageCollection) {

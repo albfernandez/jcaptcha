@@ -49,7 +49,7 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
     /**
      * Constructor for a FreeTTS implmentation of WordToSound. This constructor imply that WordToSound only use one
      * voice define by voiceName, with its own locale
-
+     * @param configurator          Voice configuration
      * @param minAcceptedWordLength Length Minimal of generated words
      * @param maxAcceptedWordLength Length Maximal of generated words
      */

@@ -28,6 +28,7 @@ public interface BufferedEngineContainerManager {
 
     /**
      * Get number of captchas to feed the disk buffer
+     * @return number of captchas to feed the disk buffer
      */
     int getFeedSize();
 
@@ -43,6 +44,7 @@ public interface BufferedEngineContainerManager {
 
     /**
      * Get number of captchas to swap between the volatil buffer and the disk buffer
+     * @return number of captchas to swap between the volatil buffer and the disk buffer
      */
     int getSwapSize();
 
@@ -53,6 +55,7 @@ public interface BufferedEngineContainerManager {
 
     /**
      * Get maximun size for the volatile buffer
+     * @return  maximun size for the volatile buffer
      */
     int getMaxVolatileMemorySize();
 
@@ -63,6 +66,7 @@ public interface BufferedEngineContainerManager {
 
     /**
      * Get maximum size for the disk buffer
+     * @return maximum size for the disk buffer
      */
     int getMaxPersistentMemorySize();
 

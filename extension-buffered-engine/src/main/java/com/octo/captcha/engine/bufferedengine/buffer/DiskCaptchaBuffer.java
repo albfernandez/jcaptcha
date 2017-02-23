@@ -272,7 +272,8 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     /**
-     * Removes all cached items from the cache. 
+     * Removes all cached items from the cache.
+     * @throws IOException ioexception 
      */
     public synchronized void clearFile() throws IOException {
         try {
@@ -482,6 +483,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * When elements are deleted, spaces are left in the file. These spaces are tracked and are reused when new elements
      * need to be written. This method indicates the actual size used for data, excluding holes. It can be compared
      * with {@link #getDataFileSize()}as a measure of fragmentation.
+     * @return usedDataSize
      */
     public long getUsedDataSize() {
         return totalSize;
@@ -569,8 +571,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         return total;
     }
 
-    /**
-     */
+
     public int maxSize() {
         return (int) this.maxDataSize;
     }

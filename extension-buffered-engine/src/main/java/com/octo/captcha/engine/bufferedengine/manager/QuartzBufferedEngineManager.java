@@ -282,9 +282,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
         config.setFeedSize(new Integer(feedSize));
     }
 
-    /**
 
-     */
     public HashedMap getLocaleRatio() {
         return config.getLocaleRatio();
     }
@@ -327,9 +325,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
         }
     }
 
-    /**
-     
-     */
+    
     protected Locale getLocaleFromName(String localeName) {
         StringTokenizer tokenizer = new StringTokenizer(localeName, "_");
         int count = tokenizer.countTokens();
@@ -342,17 +338,10 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
             default:
                 return Locale.getDefault();
         }
-        /*
-         * JDK 1.4 String[] localeTab = localeName.split("_"); switch (localeTab.length) { case 1:
-         * return new Locale(localeTab[0]); case 2: return new Locale(localeTab[0], localeTab[1]);
-         * case 3: return new Locale(localeTab[0], localeTab[1], localeTab[2]); default: return
-         * Locale.getDefault(); }
-         */
+
     }
 
-    /**
-     
-     */
+   
     public synchronized void removeLocaleRatio(String localeName) {
         Locale locale = getLocaleFromName(localeName);
         //if it exist

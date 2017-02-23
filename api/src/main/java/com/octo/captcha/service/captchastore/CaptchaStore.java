@@ -18,6 +18,8 @@ import com.octo.captcha.service.CaptchaServiceException;
 public interface CaptchaStore {
     /**
      * Check if a captcha is stored for this id
+     * 
+     * @param id the key
      *
      * @return true if a captcha for this id is stored, false otherwise
      */
@@ -54,6 +56,7 @@ public interface CaptchaStore {
     /**
      * Retrieve the captcha for this key from the store.
      *
+     * @param id key to search
      * @return the captcha for this id, null if not found
      *
      * @throws CaptchaServiceException if an error occurs during retrieving routine.
@@ -63,6 +66,7 @@ public interface CaptchaStore {
     /**
      * Retrieve the locale for this key from the store.
      *
+     * @param id key to search
      * @return the locale for this id, null if not found
      *
      * @throws CaptchaServiceException if an error occurs during retrieving routine.
@@ -72,11 +76,13 @@ public interface CaptchaStore {
 
     /**
      * get the size of this store
+     * @return the size of this store
      */
     int getSize();
 
     /**
      * Return all the contained keys
+     * @return all the contained keys
      */
     Collection<String> getKeys();
 

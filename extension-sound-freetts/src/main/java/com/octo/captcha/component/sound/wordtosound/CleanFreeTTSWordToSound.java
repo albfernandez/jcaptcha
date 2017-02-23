@@ -19,6 +19,9 @@ import com.octo.captcha.component.sound.soundconfigurator.SoundConfigurator;
 public class CleanFreeTTSWordToSound extends AbstractFreeTTSWordToSound {
 
     /**
+     * @param configurator          Voice configuration
+     * @param minAcceptedWordLength Length Minimal of generated words
+     * @param maxAcceptedWordLength Length Maximal of generated words
      * @see AbstractFreeTTSWordToSound#AbstractFreeTTSWordToSound(com.octo.captcha.component.sound.soundconfigurator.SoundConfigurator, int, int)
      */
     public CleanFreeTTSWordToSound(SoundConfigurator configurator, int minAcceptedWordLength,
@@ -27,6 +30,8 @@ public class CleanFreeTTSWordToSound extends AbstractFreeTTSWordToSound {
     }
 
     /**
+     * @param sound sound
+     * @return AudioInputStream
      * @see com.octo.captcha.component.sound.wordtosound.AbstractFreeTTSWordToSound#addEffects(javax.sound.sampled.AudioInputStream)
      */
     protected AudioInputStream addEffects(AudioInputStream sound) {

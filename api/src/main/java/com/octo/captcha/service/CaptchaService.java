@@ -87,6 +87,7 @@ public interface CaptchaService {
      * Method to validate a response to the challenge corresponding to the given ticket.
      *
      * @param ID ticket
+     * @param response response
      *
      * @return true if the response is correct, false otherwise.
      *
