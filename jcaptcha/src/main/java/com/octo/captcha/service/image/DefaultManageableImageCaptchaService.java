@@ -35,20 +35,20 @@ public class DefaultManageableImageCaptchaService extends AbstractManageableImag
 
     /**
      * Construct a new ImageCaptchaService with a {@link FastHashMapCaptchaStore} and a {@link DefaultGimpyEngine}
-     * @param minGuarantedStorageDelayInSeconds
-     * @param maxCaptchaStoreSize
-     * @param captchaStoreLoadBeforeGarbageCollection
+     * @param minGuarantedStorageDelayInSeconds minGuarantedStorageDelayInSeconds
+     * @param maxCaptchaStoreSize  maxCaptchaStoreSize
+     * @param captchaStoreLoadBeforeGarbageCollection captchaStoreLoadBeforeGarbageCollection
      */
     public DefaultManageableImageCaptchaService( int minGuarantedStorageDelayInSeconds, int maxCaptchaStoreSize, int captchaStoreLoadBeforeGarbageCollection) {
         super(new FastHashMapCaptchaStore(), new DefaultGimpyEngine(),minGuarantedStorageDelayInSeconds, maxCaptchaStoreSize, captchaStoreLoadBeforeGarbageCollection);
     }
 
     /**
-     * @param captchaStore
-     * @param captchaEngine
-     * @param minGuarantedStorageDelayInSeconds
-     * @param maxCaptchaStoreSize
-     * @param captchaStoreLoadBeforeGarbageCollection
+     * @param captchaStore captchaStore
+     * @param captchaEngine captchaEngine
+     * @param minGuarantedStorageDelayInSeconds minGuarantedStorageDelayInSeconds
+     * @param maxCaptchaStoreSize maxCaptchaStoreSize
+     * @param captchaStoreLoadBeforeGarbageCollection captchaStoreLoadBeforeGarbageCollection
      */
     public DefaultManageableImageCaptchaService(CaptchaStore captchaStore, CaptchaEngine captchaEngine, int minGuarantedStorageDelayInSeconds, int maxCaptchaStoreSize, int captchaStoreLoadBeforeGarbageCollection) {
         super(captchaStore, captchaEngine, minGuarantedStorageDelayInSeconds, maxCaptchaStoreSize, captchaStoreLoadBeforeGarbageCollection);

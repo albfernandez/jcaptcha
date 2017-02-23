@@ -36,6 +36,7 @@ public interface ImageCaptchaService extends CaptchaService {
      * Method to retrive the image challenge corresponding to the given ticket.
      *
      * @param ID the ticket
+     * @param locale the locale
      *
      * @return the challenge
      *

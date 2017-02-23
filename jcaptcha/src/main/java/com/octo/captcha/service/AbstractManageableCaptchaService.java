@@ -246,6 +246,7 @@ public abstract class AbstractManageableCaptchaService
     /**
      * Garbage collect the captcha store, means all old captcha (captcha in the store wich has been stored more than the
      * MinGuarantedStorageDelayInSecond
+     * @param garbageCollectableCaptchaIds garbageCollectableCaptchaIds
      */
     protected void garbageCollectCaptchaStore(Iterator<String> garbageCollectableCaptchaIds) {
         // this may cause a captcha disparition if a new captcha is asked between

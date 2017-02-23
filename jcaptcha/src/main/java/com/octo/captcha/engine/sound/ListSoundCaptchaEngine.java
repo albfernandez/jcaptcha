@@ -45,7 +45,7 @@ public abstract class ListSoundCaptchaEngine extends SoundCaptchaEngine {
 
     /**
      * Add a factory to the gimpy list
-     *
+     * @param factory factory
      * @return true if added false otherwise
      */
     public boolean addFactory(SoundCaptchaFactory factory) {
@@ -54,6 +54,7 @@ public abstract class ListSoundCaptchaEngine extends SoundCaptchaEngine {
 
     /**
      * Add an array of factories to the gimpy list
+     * @param factories factories
      */
     public void addFactories(SoundCaptchaFactory[] factories) {
         checkNotNullOrEmpty(factories);

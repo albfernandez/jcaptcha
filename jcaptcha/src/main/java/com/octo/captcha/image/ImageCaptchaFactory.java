@@ -31,6 +31,7 @@ public abstract class ImageCaptchaFactory implements CaptchaFactory {
     /**
      * build Localized captcha (don't forget those captcha are for human beings!).
      *
+     * @param locale the locale to use
      * @return a captcha corresponding to the locale
      */
     public final Captcha getCaptcha(final Locale locale) {

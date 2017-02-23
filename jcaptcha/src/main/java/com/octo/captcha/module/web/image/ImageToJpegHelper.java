@@ -42,6 +42,8 @@ public class ImageToJpegHelper {
      * @param theResponse the response
      * @param log         a commons logger
      * @param service     an ImageCaptchaService instance
+     * @param id the id
+     * @param locale the locale
      *
      * @throws java.io.IOException if a problem occurs during the jpeg generation process
      */

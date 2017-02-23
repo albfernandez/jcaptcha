@@ -30,7 +30,7 @@ public abstract class SoundCaptchaFactory implements CaptchaFactory {
 
     /**
      * this method builds a localized capctha.
-     *
+     * @param locale the locale
      * @return a captcha.
      */
     public Captcha getCaptcha(Locale locale) {

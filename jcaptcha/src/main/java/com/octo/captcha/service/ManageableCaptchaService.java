@@ -38,7 +38,7 @@ public interface ManageableCaptchaService extends CaptchaService {
 
     /**
      * Updates the engine served by this service
-     * @param engine
+     * @param engine engine
      */
     void setCaptchaEngine(CaptchaEngine engine);
 
@@ -108,6 +108,7 @@ public interface ManageableCaptchaService extends CaptchaService {
     /**
      * This max size is used by the service : it will throw a CaptchaServiceException if the store is full when a client
      * ask for a captcha.
+     * @param size max size used by the service
      */
     void setCaptchaStoreMaxSize(int size);
 
@@ -134,6 +135,7 @@ public interface ManageableCaptchaService extends CaptchaService {
 
     /**
      * max captchaStore size before garbage collection of the store
+     * @param captchaStoreSizeBeforeGarbageCollection max captchaStore size before garbage collection of the store
      */
     void setCaptchaStoreSizeBeforeGarbageCollection(int captchaStoreSizeBeforeGarbageCollection);
 }

@@ -44,6 +44,8 @@ public class SpellFindCaptchaFactory extends SoundCaptchaFactory {
 
     /**
      * Construct a GimpySoundFactory from a word generator component and a wordtosound component
+     * @param wordGenerator wordgenerator
+     * @param word2Sound word2sound
      */
     public SpellFindCaptchaFactory(WordGenerator wordGenerator, WordToSound word2Sound) {
         if (wordGenerator == null) {

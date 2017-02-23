@@ -114,6 +114,7 @@ public abstract class SoundCaptchaEngine implements CaptchaEngine {
     /**
      * This method build a SoundCaptchaFactory.
      *
+     * @param locale the locale to use
      * @return a SoundCaptcha
      */
     public SoundCaptcha getNextSoundCaptcha(Locale locale) {

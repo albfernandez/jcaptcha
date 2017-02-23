@@ -47,6 +47,7 @@ public class SpellerSoundFactory extends SoundCaptchaFactory {
      *
      * @param wordGenerator component
      * @param word2Sound    component
+     * @param wordDecorator component
      */
     public SpellerSoundFactory(WordGenerator wordGenerator, WordToSound word2Sound,
                                SpellerWordDecorator wordDecorator) {

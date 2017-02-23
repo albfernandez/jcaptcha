@@ -32,9 +32,14 @@ public class GenericManageableCaptchaService extends AbstractManageableCaptchaSe
 
     /**
      * Constructor with FastHashMapCaptchaStore
+     * 
+     * 
      *
      * @param captchaEngine the used engine. Use the com.octo.captcha.engine.bufferedengine.BufferedEngineContainer
      *                      to enable buffered captcha generation
+     * @param minGuarantedStorageDelayInSeconds minGuarantedStorageDelayInSeconds
+     * @param maxCaptchaStoreSize maxCaptchaStoreSize 
+     * @param captchaStoreLoadBeforeGarbageCollection captchaStoreLoadBeforeGarbageCollection
      */
     public GenericManageableCaptchaService(CaptchaEngine captchaEngine,
                                            int minGuarantedStorageDelayInSeconds,

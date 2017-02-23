@@ -36,6 +36,8 @@ public class SoundToFile {
      *
      * @param pAudioInputStream Audio Steam to serialize
      * @param pFile             File to write to audio stream
+     * 
+     * @throws IOException ioexception
      */
     public static void serialize(AudioInputStream pAudioInputStream, File pFile) throws IOException {
         pFile.createNewFile();

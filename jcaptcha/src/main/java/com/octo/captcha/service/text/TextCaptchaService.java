@@ -30,6 +30,7 @@ public interface TextCaptchaService extends CaptchaService {
      * Method to retrieve the text challenge corresponding to the given ticket.
      *
      * @param ID the ticket
+     * @param locale the locale
      * @return the challenge
      * @throws com.octo.captcha.service.CaptchaServiceException
      *          if the ticket is invalid

@@ -84,7 +84,7 @@ public abstract class ImageCaptcha implements Captcha {
     /**
      * This method have to be implemented in order to serialize the image challenge to JPEG format
      * @param out The target outputStream in which the captcha will be serialized
-     * @throws IOException
+     * @throws IOException ioexception
      */
     private void writeObject(java.io.ObjectOutputStream out)
             throws IOException {
@@ -102,8 +102,8 @@ public abstract class ImageCaptcha implements Captcha {
     /**
      * This method have to be implemented in order to unserialize the image challenge from JPEG format
      * @param in The source inputStream from which the captcha will be unserialized
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws IOException ioexception
+     * @throws ClassNotFoundException ClassNotFoundException
      */
     private void readObject(java.io.ObjectInputStream in)
             throws IOException, ClassNotFoundException {

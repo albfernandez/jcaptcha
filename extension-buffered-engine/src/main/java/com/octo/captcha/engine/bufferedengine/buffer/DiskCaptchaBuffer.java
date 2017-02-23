@@ -131,11 +131,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         log.info("Buffer initialized");
     }
 
-    /**
-     * Gets an entry from the Disk Store.
-     *
-     * @return The element
-     */
+
     protected synchronized Collection remove(int number, Locale locale) throws IOException {
         if (!isInitalized) return new ArrayList(0);
         DiskElement diskElement = null;
@@ -189,6 +185,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
     /**
      * Puts items into the store.
+     * @param collection collection
+     * @param locale the locale
+     * @throws IOException exception
      */
     protected synchronized void store(Collection collection, Locale locale) throws IOException {
         if (!isInitalized) return;
@@ -210,6 +209,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
     /**
      * Puts items into the store.
+     * @param element element
+     * @param locale locale
+     * @throws IOException ioexception
      */
     protected synchronized void store(Object element, Locale locale) throws IOException {
         if (!isInitalized) return;

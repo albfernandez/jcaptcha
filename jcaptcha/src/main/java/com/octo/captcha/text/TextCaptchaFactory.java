@@ -47,6 +47,7 @@ public abstract class TextCaptchaFactory implements CaptchaFactory {
     /**
      * a TextCaptcha.
      *
+     * @param locale the locale
      * @return a localized TextCaptcha
      */
     public abstract TextCaptcha getTextCaptcha(Locale locale);

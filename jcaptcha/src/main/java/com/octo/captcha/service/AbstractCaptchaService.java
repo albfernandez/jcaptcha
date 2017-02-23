@@ -164,6 +164,8 @@ public abstract class AbstractCaptchaService implements CaptchaService {
      * clone of the challenge Return the clone It has be design in order to let the service dispose the challenge of the
      * captcha after rendering. It should be implemented for all captcha type (@see ImageCaptchaService implementations
      * for exemple)
+     * 
+     * @param captcha captcha
      *
      * @return a Challenge Clone
      */

@@ -70,6 +70,7 @@ public interface CaptchaBuffer {
 
     /**
      * Put a captcha with default laocale
+     * @param captcha captcha
      */
     public void putCaptcha(Captcha captcha);
 
@@ -124,6 +125,7 @@ public interface CaptchaBuffer {
 
     /**
      * Get all the locales used
+     * @return locales used
      */
     public Collection<String> getLocales();
 }

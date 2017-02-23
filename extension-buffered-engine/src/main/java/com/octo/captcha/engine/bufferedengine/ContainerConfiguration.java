@@ -149,16 +149,12 @@ public class ContainerConfiguration {
         }
     }
 
-    /**
-     * @return
-     */
+
     public Integer getFeedSize() {
         return feedSize;
     }
 
-    /**
-     * @param feedSize
-     */
+
     public void setFeedSize(Integer feedSize) {
         this.feedSize = feedSize;
     }

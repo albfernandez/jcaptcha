@@ -28,7 +28,9 @@ import com.octo.captcha.sound.SoundCaptchaFactory;
 public class DefaultSoundCaptchaEngine extends SoundCaptchaEngine {
 
     /**
+     * 
      * Default constructor : takes an array of SoundCaptchaFactories.
+     * @param factories array of SoundCaptchaFactories
      */
     public DefaultSoundCaptchaEngine(final SoundCaptchaFactory[] factories) {
     	checkNotNullOrEmpty(factories);

@@ -22,6 +22,8 @@ public class CaptchaModuleConfigHelper {
      * method that get an id using the plugin configuration. It may be retrieved from the session via the getId()
      * native method if the idType is set to 'session' or retrieved from the request using the 'idKey' parameter if the
      * idType is set to 'generated';
+     * @param httpServletRequest the request
+     * @return captchaId
      */
     public static String getId(HttpServletRequest httpServletRequest) {
         String captchaID;
@@ -41,6 +43,8 @@ public class CaptchaModuleConfigHelper {
 
     /**
      * Method that return the fail or error message from the specified bundle or directly from the value specified
+     * @param httpServletRequest the request
+     * @return message
      */
 
     public static String getMessage(HttpServletRequest httpServletRequest) {
