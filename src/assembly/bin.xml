@@ -51,22 +51,7 @@
         <include>gimpybackgrounds/*</include>
       </includes>
     </fileSet>
-    <!-- 
-    <fileSet>
-      <directory>site-deploy</directory>
-      <outputDirectory>/docs/</outputDirectory>
-    </fileSet>
-     -->
-    <!-- 
-    <fileSet>
-      <directory>samples</directory>
-      <outputDirectory>/samples/</outputDirectory>
-      <useDefaultExcludes>true</useDefaultExcludes>
-      <excludes>
-        <exclude>.svn</exclude>
-      </excludes>
-    </fileSet>
-     -->
+
     <fileSet>
     	<directory>extension-buffered-engine/target/</directory>
     	<outputDirectory>extensions/</outputDirectory>
@@ -214,82 +199,7 @@
     	<includes>
     		<include>*sources*.jar</include>
     	</includes>
-    </fileSet>
-    
+    </fileSet>    
   </fileSets>
   
-  <!-- 
-   ./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT-sources.jar
-./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT-javadoc.jar
-./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT.jar
-./api/target/jcaptcha-api-2.0.0-SNAPSHOT-javadoc.jar
-./api/target/jcaptcha-api-2.0.0-SNAPSHOT.jar
-./api/target/jcaptcha-api-2.0.0-SNAPSHOT-sources.jar
-./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT-sources.jar
-./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT-javadoc.jar
-./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT.jar
-./site-skin/target/jcaptcha-site-skin-2.0.0-SNAPSHOT-sources.jar
-./site-skin/target/jcaptcha-site-skin-2.0.0-SNAPSHOT.jar
-./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT-javadoc.jar
-./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT.jar
-./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT-sources.jar
-./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT.jar
-./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT-javadoc.jar
-./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT-sources.jar
-./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT-sources.jar
-./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT-javadoc.jar
-./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT.jar
-./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT.jar
-./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT-javadoc.jar
-./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT-sources.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/commons-collections-3.2.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-api-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/slf4j-jcl-1.5.6.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/filters-2.0.235.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/slf4j-api-1.5.6.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/servlet-api-2.5.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/commons-logging-1.0.4.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample-sources.jar
-./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample-javadoc.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample-sources.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample-javadoc.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/freetts-1.2.2.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/commons-collections-3.2.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-api-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/slf4j-jcl-1.5.6.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/filters-2.0.235.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/slf4j-api-1.5.6.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/servlet-api-2.5.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-2.0.0-SNAPSHOT.jar
-./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/commons-logging-1.0.4.jar
-   -->
-  <!-- 
-  <moduleSets>
-    <moduleSet>
-      <includes>
-        <include>com.github.albfernandez:jcaptcha-extension-buffered-engine</include>
-        <include>com.github.albfernandez:jcaptcha-extension-jbosscache-store</include>
-        <include>com.github.albfernandez:jcaptcha-extension-sound-freetts</include>
-      </includes>
-      <binaries>
-        <includeDependencies>false</includeDependencies>
-        <outputDirectory>extensions/</outputDirectory>
-        <unpack>false</unpack>
-      </binaries>
-    </moduleSet>
-    <moduleSet>
-      <includes>
-        <include>com.github.albfernandez:jcaptcha-integration-simple-servlet</include>
-      </includes>
-      <binaries>
-        <includeDependencies>false</includeDependencies>
-        <outputDirectory>integrations/</outputDirectory>
-        <unpack>false</unpack>
-      </binaries>
-    </moduleSet>
-  </moduleSets>
-   -->  
 </assembly>
