@@ -8,7 +8,7 @@
   <formats>
     <format>zip</format>
   </formats>
-  <includeBaseDirectory>false</includeBaseDirectory>
+  <includeBaseDirectory>false</includeBaseDirectory>  
   <files>
     <file>
       <source>jcaptcha/LICENSE.txt</source>
@@ -23,33 +23,250 @@
     <fileSet>
       <directory>jcaptcha/target</directory>
       <outputDirectory>/</outputDirectory>
-      <useDefaultExcludes>true</useDefaultExcludes>
-      <includes>
-        <include>jcaptcha-*-all.jar</include>
-      </includes>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>
+    </fileSet>
+    <fileSet>
+      <directory>api/target</directory>
+      <outputDirectory>/</outputDirectory>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>
     </fileSet>
     <fileSet>
       <directory>src/main/resources</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory>backgrounds/</outputDirectory>
       <useDefaultExcludes>true</useDefaultExcludes>
       <includes>
         <include>fisheyebackgrounds/*</include>
         <include>gimpybackgrounds/*</include>
       </includes>
-    </fileSet>    
+    </fileSet>
+    <!-- 
     <fileSet>
       <directory>site-deploy</directory>
       <outputDirectory>/docs/</outputDirectory>
     </fileSet>
+     -->
+    <!-- 
     <fileSet>
       <directory>samples</directory>
       <outputDirectory>/samples/</outputDirectory>
-      <!-- useDefaultExcludes>true</useDefaultExcludes -->
+      <useDefaultExcludes>true</useDefaultExcludes>
       <excludes>
         <exclude>.svn</exclude>
       </excludes>
-    </fileSet>        
+    </fileSet>
+     -->
+    <fileSet>
+    	<directory>extension-buffered-engine/target/</directory>
+    	<outputDirectory>extensions/</outputDirectory>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>    	
+    </fileSet> 
+    <fileSet>
+    	<directory>extension-jbosscache-store/target/</directory>
+    	<outputDirectory>extensions/</outputDirectory>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>    	
+    </fileSet> 
+    <fileSet>
+    	<directory>extension-sound-freetts/target/</directory>
+    	<outputDirectory>extensions/</outputDirectory>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>    	
+    </fileSet> 
+    
+    <fileSet>
+    	<directory>integration-simple-servlet/target/</directory>
+    	<outputDirectory>integrations/</outputDirectory>
+    	<includes>
+    		<include>*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>    	
+    </fileSet> 
+    
+    
+    <!--  Dependencies -->
+    <fileSet>
+    	<directory>samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/</directory>
+    	<outputDirectory>lib/</outputDirectory>
+    	<includes>
+    		<include>commons-*.jar</include>
+    		<include>filters-*.jar</include>
+    	</includes>
+    	<excludes>
+    		<exclude>*sources*</exclude>
+    		<exclude>*javadoc*</exclude>
+    	</excludes>  
+    </fileSet>
+    
+    <!-- javadoc -->
+    <fileSet>
+      <directory>jcaptcha/target</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>api/target</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-buffered-engine/target/</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-jbosscache-store/target/</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-sound-freetts/target/</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>integration-simple-servlet/target/</directory>
+      <outputDirectory>docs/api-docs/</outputDirectory>
+    	<includes>
+    		<include>*javadoc*.jar</include>
+    	</includes>
+    </fileSet>
+    <!-- sources -->
+    
+    <fileSet>
+      <directory>jcaptcha/target</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>api/target</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-buffered-engine/target/</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-jbosscache-store/target/</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>extension-sound-freetts/target/</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    <fileSet>
+      <directory>integration-simple-servlet/target/</directory>
+      <outputDirectory>sources/</outputDirectory>
+    	<includes>
+    		<include>*sources*.jar</include>
+    	</includes>
+    </fileSet>
+    
   </fileSets>
+  
+  <!-- 
+   ./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT-sources.jar
+./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT-javadoc.jar
+./extension-buffered-engine/target/jcaptcha-extension-buffered-engine-2.0.0-SNAPSHOT.jar
+./api/target/jcaptcha-api-2.0.0-SNAPSHOT-javadoc.jar
+./api/target/jcaptcha-api-2.0.0-SNAPSHOT.jar
+./api/target/jcaptcha-api-2.0.0-SNAPSHOT-sources.jar
+./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT-sources.jar
+./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT-javadoc.jar
+./jcaptcha/target/jcaptcha-2.0.0-SNAPSHOT.jar
+./site-skin/target/jcaptcha-site-skin-2.0.0-SNAPSHOT-sources.jar
+./site-skin/target/jcaptcha-site-skin-2.0.0-SNAPSHOT.jar
+./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT-javadoc.jar
+./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT.jar
+./extension-jbosscache-store/target/jcaptcha-extension-jbosscache-store-2.0.0-SNAPSHOT-sources.jar
+./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT.jar
+./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT-javadoc.jar
+./integration-simple-servlet/target/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT-sources.jar
+./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT-sources.jar
+./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT-javadoc.jar
+./common-test/target/jcaptcha-common-test-2.0.0-SNAPSHOT.jar
+./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT.jar
+./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT-javadoc.jar
+./extension-sound-freetts/target/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT-sources.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/commons-collections-3.2.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-api-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/slf4j-jcl-1.5.6.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/filters-2.0.235.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/slf4j-api-1.5.6.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-integration-simple-servlet-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/servlet-api-2.5.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/jcaptcha-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample/WEB-INF/lib/commons-logging-1.0.4.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample-sources.jar
+./samples/simple-servlet-image-sample/target/jcaptcha-integration-simple-servlet-sample-javadoc.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample-sources.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample-javadoc.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/freetts-1.2.2.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-extension-sound-freetts-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/commons-collections-3.2.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-api-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/slf4j-jcl-1.5.6.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/filters-2.0.235.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/slf4j-api-1.5.6.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/servlet-api-2.5.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/jcaptcha-2.0.0-SNAPSHOT.jar
+./samples/simple-servlet-sound-sample/target/jcaptcha-integration-simple-servlet-sound-sample/WEB-INF/lib/commons-logging-1.0.4.jar
+   -->
+  <!-- 
   <moduleSets>
     <moduleSet>
       <includes>
@@ -73,5 +290,6 @@
         <unpack>false</unpack>
       </binaries>
     </moduleSet>
-  </moduleSets>  
+  </moduleSets>
+   -->  
 </assembly>
