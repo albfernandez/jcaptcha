@@ -15,7 +15,9 @@ Files to add (version is ommited)
 - jcaptcha-api.jar
 - integrations/jcaptcha-integration-simple-servlet.jar
 - lib/filters.jar
+
 And if you don't have them already:
+
 - lib/commons-logging.jar
 - lib/commons-collections.jar
 
@@ -58,3 +60,16 @@ if(captchaPassed){
 ```
 
 And that's it!
+
+
+
+#Building from sources
+
+Clone the repository or download de tar file from releases page on github, then run the Maven command:
+
+    git clone https://github.com/albfernandez/jcaptcha.git
+    git checkout tags/v.2.0.0
+    cd jcaptcha
+    mvn clean package verify assembly:single
+
+The result file is ``target/jcaptcha-2.0.0-dist.zip``
