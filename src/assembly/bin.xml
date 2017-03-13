@@ -4,7 +4,7 @@
   ~ See the LICENSE.txt file distributed with this package.
   -->
 <assembly>
-  <id>bin</id>
+  <id>dist</id>  
   <formats>
     <format>zip</format>
   </formats>
