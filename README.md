@@ -1,12 +1,12 @@
-#JCaptcha
+# JCaptcha
 
 JCaptcha stands for Java Completely Automated Public Test to tell Computers and Humans Apart 
 
-#License
+# License
 
 JCaptcha is LGPL
 
-#Usage (Simple Servlet Integration)
+# Usage (Simple Servlet Integration)
 
 This integration module provides the shortest way to integrate JCaptcha to your web application.
 All you need to do is add the jcaptcha jar to your project, make a reference to the SimpleImageCaptchaServlet in your web.xml and then use the servlet session id to validate what the user submits on your form against the captcha service.
@@ -64,7 +64,7 @@ And that's it!
 
 
 
-#Building from sources
+# Building from sources
 
 Clone the repository or download de tar file from releases page on github, then run the Maven command:
 
