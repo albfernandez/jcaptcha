@@ -68,7 +68,7 @@ And that's it!
 Clone the repository or download de tar file from releases page on github, then run the Maven command:
 
     git clone https://github.com/albfernandez/jcaptcha.git
-    git checkout tags/v.2.0.0
+    git checkout tags/v2.0.0
     cd jcaptcha
     mvn clean package verify 
     mvn assembly:single -Dmaven.test.skip=true
