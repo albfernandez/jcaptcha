@@ -24,11 +24,15 @@
  This jar aims to provide interfaces and implementation of generic and typed captcha and captcha factories.<BR/>
  It uses the word generator, types sub packages (image and sound) components (word to image, word to sound)
  to build typed captchas captchas.]]></description>
-
+	<prerequisites>
+		<maven>3.0.4</maven>
+	</prerequisites>
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.0</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/assembly/uber-jar.xml</descriptor>
