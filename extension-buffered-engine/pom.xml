@@ -42,12 +42,28 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <version>2.0.6</version>
         <scope>test</scope>
     </dependency>
-    <dependency>
-         <groupId>commons-dbcp</groupId>
-         <artifactId>commons-dbcp</artifactId>
-         <version>1.2.1</version>
-         <scope>test</scope>
-     </dependency>
+	<dependency>
+		<groupId>xml-apis</groupId>
+		<artifactId>xml-apis</artifactId>
+		<version>1.4.01</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>1.2.1</version>
+		<scope>test</scope>
+		<exclusions>
+			<exclusion>
+				<artifactId>xml-apis</artifactId>
+				<groupId>xml-apis</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>xerces</artifactId>
+				<groupId>xerces</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
      <dependency>
          <groupId>commons-pool</groupId>
          <artifactId>commons-pool</artifactId>
