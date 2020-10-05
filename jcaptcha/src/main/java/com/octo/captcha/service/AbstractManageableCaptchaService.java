@@ -252,7 +252,7 @@ public abstract class AbstractManageableCaptchaService
         // this may cause a captcha disparition if a new captcha is asked between
         // this call and the effective removing from the store!
         long now = System.currentTimeMillis();
-        long limit = now - 1000 * minGuarantedStorageDelayInSeconds;
+        long limit = now - 1000L * (long) minGuarantedStorageDelayInSeconds;
 
         while (garbageCollectableCaptchaIds.hasNext()) {
             String id = garbageCollectableCaptchaIds.next().toString();
@@ -294,7 +294,7 @@ public abstract class AbstractManageableCaptchaService
         HashSet<String> garbageCollectableCaptchas = new HashSet<String>();
 
         //the time limit under which captchas are collectable
-        long limit = now - 1000 * getMinGuarantedStorageDelayInSeconds();
+        long limit = now - 1000L * (long) getMinGuarantedStorageDelayInSeconds();
         if (limit > oldestCaptcha) {
             // iterate to find out if the captcha is perimed
 			Iterator<String> ids = new HashSet<String>(times.keySet()).iterator();

@@ -109,7 +109,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
         assertTrue("store size should be the same(this test may fail if time to load the store is > min guaranted...)",
                 getMService().getCaptchaStoreSize() == CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION);
         //wait,  and collect
-        Thread.sleep(MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000 + 100);
+        Thread.sleep((long) MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000L + 100L);
         getMService().garbageCollectCaptchaStore();
         assertTrue("store should be empty",
                 getMService().getCaptchaStoreSize() == 0);
@@ -167,7 +167,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
         getMService().validateResponseForID(String.valueOf(0), "true");
         getMService().garbageCollectCaptchaStore();
         assertEquals("all but one should have been collected",
-                2 * CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION - 1,
+                2L * (long)CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION - 1L,
                 getMService().getNumberOfGarbageCollectedCaptcha());
     }
 
@@ -201,7 +201,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
                 CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION - 1,
                 getMService().getNumberOfGarbageCollectableCaptchas());
 
-        Thread.sleep(MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000 + 100);
+        Thread.sleep((long)MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000L + 100L);
         assertEquals("all should be collectable",
                 CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION,
                 getMService().getNumberOfGarbageCollectableCaptchas());
@@ -434,7 +434,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
             String id = String.valueOf(i);
             service.generateAndStoreCaptcha(Locale.getDefault(), id);
         }
-        Thread.sleep(MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000 + 100);
+        Thread.sleep((long) MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS * 1000L + 100L);
     }
 
 
