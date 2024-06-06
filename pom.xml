@@ -235,7 +235,7 @@
 						</manifest>
 						<manifestEntries>							
 							<Build-Time>${maven.build.timestamp}</Build-Time>
-							<Automatic-Module-Name>com.github.albfernandez.${artifactId}</Automatic-Module-Name>
+							<Automatic-Module-Name>com.github.albfernandez.${project.artifactId}</Automatic-Module-Name>
 						</manifestEntries>
 					</archive>
 				</configuration>
