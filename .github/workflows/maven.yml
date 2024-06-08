@@ -4,9 +4,9 @@
 name: JCatpcha CI
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 2.x ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, 2.x ]
 
 jobs:
   build:
