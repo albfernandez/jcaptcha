@@ -15,7 +15,9 @@
   <artifactId>jcaptcha-load-test</artifactId>
   <name>Load Testing</name>
   <version>2.0.1-SNAPSHOT</version>
-  
+  <properties>
+  	<automatic.module.name>testing.load</automatic.module.name>
+  </properties>
   <build>
     <plugins>
       <plugin>

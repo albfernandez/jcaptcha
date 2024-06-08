@@ -11,6 +11,9 @@
     <groupId>com.github.albfernandez</groupId>
     <version>2.0.1-SNAPSHOT</version>
   </parent>
+  <properties>
+  	<automatic.module.name>samples.image</automatic.module.name>
+  </properties>
   <artifactId>jcaptcha-integration-simple-servlet-image-sample</artifactId>
   <packaging>war</packaging>
   <name>Simple Image Servlet Webapp Sample</name>

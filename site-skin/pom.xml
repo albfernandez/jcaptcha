@@ -13,6 +13,9 @@
   </parent>  
   <artifactId>jcaptcha-site-skin</artifactId>
   <name>Site Skin</name>
+  <properties>
+  	<automatic.module.name>site</automatic.module.name>
+  </properties>
   <description>A maven sites skin for JCaptcha.</description>
 
 </project>

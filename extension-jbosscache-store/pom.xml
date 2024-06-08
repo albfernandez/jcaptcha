@@ -14,6 +14,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jcaptcha-extension-jbosscache-store</artifactId>
   <name>Extension JBossCache Store</name>
+  <properties>
+  	<automatic.module.name>extensions.jbosscache</automatic.module.name>
+  </properties>
   <build>
     <plugins>
       <plugin>

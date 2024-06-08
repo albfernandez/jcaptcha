@@ -27,6 +27,9 @@
 	<prerequisites>
 		<maven>3.0.4</maven>
 	</prerequisites>
+	<properties>
+		<automatic.module.name>jcaptcha</automatic.module.name>
+	</properties>
     <build>
         <plugins>
             <plugin>

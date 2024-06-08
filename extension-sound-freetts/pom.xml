@@ -14,7 +14,9 @@
     
   <artifactId>jcaptcha-extension-sound-freetts</artifactId>
   <name>Extension Sound FreeTTS</name>
-  
+  <properties>
+  	<automatic.module.name>extensions.sound</automatic.module.name>
+  </properties>
   <dependencies>
 
     <dependency>

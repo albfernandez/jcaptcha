@@ -14,6 +14,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jcaptcha-extension-buffered-engine</artifactId>
   <name>Extension Buffered Engine</name>
+  <properties>
+  	<automatic.module.name>extensions.buffered</automatic.module.name>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>com.github.albfernandez</groupId>

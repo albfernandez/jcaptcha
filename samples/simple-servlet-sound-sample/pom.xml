@@ -12,6 +12,9 @@
 	<artifactId>jcaptcha-integration-simple-servlet-sound-sample</artifactId>
 	<packaging>war</packaging>
 	<name>Simple Sound Servlet Webapp Sample</name>
+	<properties>
+  		<automatic.module.name>samples.sound</automatic.module.name>
+  	</properties>
 	<dependencies>
 
 		<dependency>

@@ -13,6 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<automatic.module.name>home</automatic.module.name>
 	</properties>
 	<modules>
 		<module>site-skin</module>
@@ -235,7 +236,7 @@
 						</manifest>
 						<manifestEntries>							
 							<Build-Time>${maven.build.timestamp}</Build-Time>
-							<Automatic-Module-Name>com.github.albfernandez.${project.artifactId}</Automatic-Module-Name>
+							<Automatic-Module-Name>com.github.albfernandez.jcaptcha.${automatic.module.name}</Automatic-Module-Name>
 						</manifestEntries>
 					</archive>
 				</configuration>
