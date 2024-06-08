@@ -40,9 +40,17 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 		httpServletResponse.addHeader("Cache-Control", "post-check=0, pre-check=0");
 		// Set standard HTTP/1.0 no-cache header.
 		httpServletResponse.setHeader("Pragma", "no-cache");
+		
+		String mimetype = "image/jpeg";
+		String imageFormat = "jpg";
+		
+		if (isPng(httpServletRequest)) {
+			mimetype = "image/png";
+			imageFormat = "png";
+		}
 
-		// return a jpeg
-		httpServletResponse.setContentType("image/jpeg");
+		// return contentype
+		httpServletResponse.setContentType(mimetype);
 
 		// create the image with the text
 		BufferedImage bi = service.getImageChallengeForID(httpServletRequest.getSession(true).getId());
@@ -51,7 +59,7 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 		try {
 			out = httpServletResponse.getOutputStream();
 			// write the data out
-			ImageIO.write(bi, "jpg", out);
+			ImageIO.write(bi, imageFormat, out);
 			out.flush();
 		} finally {
 			if (out != null) {
@@ -60,13 +68,24 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 		}
 	}
 
-     public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse){
+     private boolean isPng(HttpServletRequest request) {
+    	 if (request == null) {
+    		 return false;
+    	 }
+    	 String requestUri = request.getRequestURI();
+    	 if (requestUri == null) {
+    		 return false;
+    	 }
+    	 return requestUri.toLowerCase().endsWith(".png");
+	}
+
+	public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse){
          if(request.getSession(false)==null) {
         	 //if no session found
         	 return false;
          }
          try {
-             return service.validateResponseForID(request.getSession().getId(),userCaptchaResponse);
+             return service.validateResponseForID(request.getSession().getId(), userCaptchaResponse);
          } catch (CaptchaServiceException e) {
         	 return false;
          }
