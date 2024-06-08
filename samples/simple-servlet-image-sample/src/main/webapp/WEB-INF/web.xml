@@ -21,8 +21,11 @@
             <url-pattern>/jcaptcha.jpg</url-pattern>
     </servlet-mapping>
 
-
-
+	
+    <servlet-mapping>
+            <servlet-name>jcaptcha</servlet-name>
+            <url-pattern>/jcaptcha.png</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
             <servlet-name>submit</servlet-name>
