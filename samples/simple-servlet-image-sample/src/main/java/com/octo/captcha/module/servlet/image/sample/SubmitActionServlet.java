@@ -18,19 +18,35 @@ import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 /**
  * @author mag
  */
-public class SubmitActionServlet extends HttpServlet{
+public class SubmitActionServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 7342121576411594220L;
+	private static final long serialVersionUID = 7342121576411594220L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-      String userCaptchaResponse = request.getParameter("jcaptcha");
-      boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
-      if(captchaPassed){
-            response.sendRedirect("index.jsp?message=captcha%20passed");
-        }else{
-            response.sendRedirect("index.jsp?message=captcha%20failed");
-        }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    }
+		String userCaptchaResponse = request.getParameter("jcaptcha");
+		String format = getFormat(request);
+		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
+		if (captchaPassed) {
+			response.sendRedirect("index.jsp?message=passed&format=" + format);
+		} else {
+			response.sendRedirect("index.jsp?message=failed&format=" + format);
+		}
+
+	}
+
+	private String getFormat(HttpServletRequest request) {
+		if (request == null) {
+			return "jpg";
+		}
+		String fmt = request.getParameter("format");
+		if (fmt == null) {
+			return "jpg";
+		}
+		if ("png".equals(fmt)) {
+			return "png";
+		}
+		return "jpg";
+	}
 }
