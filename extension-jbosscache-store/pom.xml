@@ -17,19 +17,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <properties>
   	<automatic.module.name>extensions.jbosscache</automatic.module.name>
   </properties>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>	          
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>  
-	<repositories>
+  <repositories>
     <repository>
         <id>jboss-maven2</id>
         <layout>default</layout>

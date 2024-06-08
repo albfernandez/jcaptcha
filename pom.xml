@@ -14,6 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<automatic.module.name>home</automatic.module.name>
+		<compilerLevel>1.7</compilerLevel>
 	</properties>
 	<modules>
 		<module>site-skin</module>
@@ -194,11 +195,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.10.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${compilerLevel}</source>
+					<target>${compilerLevel}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-war-plugin</artifactId>
+    			<version>3.3.2</version>				
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -253,10 +259,18 @@
 				<version>3.0.0</version>
 			</plugin>
 		</plugins>
-
-
-
-
 	</build>
+	<profiles>
+		<profile>
+			<id>java18on</id>
+			<activation>
+				<jdk>[18,)</jdk>
+			</activation>
+			<properties>
+				<compilerLevel>1.8</compilerLevel>
+			</properties>
+		</profile>
+		
+	</profiles>
 
 </project>
