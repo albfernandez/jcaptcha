@@ -62,7 +62,7 @@ public class ImageToJpegHelper {
             BufferedImage challenge =
                     service.getImageChallengeForID(id, locale);
             // the output stream to render the captcha image as jpeg into
-           ImageIO.write(challenge, "png",jpegOutputStream);
+           ImageIO.write(challenge, "jpg",jpegOutputStream);
         } catch (IllegalArgumentException e) {
             //    log a security warning and return a 404...
             if (log != null && log.isWarnEnabled()) {
