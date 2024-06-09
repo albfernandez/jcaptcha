@@ -17,7 +17,7 @@ import com.octo.captcha.MockCaptcha;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public class MockCaptchaEngine implements com.octo.captcha.engine.CaptchaEngine {
+public class MockCaptchaEngine implements CaptchaEngine {
     /**
      * This return a new captcha. It may be used directly.
      *

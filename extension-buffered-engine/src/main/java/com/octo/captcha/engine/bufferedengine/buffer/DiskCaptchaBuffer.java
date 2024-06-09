@@ -110,7 +110,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         }
     }
 
-    private final void initialiseFiles() throws Exception {
+    private void initialiseFiles() throws Exception {
         dataFile = new File(name + ".data");
 
         indexFile = new File(name + ".index");

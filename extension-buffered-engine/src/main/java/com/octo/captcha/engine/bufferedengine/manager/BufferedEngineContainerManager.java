@@ -36,7 +36,7 @@ public interface BufferedEngineContainerManager {
     /**
      * @param feedSize Set number of captchas to produce at each iteration.
      */
-    public void setFeedSize(int feedSize);
+    void setFeedSize(int feedSize);
 
     /**
      * @param size Set number of captchas to swap between the volatil buffer and the disk buffer
@@ -155,7 +155,7 @@ public interface BufferedEngineContainerManager {
     /**
      * Resume the scheduler, both the swapping and the feeding process are resumed
      */
-    abstract void resume();
+    void resume();
 
     /**
      * Shutdown scheduling, the container will use its memory buffer until its empty and swtich to the engine.

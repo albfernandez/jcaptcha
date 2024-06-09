@@ -158,7 +158,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             if (log.isDebugEnabled()) {
                 log.debug("try to remove " + number + " captchas");
             }
-            ;
+            
             con = datasource.getConnection();
 
 
@@ -451,10 +451,10 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
     	if (close != null) {
     		try {
                 close.close();
-            } catch (Exception ex) {
+            } catch (Exception ignored) {
+            	// ignore
             }
     	}
     }
-
 
 }

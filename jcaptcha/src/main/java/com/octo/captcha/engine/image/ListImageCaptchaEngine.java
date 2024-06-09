@@ -9,6 +9,7 @@ package com.octo.captcha.engine.image;
 import java.util.Arrays;
 
 import com.octo.captcha.CaptchaException;
+import com.octo.captcha.image.ImageCaptchaFactory;
 
 /**
  * <p>This engine is based on a java.util.List of factories. It has a default constructor. Sub class must implements the
@@ -17,10 +18,10 @@ import com.octo.captcha.CaptchaException;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public abstract class ListImageCaptchaEngine
-        extends com.octo.captcha.engine.image.ImageCaptchaEngine {    
+public abstract class ListImageCaptchaEngine extends ImageCaptchaEngine {    
 
     public ListImageCaptchaEngine() {
+    	super();
         buildInitialFactories();
         checkFactoriesSize();
     }
@@ -38,8 +39,7 @@ public abstract class ListImageCaptchaEngine
      * @return true if added false otherwise
      * 
      */
-    public boolean addFactory(
-            com.octo.captcha.image.ImageCaptchaFactory factory) {
+    public boolean addFactory(ImageCaptchaFactory factory) {
         return factory != null && this.factories.add(factory);
     }
 
@@ -47,18 +47,18 @@ public abstract class ListImageCaptchaEngine
      * Add an array of factories to the gimpy list
      * @param factories array of factories 
      */
-    public void addFactories(
-            com.octo.captcha.image.ImageCaptchaFactory[] factories) {
+    public void addFactories(ImageCaptchaFactory[] factories) {
         checkNotNullOrEmpty(factories);
         this.factories.addAll(Arrays.asList(factories));
     }
 
     private void checkFactoriesSize() {
-        if (factories.size() == 0)
+        if (factories.size() == 0) {
             throw new CaptchaException(
                     "This gimpy has no factories. Please initialize it "
                             + "properly with the buildInitialFactory() called by "
                             + "the constructor or the addFactory() mehtod later!");
+        }
     }
 
 }

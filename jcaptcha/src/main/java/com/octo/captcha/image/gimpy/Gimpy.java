@@ -52,7 +52,7 @@ public class Gimpy extends ImageCaptcha implements Serializable {
      *
      * @return true if the given response equals the internal response, false otherwise.
      */
-    private final Boolean validateResponse(final String response) {
+    private Boolean validateResponse(final String response) {
         return caseSensitive? response.equals(this.response) : response.equalsIgnoreCase(this.response);
     }
 

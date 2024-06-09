@@ -146,13 +146,11 @@ public class FileReaderRandomBackgroundGenerator extends
     }
 
 	private String getFilePath(URL url) {
-		String file = null;
 		try {
-			file = URLDecoder.decode(url.getFile(), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// Do Nothing			
+			return URLDecoder.decode(url.getFile(), "UTF-8");
+		} catch (UnsupportedEncodingException une) {
+			return null;
 		}
-		return file;
 	}
 
     
@@ -177,8 +175,8 @@ public class FileReaderRandomBackgroundGenerator extends
         BufferedImage image = new BufferedImage(getImageWidth(),
                 getImageHeight(), tileImage.getType());
         Graphics2D g2 = (Graphics2D) image.getGraphics();
-        int NumberX = (getImageWidth() / tileImage.getWidth());
-        int NumberY = (getImageHeight() / tileImage.getHeight());
+        int NumberX = getImageWidth() / tileImage.getWidth();
+        int NumberY = getImageHeight() / tileImage.getHeight();
         for (int k = 0; k <= NumberY; k++) {
             for (int l = 0; l <= NumberX; l++) {
                 g2.drawImage(tileImage, l * tileImage.getWidth(), k *

@@ -33,7 +33,7 @@ public class ComposeDictionaryWordGenerator extends DictionaryWordGenerator {
     public String getWord(Integer length, Locale locale) {
         SizeSortedWordList words = getWordList(locale);
         //get the middle
-        int firstLength = (length.intValue() / 2);
+        int firstLength = length.intValue() / 2;
         //try to find a first word
         String firstWord = null;
         for (int i = firstLength; i < 50; i++) {

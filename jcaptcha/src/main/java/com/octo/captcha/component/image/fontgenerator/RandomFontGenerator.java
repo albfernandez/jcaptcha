@@ -197,13 +197,11 @@ public class RandomFontGenerator extends AbstractFontGenerator {
 		for (int i = 0; i < badFontNamePrefixes.length; i++) {
 		    String prefix = badFontNamePrefixes[i];
 		    // verify prefix is not null
-		    if (prefix != null && !"".equals(prefix)) {
+		    if (prefix != null && !"".equals(prefix) && f.getName().startsWith(prefix)) {
 		        // verify font name start with prefix
-		        if (f.getName().startsWith(prefix)) {
-		            iter.remove();
-		            removed = true;
-		            break;
-		        }
+	            iter.remove();
+	            removed = true;
+	            break;
 		    }                                          
 		}
 		

@@ -10,6 +10,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.Tag;
 
+
 import com.octo.captcha.service.CaptchaService;
 
 /**
@@ -26,22 +27,22 @@ public abstract class BaseCaptchaTag implements Tag {
     protected Tag parent;
 
 
-    public void setPageContext(javax.servlet.jsp.PageContext pageContext) {
+    public void setPageContext(PageContext pageContext) {
         this.pageContext = pageContext;
 
     }
 
-    public void setParent(javax.servlet.jsp.tagext.Tag tag) {
+    public void setParent(Tag tag) {
         this.parent = tag;
     }
 
-    public javax.servlet.jsp.tagext.Tag getParent() {
+    public Tag getParent() {
         return parent;
     }
 
 
-    public int doStartTag() throws javax.servlet.jsp.JspException {
-        return javax.servlet.jsp.tagext.Tag.SKIP_BODY;
+    public int doStartTag() throws JspException {
+        return SKIP_BODY;
     }
 
     public void release() {

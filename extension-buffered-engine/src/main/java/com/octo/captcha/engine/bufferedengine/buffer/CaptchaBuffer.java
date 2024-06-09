@@ -36,7 +36,7 @@ public interface CaptchaBuffer {
      *
      * @throws NoSuchElementException if there is no captcha throw NoSuchElementException
      */
-    public Captcha removeCaptcha() throws NoSuchElementException;
+    Captcha removeCaptcha() throws NoSuchElementException;
 
     /**
      * remove a captcha from the buffer corresponding to the locale
@@ -47,7 +47,7 @@ public interface CaptchaBuffer {
      *
      * @throws NoSuchElementException if there is no captcha throw NoSuchElementException
      */
-    public Captcha removeCaptcha(Locale locale) throws NoSuchElementException;
+    Captcha removeCaptcha(Locale locale) throws NoSuchElementException;
 
     /**
      * Remove a precise number of captcha
@@ -56,7 +56,7 @@ public interface CaptchaBuffer {
      *
      * @return a collection of captchas
      */
-    public Collection<Captcha> removeCaptcha(int number);
+    Collection<Captcha> removeCaptcha(int number);
 
     /**
      * Remove a precise number of captcha with a locale
@@ -66,13 +66,13 @@ public interface CaptchaBuffer {
      *
      * @return a collection of captchas
      */
-    public Collection<Captcha> removeCaptcha(int number, Locale locale);
+    Collection<Captcha> removeCaptcha(int number, Locale locale);
 
     /**
      * Put a captcha with default laocale
      * @param captcha captcha
      */
-    public void putCaptcha(Captcha captcha);
+    void putCaptcha(Captcha captcha);
 
     /**
      * Put a captcha with a locale
@@ -80,14 +80,14 @@ public interface CaptchaBuffer {
      * @param captcha The captcha to add
      * @param locale  the locale of the captcha
      */
-    public void putCaptcha(Captcha captcha, Locale locale);
+    void putCaptcha(Captcha captcha, Locale locale);
 
     /**
      * Put a collection of captchas with the default locale
      *
      * @param captchas The captchas to add
      */
-    public void putAllCaptcha(Collection<Captcha> captchas);
+    void putAllCaptcha(Collection<Captcha> captchas);
 
     /**
      * Put a collection of captchas with his locale
@@ -95,14 +95,14 @@ public interface CaptchaBuffer {
      * @param captchas The captchas to add
      * @param locale   The locale of the captchas
      */
-    public void putAllCaptcha(Collection<Captcha> captchas, Locale locale);
+    void putAllCaptcha(Collection<Captcha> captchas, Locale locale);
 
     /**
      * Get the size of the buffer for all locales
      *
      * @return The size of the buffer
      */
-    public int size();
+    int size();
 
     /**
      * Get the size of the buffer for a locale
@@ -111,21 +111,21 @@ public interface CaptchaBuffer {
      *
      * @return The size of the buffer
      */
-    public int size(Locale locale);
+    int size(Locale locale);
 
     /**
      * Release all the ressources and close the buffer.
      */
-    public void dispose();
+    void dispose();
 
     /**
      * Clear the buffer from all locale
      */
-    public void clear();
+    void clear();
 
     /**
      * Get all the locales used
      * @return locales used
      */
-    public Collection<Locale> getLocales();
+    Collection<Locale> getLocales();
 }

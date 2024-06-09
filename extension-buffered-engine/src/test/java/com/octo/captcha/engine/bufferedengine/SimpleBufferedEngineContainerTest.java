@@ -23,7 +23,7 @@ import org.springframework.core.io.Resource;
  */
 public class SimpleBufferedEngineContainerTest extends BufferedEngineContainerTestAbstract {
 
-	private static final long SLEEP_TIME = 2000;
+	private static final long SLEEP_TIME = 2500;
 	
     public void testExecute() throws Exception {
         Resource ressource = new ClassPathResource("testSimpleBufferedEngine.xml");

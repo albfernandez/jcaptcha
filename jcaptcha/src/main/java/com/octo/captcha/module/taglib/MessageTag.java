@@ -8,6 +8,9 @@ package com.octo.captcha.module.taglib;
 
 import java.io.IOException;
 
+import javax.servlet.jsp.tagext.Tag;
+import javax.servlet.jsp.JspException;
+
 import com.octo.captcha.module.config.CaptchaModuleConfig;
 import com.octo.captcha.service.CaptchaService;
 
@@ -16,11 +19,11 @@ import com.octo.captcha.service.CaptchaService;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public class MessageTag extends BaseCaptchaTag implements javax.servlet.jsp.tagext.Tag {
+public class MessageTag extends BaseCaptchaTag implements Tag {
 
     private String messageKey = CaptchaModuleConfig.getInstance().getMessageKey();
 
-    public int doEndTag() throws javax.servlet.jsp.JspException {
+    public int doEndTag() throws JspException {
 
 
         String message = (String) pageContext.getRequest().getAttribute(messageKey);
@@ -28,11 +31,11 @@ public class MessageTag extends BaseCaptchaTag implements javax.servlet.jsp.tage
             try {
                 pageContext.getOut().write(message);
             } catch (IOException e) {
-                throw new javax.servlet.jsp.JspException(e);
+                throw new JspException(e);
             }
 
         }
-        return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
+        return EVAL_PAGE;
     }
 
 

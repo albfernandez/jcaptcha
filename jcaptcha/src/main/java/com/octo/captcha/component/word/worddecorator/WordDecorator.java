@@ -23,5 +23,5 @@ public interface WordDecorator {
      *
      * @return the semantic infomation
      */
-    public String decorateWord(String original);
+    String decorateWord(String original);
 }

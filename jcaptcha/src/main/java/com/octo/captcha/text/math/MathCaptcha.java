@@ -40,7 +40,7 @@ public class MathCaptcha extends TextCaptcha {
      *
      * @return true if the given response equals the internal response, false otherwise.
      */
-    private final Boolean validateResponse(final String response) {
+    private Boolean validateResponse(final String response) {
         return Boolean.valueOf(response.equals(this.response));
     }
 }

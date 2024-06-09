@@ -23,7 +23,7 @@ public interface CaptchaFactory {
      *
      * @return a captcha
      */
-    com.octo.captcha.Captcha getCaptcha();
+    Captcha getCaptcha();
 
     /**
      * build Localized captcha (don't forget those captcha are for human beings!)
@@ -32,6 +32,6 @@ public interface CaptchaFactory {
      *
      * @return a captcha corresponding to the locale
      */
-    com.octo.captcha.Captcha getCaptcha(Locale locale);
+    Captcha getCaptcha(Locale locale);
 
 }

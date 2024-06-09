@@ -16,7 +16,11 @@ import javax.servlet.http.HttpServletRequest;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public class CaptchaModuleConfigHelper {
+public final class CaptchaModuleConfigHelper {
+	
+	private CaptchaModuleConfigHelper() {
+		throw new AssertionError("No instances allowed");
+	}
 
     /**
      * method that get an id using the plugin configuration. It may be retrieved from the session via the getId()
@@ -27,8 +31,7 @@ public class CaptchaModuleConfigHelper {
      */
     public static String getId(HttpServletRequest httpServletRequest) {
         String captchaID;
-        boolean generatedId = CaptchaModuleConfig.getInstance().getIdType().equals(CaptchaModuleConfig.ID_GENERATED) ?
-                true : false;
+        boolean generatedId = CaptchaModuleConfig.getInstance().getIdType().equals(CaptchaModuleConfig.ID_GENERATED);
 
         if (generatedId) {
             //get it from the request
@@ -36,7 +39,7 @@ public class CaptchaModuleConfigHelper {
 
         } else {
             //get captcha ID from the session!!
-            captchaID = httpServletRequest.getSession().getId();//theRequest.getParameter(captchaIDParameterName);
+            captchaID = httpServletRequest.getSession().getId();
         }
         return captchaID;
     }
@@ -49,9 +52,7 @@ public class CaptchaModuleConfigHelper {
 
     public static String getMessage(HttpServletRequest httpServletRequest) {
         String message = null;
-        boolean messageBundle =
-                CaptchaModuleConfig.getInstance().getMessageType().equals(CaptchaModuleConfig.MESSAGE_TYPE_BUNDLE) ?
-                        true : false;
+        boolean messageBundle = CaptchaModuleConfig.getInstance().getMessageType().equals(CaptchaModuleConfig.MESSAGE_TYPE_BUNDLE);
         //get it from the bundle with the specified locale
         if (messageBundle) {
             ResourceBundle bundle = ResourceBundle.getBundle(CaptchaModuleConfig.getInstance().getMessageValue(),

@@ -69,7 +69,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
      * @param jobSwapper  Job detail of the swapping job
      */
     public QuartzBufferedEngineManager(QuartzBufferedEngineContainer container,
-                                       org.quartz.Scheduler factory, CronTrigger cronFeeder, CronTrigger cronSwapper,
+                                       Scheduler factory, CronTrigger cronFeeder, CronTrigger cronSwapper,
                                        JobDetail jobFeeder, JobDetail jobSwapper) {
         this.cronFeeder = cronFeeder;
         this.cronSwapper = cronSwapper;
@@ -230,7 +230,13 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
             schduler.shutdown(true);
 
             while (!schduler.isShutdown()) {
-                ; //wait
+            	//wait
+            	try {
+            		Thread.sleep(100);
+            	}
+            	catch (InterruptedException ignored) {
+            		// Inogre
+            	}
             }
             container.getPersistentBuffer().dispose();
         }

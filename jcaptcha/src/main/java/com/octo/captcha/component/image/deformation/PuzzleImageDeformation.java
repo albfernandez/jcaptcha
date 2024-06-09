@@ -81,14 +81,13 @@ public class PuzzleImageDeformation implements ImageDeformation {
 
         BufferedImage smallPart = new BufferedImage(xd, yd, image.getType());
         Graphics2D gSmall = smallPart.createGraphics();
-//        FilteredImageSource filtered;
 
         for (int i = 0; i < colNum; i++) {
             for (int j = 0; j < rowNum; j++) {
-                gSmall.drawImage(image, 0, 0, xd, yd, xd * i, yd * j, xd * i + xd, yd * j + yd,
-                        null);
+                gSmall.drawImage(image, 0, 0, xd, yd, xd * i, yd * j, xd * i + xd, yd * j + yd, null);
 
                 //  TODO
+//        FilteredImageSource filtered;
 //                RotateFilter filter = new RotateFilter((float)maxAngleRotation * random.nextFloat()
 //                        * (random.nextBoolean() ? -1 : 1));
                 //filtered = new FilteredImageSource(smallPart.getSource(), filter);

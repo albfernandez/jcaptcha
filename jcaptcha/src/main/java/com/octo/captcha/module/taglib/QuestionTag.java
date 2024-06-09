@@ -7,24 +7,26 @@
 package com.octo.captcha.module.taglib;
 
 import java.io.IOException;
+import javax.servlet.jsp.tagext.Tag;
+import javax.servlet.jsp.JspException;
 
 /**
  *
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public abstract class QuestionTag extends BaseCaptchaTag implements javax.servlet.jsp.tagext.Tag {
+public abstract class QuestionTag extends BaseCaptchaTag implements Tag {
 
-    public int doEndTag() throws javax.servlet.jsp.JspException {
+    public int doEndTag() throws JspException {
         String question = getService().getQuestionForID(pageContext.getSession().getId()
                 , pageContext.getRequest().getLocale());
 
         try {
             pageContext.getOut().write(question);
         } catch (IOException e) {
-            throw new javax.servlet.jsp.JspException(e);
+            throw new JspException(e);
         }
-        return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
+        return EVAL_PAGE;
     }
 
 
