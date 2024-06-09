@@ -17,6 +17,7 @@
  */
 package com.octo.captcha.engine.bufferedengine.manager;
 
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -104,7 +105,7 @@ public interface BufferedEngineContainerManager {
     /**
      * @return an hashedMap of sizes by locale
      */
-    Map getVolatileBufferSizeByLocales();
+    Map<Locale, Integer> getVolatileBufferSizeByLocales();
 
     /**
      * @return the size of the persitent Buffer (disk buffer)
@@ -114,7 +115,7 @@ public interface BufferedEngineContainerManager {
     /**
      * @return an hashedMap of sizes by locale
      */
-    Map getPersistentBufferSizesByLocales();
+    Map<Locale, Integer> getPersistentBufferSizesByLocales();
 
     /**
      * Tell the scheduler to start to feed the persistent buffer

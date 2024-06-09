@@ -35,7 +35,7 @@ public class ToolkitFactory {
             String tempToolkitClass = System.getProperty(TOOLKIT_IMPL);
             if (tempToolkitClass != null) {
                 defaultToolkit = (Toolkit)
-                        Class.forName(tempToolkitClass).newInstance();
+                        Class.forName(tempToolkitClass).getDeclaredConstructor().newInstance();
             } else {
                 defaultToolkit = getDefaultToolkit();
             }

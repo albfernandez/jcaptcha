@@ -6,7 +6,6 @@
 
 package com.octo.captcha.service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -339,7 +338,7 @@ public abstract class AbstractManageableCaptchaService
         //update stats
         numberOfGeneratedCaptchas++;
         //mark as now
-        Long now = new Long(System.currentTimeMillis());
+        Long now = Long.valueOf(System.currentTimeMillis());
         //store in my timestampeds ids
         this.times.put(ID, now);
         //retrieve and store cpatcha

@@ -106,7 +106,7 @@ public class SpellerSoundFactory extends SoundCaptchaFactory {
         int range = getWordToSound().getMaxAcceptedWordLength()
                 - getWordToSound().getMinAcceptedWordLength();
         int randomRange = range != 0 ? myRandom.nextInt(range + 1) : 0;
-        wordLength = new Integer(randomRange + getWordToSound().getMinAcceptedWordLength());
+        wordLength = Integer.valueOf(randomRange + getWordToSound().getMinAcceptedWordLength());
         return wordLength;
     }
 

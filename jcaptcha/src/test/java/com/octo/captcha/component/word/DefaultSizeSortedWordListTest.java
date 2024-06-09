@@ -55,25 +55,25 @@ public class DefaultSizeSortedWordListTest extends TestCase {
     }
 
     public void testAddWord() {
-        String test = this.wordList.getNextWord(new Integer(WORD2.length()));
+        String test = this.wordList.getNextWord(Integer.valueOf(WORD2.length()));
         assertNull(test);
-        test = this.wordList.getNextWord(new Integer(WORD1.length()));
+        test = this.wordList.getNextWord(Integer.valueOf(WORD1.length()));
         assertNotNull(test);
         this.wordList.addWord(WORD2);
-        test = this.wordList.getNextWord(new Integer(WORD1.length()));
+        test = this.wordList.getNextWord(Integer.valueOf(WORD1.length()));
         assertNotNull(test);
-        test = this.wordList.getNextWord(new Integer(WORD2.length()));
+        test = this.wordList.getNextWord(Integer.valueOf(WORD2.length()));
         assertNotNull(test);
 
     }
 
     public void testGetNextWord() {
         String expected = WORD1;
-        String test = this.wordList.getNextWord(new Integer(WORD1.length()));
+        String test = this.wordList.getNextWord(Integer.valueOf(WORD1.length()));
         assertNotNull(test);
         assertEquals(expected, test);
         this.wordList.addWord(WORD2);
-        test = this.wordList.getNextWord(new Integer(WORD2.length()));
+        test = this.wordList.getNextWord(Integer.valueOf(WORD2.length()));
         assertEquals(WORD2, test);
     }
 

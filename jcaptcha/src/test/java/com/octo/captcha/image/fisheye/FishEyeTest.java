@@ -29,11 +29,11 @@ import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGe
 
 public class FishEyeTest extends TestCase {
     FishEye fishEye;
-    BackgroundGenerator back = new UniColorBackgroundGenerator(new Integer(300), new Integer(300),
+    BackgroundGenerator back = new UniColorBackgroundGenerator(Integer.valueOf(300), Integer.valueOf(300),
             Color.black);
 
     public void testValidateResponse() throws Exception {
-        fishEye = new FishEye("question", back.getBackground(), new Point(10, 10), new Integer(0));
+        fishEye = new FishEye("question", back.getBackground(), new Point(10, 10), Integer.valueOf(0));
         assertTrue("string answer", fishEye.validateResponse("10,10").booleanValue());
         assertTrue("point answer", fishEye.validateResponse(new Point(10, 10)).booleanValue());
         assertFalse("invalid point answer", fishEye.validateResponse(new Point(11, 10)).booleanValue());
@@ -44,7 +44,7 @@ public class FishEyeTest extends TestCase {
     }
 
     public void testValidateResponseTolerance() throws Exception {
-        fishEye = new FishEye("question", back.getBackground(), new Point(10, 10), new Integer(1));
+        fishEye = new FishEye("question", back.getBackground(), new Point(10, 10), Integer.valueOf(1));
         assertTrue("string answer", fishEye.validateResponse("10,11").booleanValue());
         assertTrue("string answer", fishEye.validateResponse("11,10").booleanValue());
         assertTrue("point answer", fishEye.validateResponse(new Point(11, 10)).booleanValue());

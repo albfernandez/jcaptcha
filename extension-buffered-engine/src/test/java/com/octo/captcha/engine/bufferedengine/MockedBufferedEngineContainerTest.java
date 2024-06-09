@@ -13,6 +13,7 @@ package com.octo.captcha.engine.bufferedengine;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import com.octo.captcha.engine.MockCaptchaEngine;
 import com.octo.captcha.engine.bufferedengine.buffer.MemoryCaptchaBuffer;
@@ -33,9 +34,9 @@ public class MockedBufferedEngineContainerTest extends BufferedEngineContainerTe
 
     protected void setUp() throws Exception {
         super.setUp();
-        HashMap localRatio = new HashMap();
-        localRatio.put(Locale.FRANCE, new Double(0.2));
-        localRatio.put(Locale.US, new Double(0.8));
+        Map<Locale, Double> localRatio = new HashMap<>();
+        localRatio.put(Locale.FRANCE, Double.valueOf(0.2));
+        localRatio.put(Locale.US, Double.valueOf(0.8));
         ContainerConfiguration config = new ContainerConfiguration(localRatio, maxVolatil, maxPersistent, swap, feed);
         this.engine = new MockedBufferedCaptchaEngine(config);
     }

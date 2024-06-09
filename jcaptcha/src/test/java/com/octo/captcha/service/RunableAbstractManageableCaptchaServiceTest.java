@@ -423,8 +423,6 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
                 service.generateAndStoreCaptcha(Locale.getDefault(), id);
             }
         } catch (CaptchaServiceException e) {
-            System.out.println("i = " + i);
-            e.printStackTrace();
             throw e;
         }
     }

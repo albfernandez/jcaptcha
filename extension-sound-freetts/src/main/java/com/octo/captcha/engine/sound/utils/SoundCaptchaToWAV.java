@@ -77,13 +77,13 @@ public class SoundCaptchaToWAV {
         } else {
 
             try {
-                captchaEngine = (SoundCaptchaEngine) Class.forName(className).newInstance();
+                captchaEngine = (SoundCaptchaEngine) Class.forName(className).getDeclaredConstructor().newInstance();
             }
             catch (Exception e) {
                 System.out.println("Couldn't initialize '" + className + "', trying a likely package prefix");
                 String defaultClassPrefix = "com.octo.captcha.engine.sound.";
                 try {
-                    captchaEngine = (SoundCaptchaEngine) Class.forName(defaultClassPrefix + className).newInstance();
+                    captchaEngine = (SoundCaptchaEngine) Class.forName(defaultClassPrefix + className).getDeclaredConstructor().newInstance();
                 }
                 catch (Exception e2) {
                     System.out.println("Couldn't initialize '" + className + " -- specify a fully attributed name");

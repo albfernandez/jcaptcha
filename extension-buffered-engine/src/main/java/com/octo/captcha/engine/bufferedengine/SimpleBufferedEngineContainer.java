@@ -39,9 +39,9 @@ public class SimpleBufferedEngineContainer extends BufferedEngineContainer {
     private ClockDaemon clockDaemonSwap;
 
 
-    private Long feedPeriod = new Long(10000);
+    private Long feedPeriod = Long.valueOf(10000);
 
-    private Long swapPeriod = new Long(1000);
+    private Long swapPeriod = Long.valueOf(1000);
 
     //protected BeanFactory factory = null;
 
@@ -51,8 +51,8 @@ public class SimpleBufferedEngineContainer extends BufferedEngineContainer {
                                          int swapPeriod) {
         super(engine, memoryBuffer, diskBuffer, containerConfiguration);
 
-        this.swapPeriod = new Long(swapPeriod);
-        this.feedPeriod = new Long(feedPeriod);
+        this.swapPeriod = Long.valueOf(swapPeriod);
+        this.feedPeriod = Long.valueOf(feedPeriod);
         startScheduler();
     }
 

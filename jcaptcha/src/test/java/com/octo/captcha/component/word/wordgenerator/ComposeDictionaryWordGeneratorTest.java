@@ -57,7 +57,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
      */
     public void testGetWordIntegerLocale() {
         for (int i = 0; i < lengths.length; i++) {
-            String test = this.composeDictionaryWordGenerator.getWord(new Integer(this.lengths[i]), Locale.FRENCH);
+            String test = this.composeDictionaryWordGenerator.getWord(Integer.valueOf(this.lengths[i]), Locale.FRENCH);
             assertNotNull(test);
             assertTrue(test.length() > 0);
             assertEquals(lengths[i], test.length());
@@ -71,7 +71,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
         this.composeDictionaryWordGenerator =
                 new ComposeDictionaryWordGenerator(new ArrayDictionary(this.badwordList));
         for (int i = 0; i < badlengths.length; i++) {
-            String test = this.composeDictionaryWordGenerator.getWord(new Integer(this.badlengths[i]), Locale.FRENCH);
+            String test = this.composeDictionaryWordGenerator.getWord(Integer.valueOf(this.badlengths[i]), Locale.FRENCH);
             assertNotNull(test);
             assertTrue(test.length() > 0);
             assertEquals(badlengths[i], test.length());
@@ -86,7 +86,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
         this.composeDictionaryWordGenerator =
                 new ComposeDictionaryWordGenerator(new ArrayDictionary(this.emptywordList));
         try {
-            this.composeDictionaryWordGenerator.getWord(new Integer(this.emptylength), Locale.FRENCH);
+            this.composeDictionaryWordGenerator.getWord(Integer.valueOf(this.emptylength), Locale.FRENCH);
             fail("Shouldn't use empty dictionnary");
         } catch (CaptchaException e) {
             assertNotNull(e);

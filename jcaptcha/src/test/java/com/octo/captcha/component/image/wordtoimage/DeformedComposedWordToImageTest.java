@@ -43,12 +43,12 @@ import com.octo.captcha.component.image.textpaster.GlyphsPaster;
 public class DeformedComposedWordToImageTest extends TestCase {
 
     private DeformedComposedWordToImage deformedComposedWordToImage;
-    private Integer minAcceptedWordLength = new Integer(1);
-    private Integer maxAcceptedWordLength = new Integer(10);
-    private Integer imageHeight = new Integer(100);
-    private Integer imageWidth = new Integer(100);
-    private Integer minFontSize = new Integer(10);
-    private Integer maxFontSize = new Integer(10);
+    private Integer minAcceptedWordLength = Integer.valueOf(1);
+    private Integer maxAcceptedWordLength = Integer.valueOf(10);
+    private Integer imageHeight = Integer.valueOf(100);
+    private Integer imageWidth = Integer.valueOf(100);
+    private Integer minFontSize = Integer.valueOf(10);
+    private Integer maxFontSize = Integer.valueOf(10);
 
 
     public void setUp() {

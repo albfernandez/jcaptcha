@@ -31,7 +31,7 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         fileReaderRandomBackgroundGenerator =
-                new FileReaderRandomBackgroundGenerator(new Integer(2), new Integer(2), "imagedir");
+                new FileReaderRandomBackgroundGenerator(Integer.valueOf(2), Integer.valueOf(2), "imagedir");
     }
     
     public void testFindDirectoryNotExisting() throws Exception {
@@ -63,7 +63,7 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
     public void testCtorEmptyImageDir() throws Exception {
 
         try {
-            new FileReaderRandomBackgroundGenerator(new Integer(2), new Integer(2), "emptyimagedir");
+            new FileReaderRandomBackgroundGenerator(Integer.valueOf(2), Integer.valueOf(2), "emptyimagedir");
             fail("should never pass");
         } catch (CaptchaException e) {
         	assertNotNull(e.getMessage());
@@ -72,7 +72,7 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
 
     public void testGetBackground() throws Exception {
     	FileReaderRandomBackgroundGenerator backgroundGenerator = 
-    		new FileReaderRandomBackgroundGenerator(new Integer(2), new Integer(2), "imagedir");
+    		new FileReaderRandomBackgroundGenerator(Integer.valueOf(2), Integer.valueOf(2), "imagedir");
     	BufferedImage image = backgroundGenerator.getBackground();
     	assertNotNull(image);
     }

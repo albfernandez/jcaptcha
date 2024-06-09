@@ -49,14 +49,14 @@ public class RandomFontGeneratorTest extends TestCase {
 
     public void setUp() {
         this.randomFontGenerator =
-                new RandomFontGenerator(new Integer(minFontSize), new Integer(maxFontSize));
+                new RandomFontGenerator(Integer.valueOf(minFontSize), Integer.valueOf(maxFontSize));
 
         Font[] fontsList = new Font[2];
         fontsList[0] = new Font("Courier", Font.BOLD, 10);
         fontsList[1] = new Font("Arial", Font.BOLD, 10);
 
         this.randomFontGeneratorWithList =
-                new RandomFontGenerator(new Integer(minFontSize), new Integer(maxFontSize), fontsList);
+                new RandomFontGenerator(Integer.valueOf(minFontSize), Integer.valueOf(maxFontSize), fontsList);
     }
 
     public void testGetFont() {
@@ -74,7 +74,7 @@ public class RandomFontGeneratorTest extends TestCase {
     public void testGetFontWithEmptyList() {
         Font[] fontsList = new Font[0];
         try {
-            new RandomFontGenerator(new Integer(10), new Integer(10), fontsList);
+            new RandomFontGenerator(Integer.valueOf(10), Integer.valueOf(10), fontsList);
 
             fail("should have thrown an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
@@ -88,7 +88,7 @@ public class RandomFontGeneratorTest extends TestCase {
         fontsList[0] = new Font("Courier", Font.BOLD, 10);
 
         try {
-            new RandomFontGenerator(new Integer(10), new Integer(10), fontsList);
+            new RandomFontGenerator(Integer.valueOf(10), Integer.valueOf(10), fontsList);
             fail("should have thrown an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
         	assertNotNull(e.getMessage());

@@ -50,7 +50,7 @@ public class DefaultSizeSortedWordList implements SizeSortedWordList {
      * Adds a word to the list
      */
     public void addWord(String word) {
-        Integer length = new Integer(word.length());
+        Integer length = Integer.valueOf(word.length());
         if (sortedWords.containsKey(length)) {
             List<String> thisLengthWords = sortedWords.get(length);
             thisLengthWords.add(word);

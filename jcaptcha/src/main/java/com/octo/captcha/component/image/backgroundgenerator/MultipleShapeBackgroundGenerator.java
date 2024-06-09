@@ -53,27 +53,27 @@ public class MultipleShapeBackgroundGenerator extends
     /**
      * Default space between lines: 10 pixels.
      */
-    private Integer spaceBetweenLine = new Integer(10);
+    private Integer spaceBetweenLine = Integer.valueOf(10);
 
     /**
      * Default space between circles: 10 pixels.
      */
-    private Integer spaceBetweenCircle = new Integer(10);
+    private Integer spaceBetweenCircle = Integer.valueOf(10);
 
     /**
      * Default height for the ellipse: 8 pixels.
      */
-    private Integer ellipseHeight = new Integer(8);
+    private Integer ellipseHeight = Integer.valueOf(8);
 
     /**
      * Default width for the ellipse: 8 pixels.
      */
-    private Integer ellipseWidth = new Integer(8);
+    private Integer ellipseWidth = Integer.valueOf(8);
 
     /**
      * Default width for the rectangle: 3 pixels.
      */
-    private Integer rectangleWidth = new Integer(3);
+    private Integer rectangleWidth = Integer.valueOf(3);
 
     public MultipleShapeBackgroundGenerator(Integer width, Integer height,
                                             Color firstEllipseColor, Color secondEllipseColor,

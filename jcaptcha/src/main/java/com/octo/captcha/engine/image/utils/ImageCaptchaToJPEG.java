@@ -77,13 +77,13 @@ public class ImageCaptchaToJPEG {
         } else {
 
             try {
-                pixCapchaEngine = (ImageCaptchaEngine) Class.forName(className).newInstance();
+                pixCapchaEngine = (ImageCaptchaEngine) Class.forName(className).getDeclaredConstructor().newInstance();
             }
             catch (Exception e) {
                 System.out.println("Couldn't initialize '" + className + "', trying a likely package prefix");
                 String defaultClassPrefix = "com.octo.captcha.engine.image.gimpy.";
                 try {
-                    pixCapchaEngine = (ImageCaptchaEngine) Class.forName(defaultClassPrefix + className).newInstance();
+                    pixCapchaEngine = (ImageCaptchaEngine) Class.forName(defaultClassPrefix + className).getDeclaredConstructor().newInstance();
                 }
                 catch (Exception e2) {
                     System.out.println("Couldn't initialize '" + className + " -- specify a fully attributed name");

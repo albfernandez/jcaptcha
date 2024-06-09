@@ -43,7 +43,7 @@ public class TwistedRandomFontGeneratorTest extends TestCase {
 
     public void setUp() {
         this.twistedRandomFontGenerator =
-                new TwistedRandomFontGenerator(new Integer(10), null);
+                new TwistedRandomFontGenerator(Integer.valueOf(10), null);
     }
 
     public void testGetFont() {

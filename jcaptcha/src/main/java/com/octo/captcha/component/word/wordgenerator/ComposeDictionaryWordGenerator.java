@@ -37,7 +37,7 @@ public class ComposeDictionaryWordGenerator extends DictionaryWordGenerator {
         //try to find a first word
         String firstWord = null;
         for (int i = firstLength; i < 50; i++) {
-            firstWord = words.getNextWord(new Integer(firstLength + i));
+            firstWord = words.getNextWord(Integer.valueOf(firstLength + i));
             if (firstWord != null) {
                 firstWord = firstWord.substring(0, firstLength);
                 break;
@@ -45,8 +45,7 @@ public class ComposeDictionaryWordGenerator extends DictionaryWordGenerator {
         }
         String secondWord = null;
         for (int i = firstLength; i < 50; i++) {
-            secondWord = words.getNextWord(new Integer(length.intValue()
-                    - firstLength + i));
+            secondWord = words.getNextWord(Integer.valueOf(length.intValue() - firstLength + i));
             if (secondWord != null) {
                 secondWord =
                         secondWord.substring(secondWord.length()
@@ -73,7 +72,7 @@ public class ComposeDictionaryWordGenerator extends DictionaryWordGenerator {
         // avoiding infinite loop by chexking size
         if (firstWord == null) {
             if (length > 1) {
-                firstWord = getWord(new Integer(length), locale);
+                firstWord = getWord(Integer.valueOf(length), locale);
             } else {
                 throw new CaptchaException("No word of length : " +
                         length + " exists in dictionnary! please " +

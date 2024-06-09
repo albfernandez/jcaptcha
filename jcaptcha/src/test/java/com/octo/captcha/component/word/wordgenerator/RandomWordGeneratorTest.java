@@ -45,7 +45,7 @@ public class RandomWordGeneratorTest extends TestCase {
     }
 
     public void testGetWord() {
-        Integer wordLength = new Integer(10);
+        Integer wordLength = Integer.valueOf(10);
         String pickWord = this.randomWordGenerator.getWord(wordLength, Locale.US);
         assertNotNull(pickWord);
         assertTrue(pickWord.length() > 0);

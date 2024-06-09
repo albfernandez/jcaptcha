@@ -32,8 +32,8 @@ public class FishEyeFactoryTest extends TestCase {
 
     protected void setUp() throws Exception {
         super.setUp();
-        this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(new Integer(300), new Integer(300),
-                Color.black), new ImageDeformationByFilters(null), new Integer(10), new Integer(0));
+        this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(Integer.valueOf(300), Integer.valueOf(300),
+                Color.black), new ImageDeformationByFilters(null), Integer.valueOf(10), Integer.valueOf(0));
     }
 
     public void testGetImageCaptcha() throws Exception {
@@ -42,15 +42,15 @@ public class FishEyeFactoryTest extends TestCase {
         }
         
         try {
-            this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(new Integer(10), new Integer(10),
-                    Color.black), new ImageDeformationByFilters(null), new Integer(100), new Integer(100));
+            this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(Integer.valueOf(10), Integer.valueOf(10),
+                    Color.black), new ImageDeformationByFilters(null), Integer.valueOf(100), Integer.valueOf(100));
             fail("should not be able to construct");
         } catch (Exception e) {
         	assertNotNull(e.getMessage());
         }
         
-        this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(new Integer(10), new Integer(10),
-                Color.black), new ImageDeformationByFilters(null), new Integer(1), new Integer(10));
+        this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(Integer.valueOf(10), Integer.valueOf(10),
+                Color.black), new ImageDeformationByFilters(null), Integer.valueOf(1), Integer.valueOf(10));
         for (int i = 0; i < 10; i++) {
             assertTrue("sould be never fail", fishEyeFactory.getImageCaptcha().validateResponse(new Point(5, 5)).booleanValue());
         }

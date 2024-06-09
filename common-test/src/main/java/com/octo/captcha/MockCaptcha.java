@@ -58,7 +58,7 @@ public class MockCaptcha implements Captcha {
      * @return true if the answer is correct, false otherwise.
      */
     public Boolean validateResponse(Object response) {
-        return new Boolean(response.toString());
+        return Boolean.valueOf(response.toString());
     }
 
     /**
@@ -78,7 +78,7 @@ public class MockCaptcha implements Captcha {
      * @return true if getChallenge has been called false otherwise.
      */
     public Boolean hasGetChalengeBeenCalled() {
-        return new Boolean(asBeenCalled);
+        return Boolean.valueOf(asBeenCalled);
     }
 
 }

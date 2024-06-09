@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 public class DeformedRandomFontGeneratorTest extends TestCase {
 
     private DeformedRandomFontGenerator deformedRandomFontGenerator;
-    private Integer minFontSize = new Integer(10);
+    private Integer minFontSize = Integer.valueOf(10);
 
     /**
      * Constructor for DeformedRandomFontGeneratorTest.

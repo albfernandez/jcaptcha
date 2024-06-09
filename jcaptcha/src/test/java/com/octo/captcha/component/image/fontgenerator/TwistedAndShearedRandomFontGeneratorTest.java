@@ -43,7 +43,7 @@ public class TwistedAndShearedRandomFontGeneratorTest extends TestCase {
 
     public void setUp() {
         this.twistedAndShearedRandomFontGenerator =
-                new TwistedAndShearedRandomFontGenerator(new Integer(10), null);
+                new TwistedAndShearedRandomFontGenerator(Integer.valueOf(10), null);
     }
 
     public void testGetFont() {

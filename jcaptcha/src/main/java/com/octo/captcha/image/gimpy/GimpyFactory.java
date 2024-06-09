@@ -95,8 +95,7 @@ public class GimpyFactory extends com.octo.captcha.image.ImageCaptchaFactory {
         int range = getWordToImage().getMaxAcceptedWordLength() -
                 getWordToImage().getMinAcceptedWordLength();
         int randomRange = range != 0 ? myRandom.nextInt(range + 1) : 0;
-        wordLength = new Integer(randomRange +
-                getWordToImage().getMinAcceptedWordLength());
+        wordLength = Integer.valueOf(randomRange + getWordToImage().getMinAcceptedWordLength());
         return wordLength;
     }
 

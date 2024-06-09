@@ -13,6 +13,7 @@ package com.octo.captcha.engine.bufferedengine;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import junit.framework.TestCase;
 
@@ -24,7 +25,7 @@ import junit.framework.TestCase;
 public class ContainerConfigurationTest extends TestCase {
     ContainerConfiguration config = null;
 
-    HashMap localRatio = null;
+    Map<Locale, Double> localRatio = null;
 
     int maxMemSize = 10;
 
@@ -39,24 +40,24 @@ public class ContainerConfigurationTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
-        localRatio = new HashMap(2);
+        localRatio = new HashMap<>();
 
-        localRatio.put(Locale.FRANCE, new Double(0.2));
-        localRatio.put(Locale.US, new Double(0.8));
+        localRatio.put(Locale.FRANCE, Double.valueOf(0.2));
+        localRatio.put(Locale.US, Double.valueOf(0.8));
         config = new ContainerConfiguration(localRatio, 0, 0, 10, 40);
     }
 
     public void testSetFeedSize() {
-        config.setFeedSize(new Integer(feedSize));
+        config.setFeedSize(Integer.valueOf(feedSize));
 
         assertEquals(feedSize, config.getFeedSize().intValue());
     }
 
     public void testSetLocaleRatio() {
-        HashMap localRatio2 = new HashMap(3);
-        localRatio2.put(Locale.GERMAN, new Double(0.1));
-        localRatio2.put(Locale.CHINA, new Double(0.8));
-        localRatio2.put(Locale.ITALY, new Double(0.1));
+        HashMap<Locale, Double> localRatio2 = new HashMap<>();
+        localRatio2.put(Locale.GERMAN, Double.valueOf(0.1));
+        localRatio2.put(Locale.CHINA, Double.valueOf(0.8));
+        localRatio2.put(Locale.ITALY, Double.valueOf(0.1));
 
         config.setLocaleRatio(localRatio2);
 
@@ -64,10 +65,10 @@ public class ContainerConfigurationTest extends TestCase {
     }
 
     public void testServeOnlyConfiguredLocales() {
-        HashMap localRatio2 = new HashMap(3);
-        localRatio2.put(Locale.GERMAN, new Double(0.1));
-        localRatio2.put(Locale.CHINA, new Double(0.8));
-        localRatio2.put(Locale.ITALY, new Double(0.1));
+        Map<Locale, Double> localRatio2 = new HashMap<>();
+        localRatio2.put(Locale.GERMAN, Double.valueOf(0.1));
+        localRatio2.put(Locale.CHINA, Double.valueOf(0.8));
+        localRatio2.put(Locale.ITALY, Double.valueOf(0.1));
 
         try {
             config = new ContainerConfiguration(localRatio2, 0, 0, 10, 40, true, Locale.getDefault());
@@ -99,19 +100,19 @@ public class ContainerConfigurationTest extends TestCase {
     }
 
     public void testSetMaxPersistentMemorySize() {
-        config.setMaxPersistentMemorySize(new Integer(maxPersistentSize));
+        config.setMaxPersistentMemorySize(Integer.valueOf(maxPersistentSize));
 
         assertEquals(maxPersistentSize, config.getMaxPersistentMemorySize().intValue());
     }
 
     public void testSetMaxVolatileMemorySize() {
-        config.setMaxVolatileMemorySize(new Integer(maxMemSize));
+        config.setMaxVolatileMemorySize(Integer.valueOf(maxMemSize));
 
         assertEquals(maxMemSize, config.getMaxVolatileMemorySize().intValue());
     }
 
     public void testSetSwapSize() {
-        config.setSwapSize(new Integer(swapSize));
+        config.setSwapSize(Integer.valueOf(swapSize));
 
         assertEquals(swapSize, config.getSwapSize().intValue());
     }

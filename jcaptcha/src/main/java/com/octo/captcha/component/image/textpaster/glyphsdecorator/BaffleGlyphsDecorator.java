@@ -46,7 +46,7 @@ public class BaffleGlyphsDecorator implements GlyphsDecorator {
     /**
      * Number of holes per glyph. Default : 3
      */
-    private Integer numberOfHolesPerGlyph = new Integer(3);
+    private Integer numberOfHolesPerGlyph = Integer.valueOf(3);
 
     /**
      * ColorGenerator for the holes

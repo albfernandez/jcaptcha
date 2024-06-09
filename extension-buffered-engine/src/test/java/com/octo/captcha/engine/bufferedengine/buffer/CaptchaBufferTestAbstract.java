@@ -13,13 +13,14 @@ package com.octo.captcha.engine.bufferedengine.buffer;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
-
-import junit.framework.TestCase;
 
 import com.octo.captcha.Captcha;
 import com.octo.captcha.engine.CaptchaEngine;
 import com.octo.captcha.engine.image.gimpy.DefaultGimpyEngine;
+
+import junit.framework.TestCase;
 
 /**
  * Abstract class to test Buffers
@@ -56,7 +57,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
      */
     public void testRemoveCaptcha() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -73,14 +74,14 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
      */
     public void testRemoveCaptchaint() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
         }
         buffer.putAllCaptcha(listToStore);
 
-        Collection captchas = buffer.removeCaptcha(SIZE);
+        Collection<Captcha> captchas = buffer.removeCaptcha(SIZE);
 
         assertEquals(SIZE, captchas.size());
     }
@@ -100,7 +101,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
      */
     public void testPutAllCaptchaCollection() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -127,14 +128,14 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
      */
     public void testRemoveCaptchaintLocale() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
         }
         buffer.putAllCaptcha(listToStore, Locale.GERMAN);
 
-        Collection captchas = buffer.removeCaptcha(SIZE, Locale.GERMAN);
+        Collection<Captcha> captchas = buffer.removeCaptcha(SIZE, Locale.GERMAN);
 
         assertEquals(SIZE, captchas.size());
     }
@@ -155,7 +156,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
      */
     public void testPutAllCaptchaCollectionLocale() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -167,7 +168,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
 
     public void testClear() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(SIZE);
+        List<Captcha> listToStore = new ArrayList<>(SIZE);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -181,7 +182,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
 
     public void testGetLocales() {
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(100);
+        List<Captcha> listToStore = new ArrayList<>(100);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -196,7 +197,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
     public void testIntegrity() {
         int numToRemove = 10;
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(100);
+        List<Captcha> listToStore = new ArrayList<>(100);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -211,7 +212,7 @@ public abstract class CaptchaBufferTestAbstract extends TestCase {
     public void testBufferGoesEmpty() {
         int numToRemove = 10;
         buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(100);
+        List<Captcha> listToStore = new ArrayList<>(100);
 
         for (int i = 0; i < 1; ++i) {
             listToStore.add(engine.getNextCaptcha());

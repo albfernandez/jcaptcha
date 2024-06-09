@@ -230,16 +230,16 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         // Write the record
         randomAccessFile.seek(diskElement.position);
 
-        //TODO the free block algorithm will gradually leak disk space, due to
-        //payload size being less than block size
-        //this will be a problem for the persistent cache
+        // TODO the free block algorithm will gradually leak disk space, due to
+        // payload size being less than block size
+        // this will be a problem for the persistent cache
         randomAccessFile.write(buffer);
 
         // Add to index, update stats
         diskElement.payloadSize = buffer.length;
         totalSize += buffer.length;
 
-        //create the localized buffer
+        // create the localized buffer
         if (!diskElements.containsKey(locale)) {
             diskElements.putIfAbsent(locale, new LinkedList<>());
         }
@@ -343,15 +343,16 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * Reads Index to disk on startup. if the index file does not exist, it creates a new one. Note that the
      * cache is locked for the entire time that the index is being written
      */
-    private synchronized void readIndex() throws IOException {
+    @SuppressWarnings("unchecked")
+	private synchronized void readIndex() throws IOException {
         ObjectInputStream objectInputStream = null;
         FileInputStream fin = null;
         if (indexFile.exists() && persistant) {
             try {
                 fin = new FileInputStream(indexFile);
                 objectInputStream = new ObjectInputStream(fin);
-                diskElements = (Map) objectInputStream.readObject();
-                freeSpace =  (List) objectInputStream.readObject();
+                diskElements = (Map<Locale, LinkedList<DiskElement>>) objectInputStream.readObject();
+                freeSpace =  (List<DiskElement>) objectInputStream.readObject();
             }
             catch (StreamCorruptedException e) {
                 log.error("Corrupt index file. Creating new index.");
@@ -541,7 +542,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#putAllCaptcha(java.util.Collection)
      */
-    public void putAllCaptcha(Collection captchas) {
+    public void putAllCaptcha(Collection<Captcha> captchas) {
         log.debug("Entering putAllCaptcha()");
 
         putAllCaptcha(captchas, Locale.getDefault());
@@ -572,7 +573,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     public Captcha removeCaptcha(Locale locale) throws NoSuchElementException {
         log.debug("entering removeCaptcha(Locale locale)");
 
-        Collection captchas = null;
+        Collection<Captcha> captchas = null;
         try {
             captchas = remove(1, locale);
         }
@@ -588,8 +589,10 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see CaptchaBuffer#removeCaptcha(int, java.util.Locale)
      */
-    public Collection removeCaptcha(int number, Locale locale) {
-        if (isDisposed) return null;
+    public Collection<Captcha> removeCaptcha(int number, Locale locale) {
+        if (isDisposed) {
+        	return null;
+        }
 
         try {
             return remove(number, locale);
@@ -618,7 +621,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @see CaptchaBuffer#putAllCaptcha(java.util.Collection,
      *      java.util.Locale)
      */
-    public void putAllCaptcha(Collection captchas, Locale locale) {
+    public void putAllCaptcha(Collection<Captcha> captchas, Locale locale) {
         if (isDisposed) {
         	return;
         }

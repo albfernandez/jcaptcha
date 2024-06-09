@@ -47,7 +47,7 @@ public class FileDictionaryTest extends TestCase {
     public void testGetWordList() {
         SizeSortedWordList test = this.fileDictionary.getWordList();
         assertNotNull(test);
-        String testWord = test.getNextWord(new Integer(8));
+        String testWord = test.getNextWord(Integer.valueOf(8));
         assertNotNull(testWord);
         assertEquals(8, testWord.length());
 
@@ -58,7 +58,7 @@ public class FileDictionaryTest extends TestCase {
         SizeSortedWordList test = this.fileDictionary.getWordList(Locale.US);
         Locale expected = Locale.US;
         assertNotNull(test);
-        String testWord = test.getNextWord(new Integer(8));
+        String testWord = test.getNextWord(Integer.valueOf(8));
         assertNotNull(testWord);
         assertEquals(8, testWord.length());
         assertEquals(expected, test.getLocale());

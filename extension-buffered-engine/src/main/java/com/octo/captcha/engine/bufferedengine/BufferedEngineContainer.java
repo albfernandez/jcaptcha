@@ -327,7 +327,7 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
             try {
                 closeBuffers();
             } catch (Exception ee) {
-                ee.printStackTrace();
+            	BufferedEngineContainer.log.error("Error on shutdown thread", ee);
             }
         }
     }
