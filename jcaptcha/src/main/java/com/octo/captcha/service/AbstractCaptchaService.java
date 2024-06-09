@@ -8,8 +8,9 @@ package com.octo.captcha.service;
 
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.octo.captcha.Captcha;
 import com.octo.captcha.engine.CaptchaEngine;
@@ -27,19 +28,17 @@ public abstract class AbstractCaptchaService implements CaptchaService {
 
     protected CaptchaStore store;
     protected CaptchaEngine engine;
-    protected Logger logger;
+    private static final Log log = LogFactory.getLog(AbstractCaptchaService.class);
 
-
-    protected AbstractCaptchaService(CaptchaStore captchaStore,
-                                     CaptchaEngine captchaEngine) {
-        if (captchaEngine == null || captchaStore == null)
+    protected AbstractCaptchaService(CaptchaStore captchaStore, CaptchaEngine captchaEngine) {
+        if (captchaEngine == null || captchaStore == null) {
             throw new IllegalArgumentException("Store or gimpy can't be null");
+        }
         this.engine = captchaEngine;
         this.store = captchaStore;
+
         
-        logger = LoggerFactory.getLogger(this.getClass());
-        
-        logger.info("Init " + this.store.getClass().getName());
+        log.info("Init " + this.store.getClass().getName());
         this.store.initAndStart();
     }
 

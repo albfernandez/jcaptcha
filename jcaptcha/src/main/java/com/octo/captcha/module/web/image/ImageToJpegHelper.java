@@ -16,7 +16,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
@@ -29,7 +30,8 @@ import com.octo.captcha.service.image.ImageCaptchaService;
  */
 public class ImageToJpegHelper {
 
-
+	 private static final Log log = LogFactory.getLog(ImageToJpegHelper.class.getName());
+	 
     /**
      * retrieve a new ImageCaptcha using ImageCaptchaService and flush it to the response. Captcha are localized
      * using request locale.
@@ -49,14 +51,12 @@ public class ImageToJpegHelper {
      */
     public static void flushNewCaptchaToResponse(HttpServletRequest theRequest,
                                                  HttpServletResponse theResponse,
-                                                 Logger log,
                                                  ImageCaptchaService service,
                                                  String id,
                                                  Locale locale)
             throws IOException {
 
         // call the ImageCaptchaService method to retrieve a captcha
-        byte[] captchaChallengeAsJpeg = null;
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
             BufferedImage challenge =
@@ -65,37 +65,29 @@ public class ImageToJpegHelper {
            ImageIO.write(challenge, "jpg",jpegOutputStream);
         } catch (IllegalArgumentException e) {
             //    log a security warning and return a 404...
-            if (log != null && log.isWarnEnabled()) {
-                log.warn(
-                        "There was a try from "
-                                + theRequest.getRemoteAddr()
-                                + " to render an captcha with invalid ID :'" + id
-                                + "' or with a too long one");
-                theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
-                return;
-            }
+            log.warn(
+                    "There was a try from "
+                            + theRequest.getRemoteAddr()
+                            + " to render an captcha with invalid ID :'" + id
+                            + "' or with a too long one");
+            theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
         } catch (CaptchaServiceException e) {
             // log and return a 404 instead of an image...
-            if (log != null && log.isWarnEnabled()) {
-                log.warn(
-
-                        "Error trying to generate a captcha and "
-                                + "render its challenge as JPEG",
-                        e);
-            }
+            log.warn("Error trying to generate a captcha and render its challenge as JPEG", e);
             theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
+        byte[] captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
 
         // render the captcha challenge as a JPEG image in the response
         theResponse.setHeader("Cache-Control", "no-store");
         theResponse.setHeader("Pragma", "no-cache");
         theResponse.setDateHeader("Expires", 0);
+        theResponse.setContentLength(captchaChallengeAsJpeg.length);
 
         theResponse.setContentType("image/jpeg");
-        ServletOutputStream responseOutputStream =
-                theResponse.getOutputStream();
+        ServletOutputStream responseOutputStream = theResponse.getOutputStream();
         responseOutputStream.write(captchaChallengeAsJpeg);
         responseOutputStream.flush();
         responseOutputStream.close();

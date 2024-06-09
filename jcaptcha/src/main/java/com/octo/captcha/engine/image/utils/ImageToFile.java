@@ -34,10 +34,11 @@ import javax.imageio.stream.ImageOutputStream;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public class ImageToFile {
+public final class ImageToFile {
 
-    private static ImageWriter writer = (ImageWriter)ImageIO.getImageWritersByFormatName("jpeg").next();
-    public ImageToFile() {
+    
+    private ImageToFile() {
+    	throw new AssertionError("No instances allowed");
     }
 
     public static void serialize(BufferedImage image, File file)
@@ -49,8 +50,8 @@ public class ImageToFile {
         fos.close();
     }
 
-    public static void encodeJPG(OutputStream sos, BufferedImage image)
-            throws IOException {
+    public static void encodeJPG(OutputStream sos, BufferedImage image)  throws IOException {
+    	ImageWriter writer = (ImageWriter)ImageIO.getImageWritersByFormatName("jpeg").next();
         ImageOutputStream ios = ImageIO.createImageOutputStream(sos);
         writer.setOutput(ios);
         writer.write(image);        

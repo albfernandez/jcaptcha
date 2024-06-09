@@ -27,11 +27,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>      
-    </dependency>
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-nop</artifactId>
-        <version>1.5.6</version>
-    </dependency>    
+    </dependency>  
   </dependencies>
 </project>

@@ -15,6 +15,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<automatic.module.name>home</automatic.module.name>
 		<compilerLevel>11</compilerLevel>
+		
+		<version.commons-logging>1.3.2</version.commons-logging>
 	</properties>
 	<modules>
 		<module>site-skin</module>

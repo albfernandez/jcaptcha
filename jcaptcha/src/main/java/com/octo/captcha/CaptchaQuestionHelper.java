@@ -20,10 +20,10 @@ public final class CaptchaQuestionHelper {
     /**
      * The bundle name used by this helper
      */
-    public static final String BUNDLE_NAME =
-            CaptchaQuestionHelper.class.getName();
+    public static final String BUNDLE_NAME = CaptchaQuestionHelper.class.getName();
 
     private CaptchaQuestionHelper() {
+    	throw new AssertionError("No instances allowed");
     }
 
 

@@ -17,6 +17,7 @@ import com.octo.captcha.CaptchaFactory;
 import com.octo.captcha.engine.CaptchaEngineException;
 import com.octo.captcha.image.ImageCaptcha;
 import com.octo.captcha.image.ImageCaptchaFactory;
+import com.octo.captcha.engine.CaptchaEngine;
 
 /**
  * <p>Description: abstract base class for ImageCaptcha engines</p>.
@@ -24,8 +25,7 @@ import com.octo.captcha.image.ImageCaptchaFactory;
  * @author <a href="mailto:mag@jcaptcha.net">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public abstract class ImageCaptchaEngine
-        implements com.octo.captcha.engine.CaptchaEngine {
+public abstract class ImageCaptchaEngine implements CaptchaEngine {
 
 	protected List<ImageCaptchaFactory> factories = new ArrayList<ImageCaptchaFactory>();
 	protected Random myRandom = new SecureRandom();
