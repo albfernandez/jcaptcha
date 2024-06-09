@@ -15,12 +15,12 @@ package com.octo.captcha;
 public class CaptchaException extends RuntimeException {
 
     private static final long serialVersionUID = 5857302393426134260L;
-	private Throwable cause;
 
     /**
      * Constructs a new exception with <code>null</code> as its detail message. The cause is not initialized.
      */
     public CaptchaException() {
+    	super();
     }
 
     /**
@@ -44,8 +44,7 @@ public class CaptchaException extends RuntimeException {
      * @since 1.4
      */
     public CaptchaException(final String message, final Throwable cause) {
-        super(message);
-        this.cause = cause;
+        super(message, cause);
     }
 
     /**
@@ -60,15 +59,7 @@ public class CaptchaException extends RuntimeException {
      * @since 1.4
      */
     public CaptchaException(final Throwable cause) {
-        super(cause.getMessage());
-        this.cause = cause;
+        super(cause);
+       
     }
-
-    /**
-     * @return the root thowable that construct this exception, null if none
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
 }

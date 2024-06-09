@@ -24,13 +24,14 @@ package com.octo.captcha.engine;
  * @version $Id$
  */
 public class CaptchaEngineException extends RuntimeException {
+	
     private static final long serialVersionUID = -643615405253913151L;
-	private Throwable cause;
 
     /**
      * Constructs a new exception with <code>null</code> as its detail message. The cause is not initialized.
      */
     public CaptchaEngineException() {
+    	super();
     }
 
     /**
@@ -51,11 +52,9 @@ public class CaptchaEngineException extends RuntimeException {
      * @param cause   the cause (which is saved for later retrieval by the {@link #getCause()} method).  (A
      *                <tt>null</tt> value is permitted, and indicates that the cause is nonexistent or unknown.)
      *
-     * @since 1.4
      */
     public CaptchaEngineException(final String message, final Throwable cause) {
-        super(message);
-        this.cause = cause;
+        super(message, cause);
     }
 
     /**
@@ -67,17 +66,9 @@ public class CaptchaEngineException extends RuntimeException {
      * @param cause the cause (which is saved for later retrieval by the {@link #getCause()} method).  (A <tt>null</tt>
      *              value is permitted, and indicates that the cause is nonexistent or unknown.)
      *
-     * @since 1.4
      */
     public CaptchaEngineException(final Throwable cause) {
-        super(cause.getMessage());
-        this.cause = cause;
+        super(cause);
     }
 
-    /**
-     * @return the root thowable that construct this exception, null if none
-     */
-    public Throwable getCause() {
-        return cause;
-    }
 }
