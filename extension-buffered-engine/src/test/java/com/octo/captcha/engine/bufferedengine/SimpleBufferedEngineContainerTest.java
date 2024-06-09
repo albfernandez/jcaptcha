@@ -23,18 +23,20 @@ import org.springframework.core.io.Resource;
  */
 public class SimpleBufferedEngineContainerTest extends BufferedEngineContainerTestAbstract {
 
+	private static final long SLEEP_TIME = 2000;
+	
     public void testExecute() throws Exception {
         Resource ressource = new ClassPathResource("testSimpleBufferedEngine.xml");
         ConfigurableBeanFactory bf = new XmlBeanFactory(ressource);
         BufferedEngineContainer container = (BufferedEngineContainer) bf.getBean("container");
 
-        Thread.sleep(8000);
+        Thread.sleep(SLEEP_TIME);
         for (int i = 0; i < 30; i++) {
             assertNotNull(container.getNextCaptcha(Locale.US));
 
         }
 
-        Thread.sleep(4000);
+        Thread.sleep(SLEEP_TIME);
 
         ((SimpleBufferedEngineContainer) container).stopDaemon();
     }

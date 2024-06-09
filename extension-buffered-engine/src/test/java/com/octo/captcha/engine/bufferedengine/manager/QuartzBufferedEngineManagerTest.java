@@ -32,7 +32,7 @@ import com.octo.captcha.engine.bufferedengine.BufferedEngineContainer;
  */
 public class QuartzBufferedEngineManagerTest extends TestCase {
 	
-	private static long SLEEP_TIME = 1500;
+	private static long SLEEP_TIME = 1000;
 
     // loader init by default
     //protected Class loader = DefaultEngineLoadTestHelper.class;

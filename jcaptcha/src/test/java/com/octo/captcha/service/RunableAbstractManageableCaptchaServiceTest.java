@@ -14,7 +14,7 @@ import com.octo.captcha.service.captchastore.CaptchaStore;
 import com.octo.captcha.service.captchastore.MapCaptchaStore;
 
 public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstractCaptchaServiceTest {
-    public static int MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS = 3;
+    public static int MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS = 1;
     public static int CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION = 2 * SIZE;
     public static int MAX_CAPTCHA_STORE_SIZE = 3 * SIZE;
 
@@ -372,9 +372,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
         assertEquals("we should not been able to garbage collect",
                 0,
                 getMService().getNumberOfGarbageCollectableCaptchas());
-//        System.out.println("before "+System.currentTimeMillis());
         fullLoad();
-//        System.out.println(System.currentTimeMillis());
         
         assertEquals("to be valid we should not been able to garbage collect",
                 0,

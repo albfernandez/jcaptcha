@@ -23,7 +23,7 @@ import org.springframework.core.io.Resource;
 public class QuartzBufferedEngineContainerTest extends BufferedEngineContainerTestAbstract {
 
 
-    private static final int WAIT_TIME = 10000;
+    private static final int WAIT_TIME = 1000;
 
 	public void testBasic() throws Exception {
         Resource ressource = new ClassPathResource("testQuartzBufferedEngine.xml");
@@ -44,7 +44,7 @@ public class QuartzBufferedEngineContainerTest extends BufferedEngineContainerTe
         Object scheduler = bf.getBean("quartz");
         assertNotNull(container);
         assertNotNull(scheduler);
-        Thread.sleep(100000);
+        Thread.sleep(WAIT_TIME);
         for (int i = 0; i < 100; i++) {
             assertNotNull(container.getNextCaptcha());
         }
