@@ -32,6 +32,7 @@ public abstract class ImageCaptcha implements Captcha {
     protected transient BufferedImage challenge;
 
     protected ImageCaptcha(String question, BufferedImage challenge) {
+    	super();
         this.challenge = challenge;
         this.question = question;
     }
@@ -113,7 +114,7 @@ public abstract class ImageCaptcha implements Captcha {
         
         try {
 
-            this.challenge =ImageIO.read(new MemoryCacheImageInputStream(in));
+            this.challenge = ImageIO.read(new MemoryCacheImageInputStream(in));
         } catch (IOException e) {
             if (!hasChallengeBeenCalled.booleanValue()) {
                 // If the getChallenge method has not been called the challenge should be available for unmarhslling.

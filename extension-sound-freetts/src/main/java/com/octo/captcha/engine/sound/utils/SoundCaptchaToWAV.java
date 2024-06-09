@@ -110,7 +110,9 @@ public class SoundCaptchaToWAV {
             for (int i = 0; i < files.length; i++) {
                 File f = files[i];
                 if (f.isFile() && f.getName().endsWith("wav")) {
-                    f.delete();
+                    if (!f.delete()) {
+                    	System.out.println("Cannnot delete " + f.getName());
+                    }
                 }
             }
         }
@@ -118,7 +120,9 @@ public class SoundCaptchaToWAV {
 
     private static void generate(int iterations, SoundCaptchaEngine captchaEngine, File outputDir) throws IOException {
 
-        outputDir.mkdirs();
+        if (!outputDir.mkdirs()) {
+        	throw new IOException("Cannot create outputDir:" + outputDir.getAbsolutePath());
+        }
         String className = captchaEngine.getClass().getName().substring(captchaEngine.getClass().getPackage().getName().length() + 1);
 
         System.out.println("Starting on " + className);

@@ -275,8 +275,20 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
             totalSize = 0;
             randomAccessFile.setLength(0);
 
-            indexFile.delete();
-            indexFile.createNewFile();
+            if (indexFile.exists()) {
+	            if (indexFile.delete()) {
+	            	log.debug("Deleted index file " + indexFile);	            
+	            }
+	            else {
+	            	log.warn("Cann not delete index file " + indexFile.getAbsolutePath());
+	            }
+            }
+            if (indexFile.createNewFile()) {
+            	log.debug("Created index file " + indexFile);
+            }
+            else {
+            	log.warn("Index file already exists " + indexFile);
+            }
         }
         catch (Exception e) {
             // Clean up
@@ -386,9 +398,11 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
     private void createNewIndexFile() throws IOException {
         if (indexFile.exists()) {
-            indexFile.delete();
-            if (log.isDebugEnabled()) {
-                log.debug("Index file " + indexFile + " deleted.");
+            if (indexFile.delete()) {
+	            log.debug("Index file " + indexFile + " deleted.");
+            }
+            else {
+            	log.warn("Cannot delete index file " + indexFile);
             }
         }
         if (indexFile.createNewFile()) {
@@ -662,7 +676,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      */
     public Collection<Locale> getLocales() {
         if (isDisposed) {
-        	Collections.emptyList();
+        	return Collections.emptyList();
         }
         return diskElements.keySet();
     }

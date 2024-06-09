@@ -25,7 +25,7 @@ import com.octo.captcha.service.sound.SoundCaptchaService;
 @SuppressWarnings("serial")
 public class SimpleSoundCaptchaServlet extends HttpServlet implements Servlet {
 	
-	public static SoundCaptchaService service = new DefaultManageableSoundCaptchaService();
+	public static final SoundCaptchaService service = new DefaultManageableSoundCaptchaService();
 
 	@Override
 	protected void doGet(HttpServletRequest httpServletRequest,

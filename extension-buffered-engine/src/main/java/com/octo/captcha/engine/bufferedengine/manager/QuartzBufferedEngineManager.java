@@ -289,7 +289,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     }
 
 
-    public Map<Locale, Double> getLocaleRatio() {
+    public synchronized Map<Locale, Double> getLocaleRatio() {
         return config.getLocaleRatio();
     }
 

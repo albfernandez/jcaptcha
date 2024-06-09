@@ -26,7 +26,7 @@ import com.octo.captcha.CaptchaException;
  */
 public class ToolkitFactory {
 
-    public static String TOOLKIT_IMPL = "toolkit.implementation";
+    public static final String TOOLKIT_IMPL = "toolkit.implementation";
 
     public static Toolkit getToolkit() {
         Toolkit defaultToolkit = null;

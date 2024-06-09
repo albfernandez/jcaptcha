@@ -27,10 +27,7 @@ import com.octo.captcha.component.image.color.SingleColorGenerator;
  * @version 1.0
  */
 public abstract class AbstractTextPaster implements TextPaster {
-    /**
-     * Comment for <code>myRandom</code>
-     */
-    public Random myRandom = new SecureRandom();
+
 
     /**
      * Max length of a word
