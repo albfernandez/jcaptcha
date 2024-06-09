@@ -19,12 +19,12 @@ package com.octo.captcha.engine.bufferedengine;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.collections.MapIterator;
-import org.apache.commons.collections.map.HashedMap;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -162,7 +162,7 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
             if (this.config.getLocaleRatio().containsKey(locale)) {
                 return locale;
                 //try to resolve by language
-            } else if (this.config.getLocaleRatio().containsKey(locale.getLanguage())) {
+            } else if (this.config.getLocaleRatio().containsKey(locale)) {
                 return new Locale(locale.getLanguage());
             } else {
                 return config.getDefaultLocale();
@@ -180,14 +180,14 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
 
         log.debug("entering swapCaptchasFromDiskBufferToMemoryBuffer()");
 
-        MapIterator it = config.getLocaleRatio().mapIterator();
 
         //construct the map of swap size by locales;
-        HashedMap captchasRatios = new HashedMap();
-        while (it.hasNext()) {
+        Map<Locale, Integer> captchasRatios = new HashMap<>();
+        
+        for (Map.Entry<Locale, Double> entry: config.getLocaleRatio().entrySet()) {
 
-            Locale locale = (Locale) it.next();
-            double ratio = ((Double) it.getValue()).doubleValue();
+            Locale locale = entry.getKey();
+            double ratio = entry.getValue().doubleValue();
             int ratioCount = (int) Math.round(config.getSwapSize().intValue() * ratio);
 
             //get the reminding size corresponding to the ratio
@@ -197,14 +197,16 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
             diff = diff < 0 ? 0 : diff;
             int toSwap = (diff < ratioCount) ? diff : ratioCount;
 
-            captchasRatios.put(locale, new Integer(toSwap));
+            captchasRatios.put(locale, Integer.valueOf(toSwap));
         }
-        //get them from persistent buffer
-        Iterator captchasRatiosit = captchasRatios.mapIterator();
-
-        while (captchasRatiosit.hasNext() && !shutdownCalled) {
-            Locale locale = (Locale) captchasRatiosit.next();
-            int swap = ((Integer) captchasRatios.get(locale)).intValue();
+        
+        
+        for (Map.Entry<Locale, Integer> entry: captchasRatios.entrySet()) {
+        	if (shutdownCalled) {
+        		break;
+        	}
+            Locale locale = entry.getKey();
+            int swap = entry.getValue().intValue();
             if (log.isDebugEnabled()) {
                 log.debug("try to swap  " + swap + " Captchas from persistent to volatile memory with locale : "
                         + locale.toString());
@@ -244,10 +246,13 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
         log.info("Starting feed. Total feed size = " + totalFeedsize);
 
         //feed the buffer for each locale
-        MapIterator it = config.getLocaleRatio().mapIterator();
-        while (it.hasNext() && !shutdownCalled) {
-            Locale locale = (Locale) it.next();
-            double ratio = ((Double) it.getValue()).doubleValue();
+        
+        for (Map.Entry<Locale, Double> entry: config.getLocaleRatio().entrySet()) {
+        	if (shutdownCalled) {
+        		return;
+        	}
+            Locale locale = entry.getKey();
+            double ratio = entry.getValue().doubleValue();
             int ratioCount = (int) Math.round(totalFeedsize * ratio);
 
 
@@ -292,15 +297,15 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
     }
 
     public Integer getPersistentFeedings() {
-        return new Integer(persistentFeedings);
+        return Integer.valueOf(persistentFeedings);
     }
 
     public Integer getPersistentMemoryHits() {
-        return new Integer(persistentMemoryHits);
+        return Integer.valueOf(persistentMemoryHits);
     }
 
     public Integer getPersistentToVolatileSwaps() {
-        return new Integer(persistentToVolatileSwaps);
+        return Integer.valueOf(persistentToVolatileSwaps);
     }
 
     public CaptchaBuffer getVolatileBuffer() {
@@ -308,7 +313,7 @@ public abstract class BufferedEngineContainer implements CaptchaEngine {
     }
 
     public Integer getVolatileMemoryHits() {
-        return new Integer(volatileMemoryHits);
+        return Integer.valueOf(volatileMemoryHits);
     }
 
     class Shutdown extends Thread {

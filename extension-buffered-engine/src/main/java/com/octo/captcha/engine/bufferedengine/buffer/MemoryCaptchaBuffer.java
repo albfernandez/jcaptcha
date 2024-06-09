@@ -8,12 +8,13 @@ package com.octo.captcha.engine.bufferedengine.buffer;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.collections.buffer.UnboundedFifoBuffer;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -28,7 +29,7 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
 
     private static final Log log = LogFactory.getLog(MemoryCaptchaBuffer.class);
 
-    protected HashedMap buffers = new HashedMap();
+    protected Map<Locale, LinkedList<Captcha>> buffers = new HashMap<>();
 
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha(java.util.Locale)
@@ -37,7 +38,7 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
 
         if (buffers.containsKey(locale)) {
         	logDebug("Get captcha from MemoryBuffer with locale : " + locale);
-        	Captcha captcha = (Captcha) ((UnboundedFifoBuffer) buffers.get(locale)).remove();            
+        	Captcha captcha = buffers.get(locale).remove();            
             return captcha;
         } else {
             logDebug("Locale not present : " + locale);
@@ -48,10 +49,10 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see CaptchaBuffer#removeCaptcha(int, java.util.Locale)
      */
-    public synchronized Collection removeCaptcha(int number, Locale locale) {
-        ArrayList list = new ArrayList(number);
+    public synchronized Collection<Captcha> removeCaptcha(int number, Locale locale) {
+        List<Captcha> list = new ArrayList<>(number);
 
-        UnboundedFifoBuffer buffer = (UnboundedFifoBuffer) buffers.get(locale);
+        LinkedList<Captcha> buffer =  buffers.get(locale);
         if (buffer == null) {
             logDebug("Locale not found in Memory buffer map : " + locale.toString());
             return list;
@@ -81,7 +82,7 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha(int)
      */
-    public Collection removeCaptcha(int number) {
+    public Collection<Captcha> removeCaptcha(int number) {
         return removeCaptcha(number, Locale.getDefault());
     }
 
@@ -90,27 +91,25 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
     }
 
     public synchronized void putCaptcha(Captcha captcha, Locale locale) {
-
         if (!buffers.containsKey(locale)) {
-            buffers.put(locale, new UnboundedFifoBuffer());
+            buffers.put(locale, new LinkedList<>());
         }
-
-        ((UnboundedFifoBuffer) buffers.get(locale)).add(captcha);
+        buffers.get(locale).add(captcha);
     }
 
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#putAllCaptcha(java.util.Collection)
      */
-    public synchronized void putAllCaptcha(Collection captchas, Locale locale) {
+    public synchronized void putAllCaptcha(Collection<Captcha> captchas, Locale locale) {
     	
         if (!buffers.containsKey(locale)) {
-            buffers.put(locale, new UnboundedFifoBuffer());
+            buffers.put(locale, new LinkedList<>());
         }
 
-        ((UnboundedFifoBuffer) buffers.get(locale)).addAll(captchas);
+        buffers.get(locale).addAll(captchas);
 
         logDebug("put into mem  : " + captchas.size() + " for locale :" + locale.toString()
-                    + " with size : " + ((UnboundedFifoBuffer) buffers.get(locale)).size());
+                    + " with size : " + buffers.get(locale).size());
     }
 
     /**
@@ -118,10 +117,9 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
      */
     public int size() {
         int total = 0;
-
-        Iterator it = buffers.keySet().iterator();
-        while (it.hasNext()) {
-            total += ((UnboundedFifoBuffer) buffers.get(it.next())).size();
+        
+        for (LinkedList<?> list: buffers.values()) {
+        	total += list.size();
         }
 
         return total;
@@ -132,9 +130,9 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
      */
     public int size(Locale locale) {
         if (!buffers.containsKey(locale)) {
-            buffers.put(locale, new UnboundedFifoBuffer());
+            buffers.put(locale, new LinkedList<>());
         }
-        return ((UnboundedFifoBuffer) buffers.get(locale)).size();
+        return buffers.get(locale).size();
     }
 
     /**
@@ -147,7 +145,7 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#putAllCaptcha(java.util.Collection)
      */
-    public void putAllCaptcha(Collection captchas) {
+    public void putAllCaptcha(Collection<Captcha> captchas) {
         putAllCaptcha(captchas, Locale.getDefault());
     }
 
@@ -168,7 +166,7 @@ public class MemoryCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#getLocales()
      */
-    public Collection getLocales() {
+    public Collection<Locale> getLocales() {
         return buffers.keySet();
     }
 

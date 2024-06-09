@@ -18,10 +18,10 @@
 
 package com.octo.captcha.engine.bufferedengine;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
 
 import com.octo.captcha.engine.CaptchaEngineException;
 
@@ -39,7 +39,7 @@ public class ContainerConfiguration {
 
     private Integer maxPersistentMemorySize;
 
-    private HashedMap localeRatio = new HashedMap();
+    private Map<Locale, Double> localeRatio = new HashMap<>();
 
     private boolean serveOnlyConfiguredLocales = false;
 
@@ -58,14 +58,14 @@ public class ContainerConfiguration {
      * @param feedSize                number of captchas that will be generated and stored to persistent buffer each
      *                                time
      */
-    public ContainerConfiguration(Map localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
+    public ContainerConfiguration(Map<Locale, Double> localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
                                   int swapSize, int feedSize) {
         this.localeRatio.putAll(localeRatio);
-        this.maxVolatileMemorySize = new Integer(maxVolatileMemorySize);
-        this.maxPersistentMemorySize = new Integer(maxPersistentMemorySize);
-        this.feedSize = new Integer(feedSize);
-        this.swapSize = new Integer(swapSize);
-        this.feedBatchSize = new Integer(feedSize);
+        this.maxVolatileMemorySize = Integer.valueOf(maxVolatileMemorySize);
+        this.maxPersistentMemorySize = Integer.valueOf(maxPersistentMemorySize);
+        this.feedSize = Integer.valueOf(feedSize);
+        this.swapSize = Integer.valueOf(swapSize);
+        this.feedBatchSize = Integer.valueOf(feedSize);
     }
 
 
@@ -83,7 +83,7 @@ public class ContainerConfiguration {
      *                                   language)
      * @param defaultLocale              the default locale used by this engineContainer.
      */
-    public ContainerConfiguration(Map localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
+    public ContainerConfiguration(Map<Locale, Double> localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
                                   int swapSize, int feedSize, boolean serveOnlyConfiguredLocales, Locale defaultLocale) {
         this(localeRatio, maxVolatileMemorySize, maxPersistentMemorySize, swapSize, feedSize);
         this.serveOnlyConfiguredLocales = serveOnlyConfiguredLocales;
@@ -108,10 +108,10 @@ public class ContainerConfiguration {
      *                                   language)
      * @param defaultLocale              the default locale used by this engineContainer.
      */
-    public ContainerConfiguration(Map localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
+    public ContainerConfiguration(Map<Locale, Double> localeRatio, int maxVolatileMemorySize, int maxPersistentMemorySize,
                                   int swapSize, int feedSize, int feedBatchSize, boolean serveOnlyConfiguredLocales, Locale defaultLocale) {
         this(localeRatio, maxVolatileMemorySize, maxPersistentMemorySize, swapSize, feedSize, serveOnlyConfiguredLocales, defaultLocale);
-        this.feedBatchSize = new Integer(feedBatchSize);
+        this.feedBatchSize = Integer.valueOf(feedBatchSize);
     }
 
 
@@ -162,15 +162,15 @@ public class ContainerConfiguration {
     /**
      * @return Map of the ratio of locales
      */
-    public HashedMap getLocaleRatio() {
+    public Map<Locale, Double> getLocaleRatio() {
         return localeRatio;
     }
 
     /**
      * @param localeRatio Map of the ratio of locales, to produce captcha and to swap captchas
      */
-    public void setLocaleRatio(Map localeRatio) {
-        this.localeRatio = new HashedMap(localeRatio.size());
+    public void setLocaleRatio(Map<Locale, Double> localeRatio) {
+        this.localeRatio = new HashMap<>(localeRatio.size());
         this.localeRatio.putAll(localeRatio);
     }
 

@@ -6,13 +6,13 @@
 
 package com.octo.captcha.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.collections.FastHashMap;
 
 import com.octo.captcha.Captcha;
 import com.octo.captcha.engine.CaptchaEngine;
@@ -45,7 +45,6 @@ public abstract class AbstractManageableCaptchaService
     private long oldestCaptcha = 0;//OPTIMIZATION STUFF!
 
 
-    @SuppressWarnings("unchecked")
 	protected AbstractManageableCaptchaService(CaptchaStore captchaStore, com.octo.captcha.engine.CaptchaEngine captchaEngine,
                                                int minGuarantedStorageDelayInSeconds, int maxCaptchaStoreSize) {
         super(captchaStore, captchaEngine);
@@ -53,7 +52,7 @@ public abstract class AbstractManageableCaptchaService
         this.setCaptchaStoreMaxSize(maxCaptchaStoreSize);
         this.setMinGuarantedStorageDelayInSeconds(minGuarantedStorageDelayInSeconds);
         this.setCaptchaStoreSizeBeforeGarbageCollection((int) Math.round(0.8 * maxCaptchaStoreSize));
-        times = new FastHashMap();
+        times = new java.util.concurrent.ConcurrentHashMap<>();
     }
 
     protected AbstractManageableCaptchaService(CaptchaStore captchaStore, com.octo.captcha.engine.CaptchaEngine captchaEngine,
@@ -87,21 +86,19 @@ public abstract class AbstractManageableCaptchaService
     public void setCaptchaEngineClass(String theClassName)
             throws IllegalArgumentException {
         try {
-            Object engine = Class.forName(theClassName).newInstance();
+            Object engine = Class.forName(theClassName).getDeclaredConstructor().newInstance();
             if (engine instanceof com.octo.captcha.engine.CaptchaEngine) {
                 this.engine = (com.octo.captcha.engine.CaptchaEngine) engine;
             } else {
                 throw new IllegalArgumentException("Class is not instance of CaptchaEngine! "
                         + theClassName);
             }
-        } catch (InstantiationException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        } catch (IllegalAccessException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        } catch (RuntimeException e) {
-            throw new IllegalArgumentException(e.getMessage());
+        }
+        catch (IllegalArgumentException e) {
+        	throw e;
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage(), e);
         }
     }
 
@@ -277,12 +274,11 @@ public abstract class AbstractManageableCaptchaService
     /**
      * Empty the Store
      */
-    @SuppressWarnings("unchecked")
 	public void emptyCaptchaStore() {
         //empty the store
         this.store.empty();
         //And the timestamps
-        this.times = new FastHashMap();
+        this.times = new java.util.concurrent.ConcurrentHashMap<>();
     }
 
 

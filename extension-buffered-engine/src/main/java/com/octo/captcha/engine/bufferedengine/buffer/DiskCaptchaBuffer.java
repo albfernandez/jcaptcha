@@ -31,14 +31,14 @@ import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.collections.MapIterator;
-import org.apache.commons.collections.buffer.UnboundedFifoBuffer;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -55,9 +55,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
     private RandomAccessFile randomAccessFile;
 
-    private HashedMap diskElements = null;
+    private Map<Locale, LinkedList<DiskElement>> diskElements = null;
 
-    private ArrayList freeSpace;
+    private List<DiskElement> freeSpace;
 
     /**
      * If persistent, the disk file will be kept and reused on next startup. In addition the memory store will flush all
@@ -98,7 +98,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     public DiskCaptchaBuffer(String fileName, boolean persistant) {
         log.debug("Creating new Diskbuffer");
 
-        freeSpace = new ArrayList();
+        freeSpace = new ArrayList<>();
         this.name = fileName;
         this.persistant = persistant;
 
@@ -122,7 +122,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
                 log.debug("Index file dirty or empty. Deleting data file " + getDataFileName());
             }
             dataFile.delete();
-            diskElements = new HashedMap();
+            diskElements = new HashMap<>();
         }
 
         // Open the data file as random access. The dataFile is created if necessary.
@@ -132,13 +132,14 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
 
-    protected synchronized Collection remove(int number, Locale locale) throws IOException {
-        if (!isInitalized) return new ArrayList(0);
-        DiskElement diskElement = null;
+    protected synchronized Collection<Captcha> remove(int number, Locale locale) throws IOException {
+        if (!isInitalized) {
+        	return Collections.emptyList();
+        }
         int index = 0;
         boolean diskEmpty = false;
 
-        Collection collection = new UnboundedFifoBuffer();
+        Collection<Captcha> collection = new LinkedList<>();
 
         //if no locale
         if (!diskElements.containsKey(locale)) {
@@ -150,8 +151,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
                 // Check if the element is on disk
                 try {
-                    diskElement = (DiskElement) ((LinkedList) diskElements.get(locale))
-                            .removeFirst();
+                	DiskElement diskElement = diskElements.get(locale).removeFirst();
 
                     // Load the element
                     randomAccessFile.seek(diskElement.position);
@@ -160,7 +160,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
                     ByteArrayInputStream instr = new ByteArrayInputStream(buffer);
                     ObjectInputStream objstr = new ObjectInputStream(instr);
 
-                    collection.add(objstr.readObject());
+                    collection.add((Captcha) objstr.readObject());
                     instr.close();
                     objstr.close();
 
@@ -189,19 +189,12 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @param locale the locale
      * @throws IOException exception
      */
-    protected synchronized void store(Collection collection, Locale locale) throws IOException {
-        if (!isInitalized) return;
+    protected synchronized void store(Collection<Captcha> collection, Locale locale) throws IOException {
+        if (!isInitalized) {
+        	return;
+        }
         // Write elements to the DB
-        for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
-            final Object element = iterator.next();
-
-            // Serialise the entry
-            final ByteArrayOutputStream outstr = new ByteArrayOutputStream();
-            final ObjectOutputStream objstr = new ObjectOutputStream(outstr);
-            objstr.writeObject(element);
-            objstr.close();
-
-            //check if there is space
+        for (Captcha element: collection) {
             store(element, locale);
         }
 
@@ -213,8 +206,10 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @param locale locale
      * @throws IOException ioexception
      */
-    protected synchronized void store(Object element, Locale locale) throws IOException {
-        if (!isInitalized) return;
+    protected synchronized void store(Captcha element, Locale locale) throws IOException {
+        if (!isInitalized) {
+        	return;
+        }
         // Serialise the entry
         final ByteArrayOutputStream outstr = new ByteArrayOutputStream();
         final ObjectOutputStream objstr = new ObjectOutputStream(outstr);
@@ -222,11 +217,6 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         objstr.close();
         final byte[] buffer = outstr.toByteArray();
 
-        //check if there is space
-        //        if (diskElements.size() >= maxDataSize)
-        //        {
-        //            return false;
-        //        }
 
         // Check for a free block
         DiskElement diskElement = findFreeBlock(buffer.length);
@@ -251,10 +241,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
 
         //create the localized buffer
         if (!diskElements.containsKey(locale)) {
-
-            diskElements.put(locale, new LinkedList());
+            diskElements.putIfAbsent(locale, new LinkedList<>());
         }
-        ((LinkedList) diskElements.get(locale)).addLast(diskElement);
+        diskElements.get(locale).addLast(diskElement);
 
 
         if (log.isDebugEnabled()) {
@@ -361,8 +350,8 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
             try {
                 fin = new FileInputStream(indexFile);
                 objectInputStream = new ObjectInputStream(fin);
-                diskElements = (HashedMap) objectInputStream.readObject();
-                freeSpace = (ArrayList) objectInputStream.readObject();
+                diskElements = (Map) objectInputStream.readObject();
+                freeSpace =  (List) objectInputStream.readObject();
             }
             catch (StreamCorruptedException e) {
                 log.error("Corrupt index file. Creating new index.");
@@ -528,15 +517,14 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha(int)
      */
-    public Collection removeCaptcha(int number) {
+    public Collection<Captcha> removeCaptcha(int number) {
         if (isDisposed) return null;
         log.debug("Entering removeCaptcha(int number) ");
-        Collection c = null;
+        Collection<Captcha> c = null;
         try {
             c = remove(number, Locale.getDefault());
         }
         catch (IOException e) {
-
             throw new CaptchaException(e);
         }
         return c;
@@ -565,11 +553,11 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     public int size() {
         if (!isInitalized) return 0;
         int total = 0;
-        MapIterator it = diskElements.mapIterator();
-        while (it.hasNext()) {
-            it.next();
-            total += ((LinkedList) it.getValue()).size();
+        
+        for (LinkedList<DiskElement> list : diskElements.values()) {
+        	total += list.size();
         }
+        
         return total;
     }
 
@@ -631,7 +619,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      *      java.util.Locale)
      */
     public void putAllCaptcha(Collection captchas, Locale locale) {
-        if (isDisposed) return;
+        if (isDisposed) {
+        	return;
+        }
         try {
             store(captchas, locale);
             log.debug("trying to store " + captchas.size());
@@ -645,8 +635,10 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#size(java.util.Locale)
      */
     public int size(Locale locale) {
-        if (!isInitalized || isDisposed) return 0;
-        return ((LinkedList) diskElements.get(locale)).size();
+        if (!isInitalized || isDisposed) {
+        	return 0;
+        }
+        return diskElements.get(locale).size();
     }
 
     /**
@@ -665,8 +657,10 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#getLocales()
      */
-    public Collection getLocales() {
-        if (isDisposed) return null;
+    public Collection<Locale> getLocales() {
+        if (isDisposed) {
+        	Collections.emptyList();
+        }
         return diskElements.keySet();
     }
 

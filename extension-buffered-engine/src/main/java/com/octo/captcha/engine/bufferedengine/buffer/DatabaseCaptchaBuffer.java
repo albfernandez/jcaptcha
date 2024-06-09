@@ -33,10 +33,10 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.collections.buffer.UnboundedFifoBuffer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -149,8 +149,8 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
         PreparedStatement ps = null;
         PreparedStatement psdel = null;
         ResultSet rs = null;
-        Collection<Captcha> collection = new UnboundedFifoBuffer();
-        Collection<Captcha> temp = new UnboundedFifoBuffer();
+        Collection<Captcha> collection = new java.util.LinkedList<>();
+        Collection<Captcha> temp = new java.util.LinkedList <>();
         if (number < 1) {
             return collection;
         }
@@ -207,7 +207,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             //execute batch delete
             psdel.executeBatch();
             log.debug("batch executed");
-            rs.close();
+            close(rs);
             //commit the whole stuff
             con.commit();
             log.debug("batch commited");
@@ -215,29 +215,8 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             collection.addAll(temp);
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                }
-            }
-
         } finally {
-
-            if (ps != null) {
-                try {
-                    ps.close();
-                }        // rollback on error
-                catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                }        // rollback on error
-                catch (SQLException e) {
-                }
-            }
+        	close(rs, ps, con);
         }
         return collection;
     }
@@ -338,18 +317,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
                 log.error(DB_ERROR, e);
 
             } finally {
-                if (ps != null) {
-                    try {
-                        ps.close();
-                    } catch (SQLException e) {
-                    }
-                }
-                if (con != null) {
-                    try {
-                        con.close();
-                    } catch (SQLException e) {
-                    }
-                }
+            	close(ps, con);
             }
         }
 
@@ -374,29 +342,12 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             if (rs.next()) {
                 size = rs.getInt(1);
             }
-            rs.close();
+            close(rs);
             con.commit();
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                }
-            }
         } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                }
-            }
+        	close(rs, ps, con);
         }
 
         return size;
@@ -424,29 +375,12 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             if (rs.next()) {
                 size = rs.getInt(1);
             }
-            rs.close();
+            close(rs);
             con.commit();
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                }
-            }
         } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                }
-            }
+            close(rs, ps, con);
         }
 
         return size;
@@ -474,18 +408,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
         } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                }
-            }
+        	close(ps, con);
         }
 
 
@@ -494,7 +417,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
     /**
      * Get all the locales used
      */
-    public Collection<String> getLocales() {
+    public Collection<Locale> getLocales() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -507,32 +430,30 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             while (rs.next()) {
                 set.add(rs.getString(1));
             }
-            rs.close();
+            close(rs);
             con.commit();
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                }
-            }
         } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                }
-            }
+        	close(rs, ps, con);
         }
 
-        return set;
+        return set.stream().map(e-> new Locale(e)).collect(Collectors.toSet());
+    }
+    
+    private static void close(AutoCloseable...autoCloseables) {
+    	for (AutoCloseable c : autoCloseables) {
+    		close(c);
+    	}
+    }
+    
+    private static void close(AutoCloseable close) {
+    	if (close != null) {
+    		try {
+                close.close();
+            } catch (Exception ex) {
+            }
+    	}
     }
 
 

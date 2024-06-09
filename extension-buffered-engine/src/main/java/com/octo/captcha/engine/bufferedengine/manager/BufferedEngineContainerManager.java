@@ -17,7 +17,7 @@
  */
 package com.octo.captcha.engine.bufferedengine.manager;
 
-import org.apache.commons.collections.map.HashedMap;
+import java.util.Map;
 
 /**
  * Interface that adds manageability options to the BufferedEngineContainer
@@ -104,7 +104,7 @@ public interface BufferedEngineContainerManager {
     /**
      * @return an hashedMap of sizes by locale
      */
-    HashedMap getVolatileBufferSizeByLocales();
+    Map getVolatileBufferSizeByLocales();
 
     /**
      * @return the size of the persitent Buffer (disk buffer)
@@ -114,7 +114,7 @@ public interface BufferedEngineContainerManager {
     /**
      * @return an hashedMap of sizes by locale
      */
-    HashedMap getPersistentBufferSizesByLocales();
+    Map getPersistentBufferSizesByLocales();
 
     /**
      * Tell the scheduler to start to feed the persistent buffer

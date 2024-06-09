@@ -14,6 +14,9 @@ package com.octo.captcha.engine.bufferedengine.buffer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import com.octo.captcha.Captcha;
 
 public class DiskCaptchaBufferTest extends CaptchaBufferTestAbstract {
 
@@ -32,7 +35,7 @@ public class DiskCaptchaBufferTest extends CaptchaBufferTestAbstract {
     public void testPesistant() throws Exception {
 
         this.buffer = getBuffer();
-        ArrayList listToStore = new ArrayList(1);
+        List<Captcha> listToStore = new ArrayList<>(1);
 
         for (int i = 0; i < SIZE; ++i) {
             listToStore.add(engine.getNextCaptcha());
@@ -43,7 +46,7 @@ public class DiskCaptchaBufferTest extends CaptchaBufferTestAbstract {
 
         DiskCaptchaBuffer diskStore2 = new DiskCaptchaBuffer(dirName, true);
 
-        Collection c2 = diskStore2.removeCaptcha(5);
+        Collection<Captcha> c2 = diskStore2.removeCaptcha(5);
         assertEquals(5, c2.size());
     }
 

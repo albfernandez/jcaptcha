@@ -9,6 +9,7 @@
  * copyright (c)  2007 jcaptcha.net. All Rights Reserved.
  * See the LICENSE.txt file distributed with this package.
  */
+
 package com.octo.captcha.engine.bufferedengine.manager;
 
 import java.util.Locale;
@@ -30,6 +31,8 @@ import com.octo.captcha.engine.bufferedengine.BufferedEngineContainer;
  * @author Benoit Doumas
  */
 public class QuartzBufferedEngineManagerTest extends TestCase {
+	
+	private static long SLEEP_TIME = 1500;
 
     // loader init by default
     //protected Class loader = DefaultEngineLoadTestHelper.class;
@@ -75,7 +78,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         //wait to see if there is some feed
         try {
-            Thread.sleep(3500);
+            Thread.sleep(SLEEP_TIME);
         }
         catch (InterruptedException e) {
             throw new CaptchaException(e);
@@ -86,7 +89,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         //take the time to have some swap
         try {
-            Thread.sleep(3500);
+            Thread.sleep(SLEEP_TIME);
         }
         catch (InterruptedException e) {
             throw new CaptchaException(e);
@@ -100,7 +103,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         //wait, now shoult be some action
         try {
-            Thread.sleep(3500);
+            Thread.sleep(SLEEP_TIME);
         }
         catch (InterruptedException e) {
             throw new CaptchaException(e);
@@ -136,7 +139,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         //wait to see if there is some swaps
         try {
-            Thread.sleep(4000);
+            Thread.sleep(SLEEP_TIME);
         }
         catch (InterruptedException e) {
             throw new CaptchaException(e);
@@ -150,7 +153,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         //wait, now shoult be some action
         try {
-            Thread.sleep(4000);
+            Thread.sleep(SLEEP_TIME);
         }
         catch (InterruptedException e) {
             throw new CaptchaException(e);
@@ -192,9 +195,9 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
     public void testSetLocaleRatio() {
         manager.setLocaleRatio(Locale.GERMANY.toString(), 0.2);
 
-        Map map = manager.getLocaleRatio();
+        Map<Locale, Double> map = manager.getLocaleRatio();
 
-        assertEquals(new Double(0.2), (Double) map.get(Locale.GERMANY));
+        assertEquals(Double.valueOf(0.2), (Double) map.get(Locale.GERMANY));
     }
 
     public void testRemoveLocaleRatio() {
@@ -202,7 +205,7 @@ public class QuartzBufferedEngineManagerTest extends TestCase {
 
         manager.removeLocaleRatio(Locale.GERMANY.getDisplayName());
 
-        assertEquals(null, manager.getLocaleRatio().get(Locale.GERMANY.getDisplayName()));
+        assertEquals(null, manager.getLocaleRatio().get(Locale.GERMANY));
     }
 
     public void testSetMaxPersistentMemorySize() {

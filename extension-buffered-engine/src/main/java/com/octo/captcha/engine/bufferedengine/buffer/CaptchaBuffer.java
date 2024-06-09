@@ -127,5 +127,5 @@ public interface CaptchaBuffer {
      * Get all the locales used
      * @return locales used
      */
-    public Collection<String> getLocales();
+    public Collection<Locale> getLocales();
 }

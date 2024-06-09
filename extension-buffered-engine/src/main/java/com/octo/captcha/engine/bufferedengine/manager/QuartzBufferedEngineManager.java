@@ -19,12 +19,12 @@
 package com.octo.captcha.engine.bufferedengine.manager;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.apache.commons.collections.MapIterator;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.CronTrigger;
@@ -279,11 +279,11 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#setFeedSize
      */
     public void setFeedSize(int feedSize) {
-        config.setFeedSize(new Integer(feedSize));
+        config.setFeedSize(Integer.valueOf(feedSize));
     }
 
 
-    public HashedMap getLocaleRatio() {
+    public Map<Locale, Double> getLocaleRatio() {
         return config.getLocaleRatio();
     }
 
@@ -294,7 +294,6 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
 
         Locale locale = getLocaleFromName(localeName);
 
-        MapIterator it = config.getLocaleRatio().mapIterator();
         boolean isSet = false;
         double coef = ratio;
         double oldValue = 0.0f;
@@ -304,24 +303,24 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
             coef = ratio - oldValue;
         }
 
-        while (it.hasNext()) {
-            Locale tempLocale = (Locale) it.next();
-            double value = ((Double) it.getValue()).doubleValue();
+        for (Map.Entry<Locale, Double> entry: config.getLocaleRatio().entrySet()) {
+            Locale tempLocale = entry.getKey();
+            double value = entry.getValue().doubleValue();
             if (locale.equals(tempLocale)) {
-                it.setValue(new Double(coef + value));
+                entry.setValue(Double.valueOf(coef + value));
                 isSet = true;
             } else {
                 if (coef < 0) {
-                    it.setValue(new Double(value - (coef * value / (1.0 - oldValue))));
+                    entry.setValue(Double.valueOf(value - (coef * value / (1.0 - oldValue))));
                 } else {
-                    it.setValue(new Double(value - (value * coef)));
+                    entry.setValue(Double.valueOf(value - (value * coef)));
                 }
             }
         }
 
         //if Locale is not register yet
         if (!isSet) {
-            config.getLocaleRatio().put(locale, new Double(ratio));
+            config.getLocaleRatio().put(locale, Double.valueOf(ratio));
         }
     }
 
@@ -364,7 +363,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#setMaxPersistentMemorySize
      */
     public void setMaxPersistentMemorySize(int maxPersistentMemorySize) {
-        config.setMaxPersistentMemorySize(new Integer(maxPersistentMemorySize));
+        config.setMaxPersistentMemorySize(Integer.valueOf(maxPersistentMemorySize));
     }
 
     /**
@@ -378,7 +377,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#setMaxVolatileMemorySize
      */
     public void setMaxVolatileMemorySize(int maxVolatileMemorySize) {
-        config.setMaxVolatileMemorySize(new Integer(maxVolatileMemorySize));
+        config.setMaxVolatileMemorySize(Integer.valueOf(maxVolatileMemorySize));
     }
 
     /**
@@ -392,7 +391,7 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#setSwapSize
      */
     public void setSwapSize(int swapSize) {
-        config.setSwapSize(new Integer(swapSize));
+        config.setSwapSize(Integer.valueOf(swapSize));
     }
 
     /**
@@ -405,13 +404,13 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     /**
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#getVolatileBufferSizeByLocales
      */
-    public HashedMap getVolatileBufferSizeByLocales() {
-        HashedMap map = new HashedMap();
+    public Map<Locale, Integer> getVolatileBufferSizeByLocales() {
+        Map<Locale, Integer> map = new HashMap<>();
 
-        Iterator it = container.getVolatileBuffer().getLocales().iterator();
+        Iterator<Locale> it = container.getVolatileBuffer().getLocales().iterator();
         while (it.hasNext()) {
-            Locale locale = (Locale) it.next();
-            map.put(locale, new Integer(container.getVolatileBuffer().size(locale)));
+            Locale locale = it.next();
+            map.put(locale, Integer.valueOf(container.getVolatileBuffer().size(locale)));
         }
         return map;
     }
@@ -426,13 +425,13 @@ public class QuartzBufferedEngineManager implements BufferedEngineContainerManag
     /**
      * @see com.octo.captcha.engine.bufferedengine.manager.BufferedEngineContainerManager#getPersistentBufferSizesByLocales
      */
-    public HashedMap getPersistentBufferSizesByLocales() {
-        HashedMap map = new HashedMap();
+    public Map<Locale, Integer> getPersistentBufferSizesByLocales() {
+        Map<Locale, Integer> map = new HashMap<>();
 
-        Iterator it = container.getPersistentBuffer().getLocales().iterator();
+        Iterator<Locale> it = container.getPersistentBuffer().getLocales().iterator();
         while (it.hasNext()) {
-            Locale locale = (Locale) it.next();
-            map.put(locale, new Integer(container.getPersistentBuffer().size(locale)));
+            Locale locale = it.next();
+            map.put(locale, Integer.valueOf(container.getPersistentBuffer().size(locale)));
         }
         return map;
     }
