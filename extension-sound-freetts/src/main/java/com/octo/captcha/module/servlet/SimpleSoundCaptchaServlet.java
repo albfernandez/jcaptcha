@@ -69,17 +69,15 @@ public class SimpleSoundCaptchaServlet extends HttpServlet implements Servlet {
 
 	public static boolean validateResponse(HttpServletRequest request,
 			String userCaptchaResponse) {
-		// if no session found
-		if (request.getSession(false) == null)
+		if (request.getSession(false) == null) {
+			// if no session found
 			return false;
-		// else use service and session id to validate
-		boolean validated = false;
-		try {
-			validated = service.validateResponseForID(request.getSession()
-					.getId(), userCaptchaResponse);
-		} catch (CaptchaServiceException e) {
-			// do nothing.. false
 		}
-		return validated;
+		try {
+			return service.validateResponseForID(request.getSession()
+					.getId(), userCaptchaResponse);
+		} catch (CaptchaServiceException ignored) {
+			return false;
+		}
 	}
 }

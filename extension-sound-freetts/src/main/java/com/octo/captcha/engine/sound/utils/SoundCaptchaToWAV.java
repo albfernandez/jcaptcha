@@ -55,7 +55,7 @@ public class SoundCaptchaToWAV {
                 ", output dir='" + outputDir + "'" +
                 ",iterations='" + iterationsString + "'");
 
-        SoundCaptchaToWAV.clearOutputDirectory(outputDir);
+        clearOutputDirectory(outputDir);
 
         SoundCaptchaEngine captchaEngine = null;
         if (className.equals("all")) {
@@ -68,7 +68,7 @@ public class SoundCaptchaToWAV {
                 captchaEngine = engines[i];
                 System.out.println("Beginning generation with " + captchaEngine.getClass().getName());
                 try {
-                    SoundCaptchaToWAV.generate(iterations, captchaEngine, outputDir);
+                    generate(iterations, captchaEngine, outputDir);
                 }
                 catch (Exception e) {
                     System.out.println("Errors with class " + captchaEngine.getClass().getName());
@@ -91,14 +91,14 @@ public class SoundCaptchaToWAV {
                 }
             }
 
-            SoundCaptchaToWAV.generate(iterations, captchaEngine, outputDir);
+            generate(iterations, captchaEngine, outputDir);
         }
 
         System.exit(0);
     }
 
     private static void clearOutputDirectory(File outputDir) {
-        if (SoundCaptchaToWAV.SHOULD_DELETE_OLD_WAVS_FIRST) {
+        if (SHOULD_DELETE_OLD_WAVS_FIRST) {
             File[] files = outputDir.listFiles();
             if (files == null) {
                 return;

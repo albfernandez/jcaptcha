@@ -7,7 +7,6 @@
 package com.octo.captcha.component.sound.wordtosound;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
 import java.util.Locale;
@@ -173,7 +172,7 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
      * Implementation of freeTTS AudioPlayer interface, to produce an audioInputStream, this is not a very clean way
      * since it doesn't really play. But it is the only way to get a stream easily
      */
-    private class InputStreamAudioPlayer implements AudioPlayer {
+    private static class InputStreamAudioPlayer implements AudioPlayer {
 
         private AudioFormat currentFormat = null;
 
@@ -185,13 +184,13 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
 
         private Vector<InputStream> outputList;
 
-        private AudioInputStream audioInputStream;
 
         /**
          * Constructs a InputStreamAudioPlayer
          *
          */
         public InputStreamAudioPlayer() {
+        	super();
             outputList = new Vector<InputStream>();
         }
 
@@ -250,11 +249,6 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
          * Closes this audio player
          */
         public synchronized void close() {
-            try {
-                audioInputStream.close();
-            } catch (IOException ioe) {
-                System.err.println("Problem while closing the audioInputSteam");
-            }
 
         }
 
