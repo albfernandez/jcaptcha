@@ -74,8 +74,8 @@ public class FunkyBackgroundGenerator extends AbstractBackgroundGenerator {
             for (int i = 0; i < getImageWidth(); i++) {
                 float leftUpRatio = (1 - i / width) * (1 - j / height);
                 float leftDownRatio = (1 - i / width) * (j / height);
-                float rightUpRatio = (i / width) * (1 - j / height);
-                float rightDownRatio = (i / width) * (j / height);
+                float rightUpRatio = (i / width) * (1 - j / height); // NOMPD
+                float rightDownRatio = (i / width) * (j / height);   // NOPMD
 
                 float red = colorLeftUp.getRed() / 255.0f * leftUpRatio + colorLeftDown.getRed() / 255.0f
                         * leftDownRatio + colorRightUp.getRed() / 255.0f * rightUpRatio

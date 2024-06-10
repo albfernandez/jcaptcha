@@ -33,12 +33,7 @@ public class PuzzleImageDeformation implements ImageDeformation {
      */
     private int rowNum = 4;
 
-    /**
-     * Maximal angle of rotation for each square.
-     */
-//    private double maxAngleRotation = 0.3;
 
-//    private Random random = new SecureRandom();
 
     /**
      * Conststruct a PuzzleImageDeformation, with the numbers of colums and rows. If manageRowAndColRandomly is set to
@@ -48,13 +43,11 @@ public class PuzzleImageDeformation implements ImageDeformation {
      *                                randomly
      * @param rowNum                  Number of rows to divide the image, max number if rows and colums are managed
      *                                randomly
-     * @param maxAngleRotation        Maximal angle of rotation for each square.
      */
-    public PuzzleImageDeformation(int colNum, int rowNum, double maxAngleRotation) {
+    public PuzzleImageDeformation(int colNum, int rowNum) {
         super();
         this.colNum = colNum;
         this.rowNum = rowNum;
-//        this.maxAngleRotation = maxAngleRotation;
     }
 
     /*
@@ -85,14 +78,6 @@ public class PuzzleImageDeformation implements ImageDeformation {
         for (int i = 0; i < colNum; i++) {
             for (int j = 0; j < rowNum; j++) {
                 gSmall.drawImage(image, 0, 0, xd, yd, xd * i, yd * j, xd * i + xd, yd * j + yd, null);
-
-                //  TODO
-//        FilteredImageSource filtered;
-//                RotateFilter filter = new RotateFilter((float)maxAngleRotation * random.nextFloat()
-//                        * (random.nextBoolean() ? -1 : 1));
-                //filtered = new FilteredImageSource(smallPart.getSource(), filter);
-               // Image temp = ToolkitFactory.getToolkit().createImage(filtered);
-              //  smallPart.getGraphics().drawImage(temp, 0, 0, new Color(0, 0, 0, 0), null);
 
                 smallPart.getGraphics().dispose();
 

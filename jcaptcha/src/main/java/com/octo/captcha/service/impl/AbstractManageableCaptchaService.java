@@ -348,9 +348,11 @@ public abstract class AbstractManageableCaptchaService
         return captcha;
     }
 
-
     protected boolean isCaptchaStoreFull() {
-        return getCaptchaStoreMaxSize() == 0 ? false : getCaptchaStoreSize() >= getCaptchaStoreMaxSize();
+    	if (getCaptchaStoreMaxSize() == 0) {
+    		return false;
+    	}
+        return getCaptchaStoreSize() >= getCaptchaStoreMaxSize();
     }
 
     protected boolean isCaptchaStoreQuotaReached() {
