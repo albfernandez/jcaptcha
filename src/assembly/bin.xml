@@ -29,6 +29,7 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>
     </fileSet>
     <fileSet>
@@ -40,6 +41,7 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>
     </fileSet>
     <fileSet>
@@ -61,6 +63,7 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>    	
     </fileSet> 
     <fileSet>
@@ -72,19 +75,10 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>    	
     </fileSet> 
-    <fileSet>
-    	<directory>extension-sound-freetts/target/</directory>
-    	<outputDirectory>extensions/</outputDirectory>
-    	<includes>
-    		<include>*.jar</include>
-    	</includes>
-    	<excludes>
-    		<exclude>*sources*</exclude>
-    		<exclude>*javadoc*</exclude>
-    	</excludes>    	
-    </fileSet> 
+
     
     <fileSet>
     	<directory>integration-simple-servlet/target/</directory>
@@ -95,6 +89,7 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>    	
     </fileSet> 
     
@@ -110,6 +105,7 @@
     	<excludes>
     		<exclude>*sources*</exclude>
     		<exclude>*javadoc*</exclude>
+    		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>  
     </fileSet>
     
@@ -137,13 +133,6 @@
     </fileSet>
     <fileSet>
       <directory>extension-jbosscache-store/target/</directory>
-      <outputDirectory>docs/api-docs/</outputDirectory>
-    	<includes>
-    		<include>*javadoc*.jar</include>
-    	</includes>
-    </fileSet>
-    <fileSet>
-      <directory>extension-sound-freetts/target/</directory>
       <outputDirectory>docs/api-docs/</outputDirectory>
     	<includes>
     		<include>*javadoc*.jar</include>
@@ -181,13 +170,6 @@
     </fileSet>
     <fileSet>
       <directory>extension-jbosscache-store/target/</directory>
-      <outputDirectory>sources/</outputDirectory>
-    	<includes>
-    		<include>*sources*.jar</include>
-    	</includes>
-    </fileSet>
-    <fileSet>
-      <directory>extension-sound-freetts/target/</directory>
       <outputDirectory>sources/</outputDirectory>
     	<includes>
     		<include>*sources*.jar</include>
