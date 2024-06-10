@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 import jakarta.servlet.ServletOutputStream;
@@ -42,7 +43,6 @@ public class ImageToJpegHelper {
      *
      * @param theRequest  the request
      * @param theResponse the response
-     * @param log         a commons logger
      * @param service     an ImageCaptchaService instance
      * @param id the id
      * @param locale the locale
@@ -53,16 +53,21 @@ public class ImageToJpegHelper {
                                                  HttpServletResponse theResponse,
                                                  ImageCaptchaService service,
                                                  String id,
-                                                 Locale locale)
+                                                 Locale locale, 
+                                                 ImageFormat format)
             throws IOException {
+    	
+    	ImageFormat imageFormat = Objects.requireNonNullElse(format, ImageFormat.jpg);
+    	
 
-        // call the ImageCaptchaService method to retrieve a captcha
-        ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
-            BufferedImage challenge =
-                    service.getImageChallengeForID(id, locale);
+        	// call the ImageCaptchaService method to retrieve a captcha
+        	ByteArrayOutputStream imageOutputStream = new ByteArrayOutputStream();
+            BufferedImage challenge = service.getImageChallengeForID(id, locale);
             // the output stream to render the captcha image as jpeg into
-           ImageIO.write(challenge, "jpg",jpegOutputStream);
+           ImageIO.write(challenge, imageFormat.name(),imageOutputStream);
+           byte[] captchaChallengeAsJpeg = imageOutputStream.toByteArray();
+           flushToResponse(captchaChallengeAsJpeg, theResponse, imageFormat);
         } catch (IllegalArgumentException e) {
             //    log a security warning and return a 404...
             log.warn(
@@ -78,20 +83,36 @@ public class ImageToJpegHelper {
             theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        byte[] captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
+                
 
-        // render the captcha challenge as a JPEG image in the response
-        theResponse.setHeader("Cache-Control", "no-store");
-        theResponse.setHeader("Pragma", "no-cache");
-        theResponse.setDateHeader("Expires", 0);
-        theResponse.setContentLength(captchaChallengeAsJpeg.length);
-
-        theResponse.setContentType("image/jpeg");
-        ServletOutputStream responseOutputStream = theResponse.getOutputStream();
-        responseOutputStream.write(captchaChallengeAsJpeg);
-        responseOutputStream.flush();
-        responseOutputStream.close();
     }
-
-
+    
+    private static void flushToResponse(byte[] imageData, HttpServletResponse response, ImageFormat format) throws IOException {
+    	
+    	String contentType = "image/" + format.name();
+		// Set to expire far in the past.
+		response.setDateHeader("Expires", 0);
+		// Set standard HTTP/1.1 no-cache headers.
+		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+		// Set IE extended HTTP/1.1 no-cache headers (use addHeader).
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		// Set standard HTTP/1.0 no-cache header.
+		response.setHeader("Pragma", "no-cache");
+		
+		// return contentype
+		response.setContentType(contentType);
+		response.setContentLength(imageData.length);
+		
+		try (ServletOutputStream responseOutputStream = response.getOutputStream()){
+			responseOutputStream.write(imageData);
+			responseOutputStream.flush();
+		}
+		
+    	
+    }
+    
+    public static enum ImageFormat {
+    	png,
+    	jpg;    	
+    }
 }

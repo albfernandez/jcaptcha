@@ -26,7 +26,6 @@
 		<module>common-test</module>
 		<module>jcaptcha</module>
 		<module>testing</module>
-		<module>integration-simple-servlet</module>
 		<module>samples</module>
 	</modules>
 	<licenses>
