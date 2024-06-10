@@ -18,11 +18,15 @@
 
 package com.octo.captcha.component.image.wordtoimage;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.Color;
 import java.awt.image.ImageFilter;
 import java.awt.image.ReplicateScaleFilter;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
@@ -40,7 +44,7 @@ import com.octo.captcha.component.image.textpaster.GlyphsPaster;
  * @version 1.0
  */
 
-public class DeformedComposedWordToImageTest extends TestCase {
+public class DeformedComposedWordToImageTest {
 
     private DeformedComposedWordToImage deformedComposedWordToImage;
     private Integer minAcceptedWordLength = Integer.valueOf(1);
@@ -51,6 +55,7 @@ public class DeformedComposedWordToImageTest extends TestCase {
     private Integer maxFontSize = Integer.valueOf(10);
 
 
+    @BeforeEach
     public void setUp() {
 
         BackgroundGenerator background = new GradientBackgroundGenerator(this.imageHeight, this.imageWidth, Color.black, Color.white);
@@ -83,11 +88,13 @@ public class DeformedComposedWordToImageTest extends TestCase {
                 finalD);
     }
 
+    @Test
     public void testGetImage() throws CaptchaException {
         String test = "test";
         assertNotNull(this.deformedComposedWordToImage.getImage(test));
     }
-
+    
+    @Test
     public void testGetImageNull() {
         try {
             this.deformedComposedWordToImage.getImage(null);

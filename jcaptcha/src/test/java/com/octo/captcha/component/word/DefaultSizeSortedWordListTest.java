@@ -19,9 +19,14 @@
 
 package com.octo.captcha.component.word;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * <p>Description: </p>
@@ -29,7 +34,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class DefaultSizeSortedWordListTest extends TestCase {
+public class DefaultSizeSortedWordListTest {
     private DefaultSizeSortedWordList wordList;
     public static final String WORD1 = "test";
     public static final String WORD2 = "testtest";
@@ -39,21 +44,24 @@ public class DefaultSizeSortedWordListTest extends TestCase {
     /**
      * Constructor for DefaultSizeSortedWordListTest.
      */
-    public DefaultSizeSortedWordListTest(String name) {
-        super(name);
+    public DefaultSizeSortedWordListTest() {
+        super();
     }
 
+    @BeforeEach
     public void setUp() {
         this.wordList = new DefaultSizeSortedWordList(Locale.US);
         this.wordList.addWord(WORD1);
     }
 
+    @Test
     public void testGetLocale() {
         Locale expected = Locale.US;
         Locale test = this.wordList.getLocale();
         assertEquals(expected, test);
     }
 
+    @Test
     public void testAddWord() {
         String test = this.wordList.getNextWord(Integer.valueOf(WORD2.length()));
         assertNull(test);
@@ -64,9 +72,9 @@ public class DefaultSizeSortedWordListTest extends TestCase {
         assertNotNull(test);
         test = this.wordList.getNextWord(Integer.valueOf(WORD2.length()));
         assertNotNull(test);
-
     }
 
+    @Test
     public void testGetNextWord() {
         String expected = WORD1;
         String test = this.wordList.getNextWord(Integer.valueOf(WORD1.length()));
@@ -77,6 +85,7 @@ public class DefaultSizeSortedWordListTest extends TestCase {
         assertEquals(WORD2, test);
     }
 
+    @Test
     public void testGetMinWord() throws Exception {
         assertEquals(WORD1.length(), this.wordList.getMinWord().intValue());
         this.wordList.addWord(WORD2);
@@ -85,6 +94,7 @@ public class DefaultSizeSortedWordListTest extends TestCase {
         assertEquals(WORD3.length(), this.wordList.getMinWord().intValue());
     }
 
+    @Test
     public void testGetMaxWord() throws Exception {
         assertEquals(WORD1.length(), this.wordList.getMaxWord().intValue());
         this.wordList.addWord(WORD2);

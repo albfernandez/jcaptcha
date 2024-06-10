@@ -19,10 +19,16 @@
 
 package com.octo.captcha.component.image.fontgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.Font;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * <p>Description: </p>
@@ -30,7 +36,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class RandomFontGeneratorTest extends TestCase {
+public class RandomFontGeneratorTest {
 
     private RandomFontGenerator randomFontGenerator;
 
@@ -43,10 +49,11 @@ public class RandomFontGeneratorTest extends TestCase {
     /**
      * Constructor for RandomFontGeneratorTest.
      */
-    public RandomFontGeneratorTest(String name) {
-        super(name);
+    public RandomFontGeneratorTest() {
+        super();
     }
 
+    @BeforeEach
     public void setUp() {
         this.randomFontGenerator =
                 new RandomFontGenerator(Integer.valueOf(minFontSize), Integer.valueOf(maxFontSize));
@@ -59,18 +66,20 @@ public class RandomFontGeneratorTest extends TestCase {
                 new RandomFontGenerator(Integer.valueOf(minFontSize), Integer.valueOf(maxFontSize), fontsList);
     }
 
+    @Test
     public void testGetFont() {
         Font test = this.randomFontGenerator.getFont();
         assertNotNull(test);
     }
-
+    
+    @Test
     public void testGetFontWithList() {
         Font test = this.randomFontGeneratorWithList.getFont();
         assertNotNull(test);
         assertTrue(test.getName().startsWith("Arial"));
     }
 
-
+    @Test
     public void testGetFontWithEmptyList() {
         Font[] fontsList = new Font[0];
         try {
@@ -82,7 +91,7 @@ public class RandomFontGeneratorTest extends TestCase {
         }
     }
 
-
+    @Test
     public void testGetFontWithBadFontList() {
         Font[] fontsList = new Font[1];
         fontsList[0] = new Font("Courier", Font.BOLD, 10);
@@ -94,7 +103,7 @@ public class RandomFontGeneratorTest extends TestCase {
         	assertNotNull(e.getMessage());
         }
     }
-
+    @Test
     public void testGetFontWithBadFontPrefix() {
 
         this.randomFontGenerator.setBadFontNamePrefixes(new String[] {"Cour"});
@@ -110,6 +119,7 @@ public class RandomFontGeneratorTest extends TestCase {
         assertEquals(arial, checkedFontList.get(0));
     }                                                                                        
 
+    @Test
     public void testGetFontWithEmptyBadFontPrefix() {
 
         this.randomFontGenerator.setBadFontNamePrefixes(new String[] {""});
@@ -119,15 +129,16 @@ public class RandomFontGeneratorTest extends TestCase {
         fontsList[1] = new Font("Arial", Font.BOLD, 10);
 
         List<Font> checkedFontList = this.randomFontGenerator.cleanFontList(fontsList);
-        assertEquals("All fonts should be preserved", 2, checkedFontList.size());
+        assertEquals(2, checkedFontList.size(), "All fonts should be preserved");
     }
-    
+    @Test
     public void testMinFontSize() {
     	Font helvetica = new Font("Helvetica", Font.BOLD, 2);
     	Font styled = this.randomFontGeneratorWithList.applyStyle(helvetica);
     	assertTrue(minFontSize <= styled.getSize());
     }
     
+    @Test
     public void testMaxFontSize() {
     	Font helvetica = new Font("Helvetica", Font.BOLD, 24);
     	Font styled = this.randomFontGeneratorWithList.applyStyle(helvetica);

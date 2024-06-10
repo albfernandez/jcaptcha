@@ -18,9 +18,12 @@
 
 package com.octo.captcha.component.word.wordgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * <p>Description: </p>
@@ -28,15 +31,17 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class DummyWordGeneratorTest extends TestCase {
+public class DummyWordGeneratorTest  {
 
     private DummyWordGenerator dummyWordGenerator;
     private String expectedString = "JCAPTCHA";
 
+    @BeforeEach
     public void setUp() {
         this.dummyWordGenerator = new DummyWordGenerator(this.expectedString);
     }
 
+    @Test
     public void testGetDefaultWord() {
         this.dummyWordGenerator = new DummyWordGenerator(null);
         String expected = this.expectedString;
@@ -44,12 +49,14 @@ public class DummyWordGeneratorTest extends TestCase {
         assertEquals(expected, word);
     }
 
+    @Test
     public void testGetWordInteger() {
         String expected = this.expectedString;
         String word = this.dummyWordGenerator.getWord(Integer.valueOf(10));
         assertEquals(expected + expected.substring(0, 2), word);
     }
 
+    @Test
     public void testGetWordIntegerLocale() {
         String expected = this.expectedString;
         String word = this.dummyWordGenerator.getWord(Integer.valueOf(10), Locale.US);

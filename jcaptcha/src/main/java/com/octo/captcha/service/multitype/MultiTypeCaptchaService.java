@@ -7,7 +7,6 @@
 package com.octo.captcha.service.multitype;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
-import com.octo.captcha.service.sound.SoundCaptchaService;
 import com.octo.captcha.service.text.TextCaptchaService;
 
 /**
@@ -18,6 +17,6 @@ import com.octo.captcha.service.text.TextCaptchaService;
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public interface MultiTypeCaptchaService extends ImageCaptchaService, SoundCaptchaService, TextCaptchaService {
+public interface MultiTypeCaptchaService extends ImageCaptchaService, TextCaptchaService {
 
 }

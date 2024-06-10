@@ -17,9 +17,14 @@
  */
 package com.octo.captcha.component.image.color;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.Color;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 
@@ -27,16 +32,16 @@ import com.octo.captcha.CaptchaException;
  * @author Benoit Doumas
  * @author Christian Blavier
  */
-public class RandomRangeColorGeneratorTest extends TestCase {
-    private RandomRangeColorGenerator colorGenerator = null;
+public class RandomRangeColorGeneratorTest {
 
+    @Test
     public void testNominalCase() {
         int[] redRange = new int[]{36, 42};
         int[] greenRange = new int[]{57, 62};
         int[] blueRange = new int[]{10, 12};
         int[] alphaRange = new int[]{78, 132};
 
-        colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange, alphaRange);
+        RandomRangeColorGenerator colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange, alphaRange);
 
         // due to the random factor, test is repeated several times
         for (int i = 0; i < 100; i++) {
@@ -49,12 +54,13 @@ public class RandomRangeColorGeneratorTest extends TestCase {
         }
     }
 
+    @Test
     public void testNominalCaseWithoutAlpha() {
         int[] redRange = new int[]{36, 42};
         int[] greenRange = new int[]{57, 62};
         int[] blueRange = new int[]{10, 12};
 
-        colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
+        RandomRangeColorGenerator colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
 
         // due to the random factor, test is repeated several times
         for (int i = 0; i < 100; i++) {
@@ -66,38 +72,41 @@ public class RandomRangeColorGeneratorTest extends TestCase {
         }
     }
 
+    @Test
     public void testRangeError() {
         int[] redRange = new int[]{200, 42};
         int[] greenRange = new int[]{57, 62};
         int[] blueRange = new int[]{10, 12};
 
         try {
-            colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
+        	new RandomRangeColorGenerator(redRange, greenRange, blueRange);
             fail();
         } catch (CaptchaException e) {
         	assertNotNull(e.getMessage());
         }
     }
 
+    @Test
     public void testRangeValueError() {
         int[] redRange = new int[]{-12, 42};
         int[] greenRange = new int[]{57, 62};
         int[] blueRange = new int[]{10, 12};
 
         try {
-            colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
+        	new RandomRangeColorGenerator(redRange, greenRange, blueRange);
             fail();
         } catch (CaptchaException e) {
         	assertNotNull(e.getMessage());
         }
     }
 
+    @Test
     public void testClosedRange() {
         int[] redRange = new int[]{0, 0};
         int[] greenRange = new int[]{100, 100};
         int[] blueRange = new int[]{255, 255};
 
-        colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
+        RandomRangeColorGenerator colorGenerator = new RandomRangeColorGenerator(redRange, greenRange, blueRange);
 
         Color color = colorGenerator.getNextColor();
 

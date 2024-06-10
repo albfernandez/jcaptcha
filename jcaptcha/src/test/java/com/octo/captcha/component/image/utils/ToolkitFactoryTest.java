@@ -18,9 +18,15 @@
 
 package com.octo.captcha.component.image.utils;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.Toolkit;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 
@@ -31,17 +37,19 @@ import com.octo.captcha.CaptchaException;
  * @author <a href="antoine.veret@gmail.com">Antoine Veret</a>
  * @version 1.0
  */
-public class ToolkitFactoryTest extends TestCase {
+public class ToolkitFactoryTest  {
 
+	@BeforeEach
     public void setUp() {
         System.getProperties().remove(ToolkitFactory.TOOLKIT_IMPL);
     }
 
+	@Test
     public void testGetaDefaultToolkit() {
         assertTrue(ToolkitFactory.getToolkit() instanceof Toolkit);
     }
 
-
+	@Test
     public void testGetBadClassToolkit() {
         System.setProperty(ToolkitFactory.TOOLKIT_IMPL, "toto");
         try {
@@ -52,6 +60,7 @@ public class ToolkitFactoryTest extends TestCase {
         }
     }
 
+	@AfterEach
     public void tearDown() {
         System.getProperties().remove(ToolkitFactory.TOOLKIT_IMPL);
     }

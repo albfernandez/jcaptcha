@@ -18,21 +18,26 @@
 
 package com.octo.captcha.image.gimpy;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.component.image.wordtoimage.SimpleWordToImage;
 import com.octo.captcha.component.word.wordgenerator.RandomWordGenerator;
 
-public class GimpyFactoryTest extends TestCase {
+public class GimpyFactoryTest {
 
     GimpyFactory tested;
 
+    @BeforeEach
     protected void setUp() throws Exception {
-        super.setUp();
         tested = new GimpyFactory(new RandomWordGenerator("a"), new SimpleWordToImage());
     }
 
+    @Test
     public void testGetRandomLength() throws Exception {
         //be carefull values tide to SimpleWordToImage.
         for (int i = 1; i < 11; i++) {
@@ -48,6 +53,7 @@ public class GimpyFactoryTest extends TestCase {
         }
     }
 
+    @Test
     public void testGimpyFactory() throws Exception {
         try {
             new GimpyFactory(null, null);

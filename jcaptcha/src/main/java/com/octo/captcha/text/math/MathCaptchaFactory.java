@@ -10,7 +10,7 @@ import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.Random;
 
-import com.octo.captcha.CaptchaQuestionHelper;
+import com.octo.captcha.helper.CaptchaQuestionHelper;
 import com.octo.captcha.text.TextCaptcha;
 import com.octo.captcha.text.TextCaptchaFactory;
 

@@ -18,9 +18,15 @@
 
 package com.octo.captcha.component.word.wordgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.component.word.ArrayDictionary;
@@ -31,7 +37,7 @@ import com.octo.captcha.component.word.ArrayDictionary;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class ComposeDictionaryWordGeneratorTest extends TestCase {
+public class ComposeDictionaryWordGeneratorTest {
 
     protected ComposeDictionaryWordGenerator composeDictionaryWordGenerator;
     protected String[] wordList = {"1", "12", "123", "123456"};
@@ -46,8 +52,8 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
     /**
      * This method is the setup for each testcase.
      */
+    @BeforeEach
     protected void setUp() throws Exception {
-        super.setUp();
         this.composeDictionaryWordGenerator =
                 new ComposeDictionaryWordGenerator(new ArrayDictionary(wordList));
     }
@@ -55,6 +61,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
     /**
      * This testcase verify if the class works normaly.
      */
+    @Test
     public void testGetWordIntegerLocale() {
         for (int i = 0; i < lengths.length; i++) {
             String test = this.composeDictionaryWordGenerator.getWord(Integer.valueOf(this.lengths[i]), Locale.FRENCH);
@@ -67,6 +74,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
     /**
      * This testcase werify if it works with words with one letter in the dictionary.
      */
+    @Test
     public void testSmallWordWithOneLetter() {
         this.composeDictionaryWordGenerator =
                 new ComposeDictionaryWordGenerator(new ArrayDictionary(this.badwordList));
@@ -82,6 +90,7 @@ public class ComposeDictionaryWordGeneratorTest extends TestCase {
      * this testcase verify if it works with words with no words in the dictionnary. We verify if the CaptchaException
      * is correctly trapped.
      */
+    @Test
     public void testEmptyDictionnary() {
         this.composeDictionaryWordGenerator =
                 new ComposeDictionaryWordGenerator(new ArrayDictionary(this.emptywordList));

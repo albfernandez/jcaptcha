@@ -6,6 +6,8 @@
 
 package com.octo.captcha.service.captchastore;
 
+import com.octo.captcha.service.captchastore.impl.MapCaptchaStore;
+
 public class MapCaptchaStoreTest extends CaptchaStoreTestAbstract {
 
     public CaptchaStore getStore() {

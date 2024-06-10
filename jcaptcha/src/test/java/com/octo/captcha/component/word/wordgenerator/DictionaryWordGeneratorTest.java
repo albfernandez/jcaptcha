@@ -18,9 +18,15 @@
 
 package com.octo.captcha.component.word.wordgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.component.word.ArrayDictionary;
@@ -31,17 +37,19 @@ import com.octo.captcha.component.word.ArrayDictionary;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class DictionaryWordGeneratorTest extends TestCase {
+public class DictionaryWordGeneratorTest { 
 
     private DictionaryWordGenerator dictionaryWordGenerator;
     private static String[] wordlist = {"1", "1234", "123456", "123456789", "123"};
     private static int[] lengths = {1, 4, 6, 9, 3};
     private static Integer UNKNOWN_LENGTH = Integer.valueOf(100);
 
+    @BeforeEach
     public void setUp() {
         this.dictionaryWordGenerator = new DictionaryWordGenerator(new ArrayDictionary(wordlist));
     }
 
+    @Test
     public void testGetWordInteger() {
         for (int i = 0; i < lengths.length; i++) {
             Integer length = Integer.valueOf(lengths[i]);
@@ -59,6 +67,7 @@ public class DictionaryWordGeneratorTest extends TestCase {
         }
     }
 
+    @Test
     public void testGetWordIntegerLocale() {
         for (int i = 0; i < lengths.length; i++) {
             Integer length = Integer.valueOf(lengths[i]);

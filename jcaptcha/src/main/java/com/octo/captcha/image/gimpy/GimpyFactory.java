@@ -12,9 +12,9 @@ import java.util.Locale;
 import java.util.Random;
 
 import com.octo.captcha.CaptchaException;
-import com.octo.captcha.CaptchaQuestionHelper;
 import com.octo.captcha.component.image.wordtoimage.WordToImage;
 import com.octo.captcha.component.word.wordgenerator.WordGenerator;
+import com.octo.captcha.helper.CaptchaQuestionHelper;
 import com.octo.captcha.image.ImageCaptcha;
 
 /**

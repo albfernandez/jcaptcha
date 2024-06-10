@@ -34,8 +34,18 @@ else {
 	<style>
 		h4 { color: <%= color %>; }
 	</style>
+	<script>
+	
+	function focus() {
+		var input = document.getElementById('jcaptcha');
+		if (input) {
+			input.focus();
+		}
+	}
+	
+	</script>
 </head>
-<body>
+<body onload="focus()">
 <h2>Simple Captcha Servlet sample</h2>
 <br/>
 <br/>
@@ -44,7 +54,7 @@ else {
 <br/>
 
 <form action="submit.action" method="post">
-     <img src="<%= image %>" /> <input type="text" name="jcaptcha" value="" />
+     <img src="<%= image %>" /> <input type="text" id="jcaptcha" name="jcaptcha" value="" />
      <input type="hidden" name="format" value="<%= format%>" />
      <input type="submit"/>
 </form>

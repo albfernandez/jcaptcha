@@ -19,9 +19,14 @@
 
 package com.octo.captcha.component.word.wordgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * <p>Description: </p>
@@ -29,21 +34,23 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class RandomWordGeneratorTest extends TestCase {
+public class RandomWordGeneratorTest {
 
     private RandomWordGenerator randomWordGenerator;
 
     /**
      * Constructor for RandomWordGeneratorTest.
      */
-    public RandomWordGeneratorTest(String name) {
-        super(name);
+    public RandomWordGeneratorTest() {
+        super();
     }
 
+    @BeforeEach
     public void setUp() {
         this.randomWordGenerator = new RandomWordGenerator("azertyuiopqsdfghjklmwxcvbn");
     }
 
+    @Test
     public void testGetWord() {
         Integer wordLength = Integer.valueOf(10);
         String pickWord = this.randomWordGenerator.getWord(wordLength, Locale.US);

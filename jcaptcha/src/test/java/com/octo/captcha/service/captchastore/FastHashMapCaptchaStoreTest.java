@@ -6,10 +6,30 @@
 
 package com.octo.captcha.service.captchastore;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
+import com.octo.captcha.service.captchastore.impl.FastHashMapCaptchaStore;
+
 public class FastHashMapCaptchaStoreTest extends CaptchaStoreTestAbstract {
 
-    public CaptchaStore getStore() {
+
+	public FastHashMapCaptchaStoreTest() {
+		super();
+	}
+	
+	public CaptchaStore getStore() {
         return new FastHashMapCaptchaStore();
+    }
+	
+	@BeforeEach
+    public void setUp() throws Exception {
+		super.setUp();
+    }
+    
+    @AfterEach
+    public void tearDown() {
+    	super.tearDown();
     }
 
 }

@@ -19,9 +19,14 @@
 
 package com.octo.captcha.component.image.fontgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.awt.Font;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
 
 /**
  * <p>Description: </p>
@@ -29,7 +34,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class TwistedRandomFontGeneratorTest extends TestCase {
+public class TwistedRandomFontGeneratorTest {
 
     private TwistedRandomFontGenerator
             twistedRandomFontGenerator;
@@ -37,15 +42,17 @@ public class TwistedRandomFontGeneratorTest extends TestCase {
     /**
      * Constructor for TwistedRandomFontGeneratorTest.
      */
-    public TwistedRandomFontGeneratorTest(String arg0) {
-        super(arg0);
+    public TwistedRandomFontGeneratorTest() {
+        super();
     }
 
+    @BeforeEach	
     public void setUp() {
         this.twistedRandomFontGenerator =
                 new TwistedRandomFontGenerator(Integer.valueOf(10), null);
     }
 
+    @Test
     public void testGetFont() {
         Font test = this.twistedRandomFontGenerator.getFont();
         assertNotNull(test);

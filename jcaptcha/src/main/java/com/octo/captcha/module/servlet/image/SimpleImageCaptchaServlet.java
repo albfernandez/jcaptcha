@@ -27,7 +27,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 	
 	private static final long serialVersionUID = 296035630547992751L;
-	public static final ImageCaptchaService service = new DefaultManageableImageCaptchaService();
+	private static final ImageCaptchaService service = new DefaultManageableImageCaptchaService();
 
 
 	@Override

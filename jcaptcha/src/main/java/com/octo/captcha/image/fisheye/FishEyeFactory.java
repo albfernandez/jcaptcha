@@ -14,9 +14,9 @@ import java.util.Locale;
 import java.util.Random;
 
 import com.octo.captcha.CaptchaException;
-import com.octo.captcha.CaptchaQuestionHelper;
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
 import com.octo.captcha.component.image.deformation.ImageDeformation;
+import com.octo.captcha.helper.CaptchaQuestionHelper;
 import com.octo.captcha.image.ImageCaptcha;
 import com.octo.captcha.image.ImageCaptchaFactory;
 

@@ -9,16 +9,14 @@ package com.octo.captcha.service.multitype;
 import java.awt.image.BufferedImage;
 import java.util.Locale;
 
-import javax.sound.sampled.AudioInputStream;
 
 import com.octo.captcha.Captcha;
 import com.octo.captcha.engine.CaptchaEngine;
 import com.octo.captcha.image.ImageCaptcha;
-import com.octo.captcha.service.AbstractManageableCaptchaService;
+import com.octo.captcha.service.impl.AbstractManageableCaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.captchastore.CaptchaStore;
-import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;
-import com.octo.captcha.sound.SoundCaptcha;
+import com.octo.captcha.service.captchastore.impl.FastHashMapCaptchaStore;
 import com.octo.captcha.text.TextCaptcha;
 
 /**
@@ -86,33 +84,8 @@ public class GenericManageableCaptchaService extends AbstractManageableCaptchaSe
         return (BufferedImage) this.getChallengeForID(ID, locale);
     }
 
-    /**
-     * Method to retrive the sound challenge corresponding to the given ticket.
-     *
-     * @param ID the ticket
-     *
-     * @return the challenge
-     *
-     * @throws com.octo.captcha.service.CaptchaServiceException
-     *          if the ticket is invalid
-     */
-    public AudioInputStream getSoundChallengeForID(String ID) throws CaptchaServiceException {
-        return (AudioInputStream) this.getChallengeForID(ID);
-    }
 
-    /**
-     * Method to retrive the sound challenge corresponding to the given ticket.
-     *
-     * @param ID the ticket
-     *
-     * @return the challenge
-     *
-     * @throws com.octo.captcha.service.CaptchaServiceException
-     *          if the ticket is invalid
-     */
-    public AudioInputStream getSoundChallengeForID(String ID, Locale locale) throws CaptchaServiceException {
-        return (AudioInputStream) this.getChallengeForID(ID, locale);
-    }
+
 
     /**
      * Method to retrive the text challenge corresponding to the given ticket.
@@ -157,11 +130,7 @@ public class GenericManageableCaptchaService extends AbstractManageableCaptchaSe
             clone.getGraphics().drawImage(challenge, 0, 0, clone.getWidth(), clone.getHeight(), null);
             clone.getGraphics().dispose();
             return clone;
-        } else if (SoundCaptcha.class.isAssignableFrom(captchaClass)) {
-            AudioInputStream challenge = (AudioInputStream) captcha.getChallenge();
-            AudioInputStream clone = new AudioInputStream(challenge, challenge.getFormat(), challenge.getFrameLength());
-            return clone;
-        } else if (TextCaptcha.class.isAssignableFrom(captchaClass)) {
+        }  else if (TextCaptcha.class.isAssignableFrom(captchaClass)) {
             return String.valueOf(captcha.getChallenge());
         } else {
             throw new CaptchaServiceException("Unknown captcha type," +

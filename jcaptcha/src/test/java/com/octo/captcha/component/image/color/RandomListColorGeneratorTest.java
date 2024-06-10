@@ -17,9 +17,11 @@
  */
 package com.octo.captcha.component.image.color;
 
+
 import java.awt.Color;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 
@@ -27,9 +29,10 @@ import com.octo.captcha.CaptchaException;
  * @author Benoit
  *         
  */
-public class RandomListColorGeneratorTest extends TestCase {
+public class RandomListColorGeneratorTest {
     private RandomListColorGenerator colorGenerator = null;
 
+    @Test
     public void testNominalCase() {
         Color[] colorList = new Color[2];
 
@@ -42,13 +45,14 @@ public class RandomListColorGeneratorTest extends TestCase {
         for (int i = 0; i < 100; i++) {
             Color color = colorGenerator.getNextColor();
 
-            assertTrue((color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1 && color
+            Assertions.assertTrue((color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1 && color
                     .getAlpha() == 1)
                     || (color.getRed() == 2 && color.getGreen() == 2 && color.getBlue() == 2 && color
                     .getAlpha() == 2));
         }
     }
 
+    @Test
     public void testNullColor() {
         Color[] colorList = new Color[2];
 
@@ -57,12 +61,13 @@ public class RandomListColorGeneratorTest extends TestCase {
 
         try {
             colorGenerator = new RandomListColorGenerator(colorList);
-            fail();
+            Assertions.fail();
         } catch (CaptchaException e) {
-        	assertNotNull(e.getMessage());
+        	Assertions.assertNotNull(e.getMessage());
         }
     }
 
+    @Test
     public void testSingleColor() {
         Color[] colorList = new Color[1];
 
@@ -72,7 +77,7 @@ public class RandomListColorGeneratorTest extends TestCase {
             colorGenerator = new RandomListColorGenerator(colorList);
             Color color = colorGenerator.getNextColor();
 
-            assertTrue((color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1 && color
+            Assertions.assertTrue((color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1 && color
                     .getAlpha() == 1));
         }
     }

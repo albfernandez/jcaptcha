@@ -58,7 +58,6 @@ public class ImageToJpegHelper {
             throws IOException {
     	
     	ImageFormat imageFormat = Objects.requireNonNullElse(format, ImageFormat.jpg);
-    	
 
         try {
         	// call the ImageCaptchaService method to retrieve a captcha
@@ -76,15 +75,11 @@ public class ImageToJpegHelper {
                             + " to render an captcha with invalid ID :'" + id
                             + "' or with a too long one");
             theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
-            return;
         } catch (CaptchaServiceException e) {
             // log and return a 404 instead of an image...
             log.warn("Error trying to generate a captcha and render its challenge as JPEG", e);
             theResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
-            return;
-        }
-                
-
+        }     
     }
     
     private static void flushToResponse(byte[] imageData, HttpServletResponse response, ImageFormat format) throws IOException {
@@ -107,11 +102,9 @@ public class ImageToJpegHelper {
 			responseOutputStream.write(imageData);
 			responseOutputStream.flush();
 		}
-		
-    	
     }
     
-    public static enum ImageFormat {
+    public enum ImageFormat {
     	png,
     	jpg;    	
     }

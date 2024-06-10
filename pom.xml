@@ -16,16 +16,15 @@
 		<automatic.module.name>home</automatic.module.name>
 		<compilerLevel>11</compilerLevel>
 		
+		<version.junit>5.10.2</version.junit>
 		<version.commons-logging>1.3.2</version.commons-logging>
 		<version.servlet-api>5.0.0</version.servlet-api>
 		<version.jsp-api>3.1.1</version.jsp-api>
+		<version.jakarta-el>4.0.0</version.jakarta-el>
 		<version.jetty-plugin>12.0.10</version.jetty-plugin>
 	</properties>
 	<modules>
-		<module>api</module>
-		<module>common-test</module>
 		<module>jcaptcha</module>
-		<module>testing</module>
 		<module>samples</module>
 	</modules>
 	<licenses>
@@ -130,7 +129,7 @@
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-surefire-report-plugin</artifactId>
-			    <version>2.20.1</version>
+			    <version>3.2.3</version>
 			</plugin>
 
 			<plugin>
@@ -182,12 +181,20 @@
 	</reporting>
 
 	<build>
+		   <resources>
+		     <resource>
+		       <directory>src/main/resources/</directory>
+		       <includes>
+		            <include>**/*.properties</include>
+		        </includes>
+		     </resource>
+		   </resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.4.3</version>
+					<version>3.2.5</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

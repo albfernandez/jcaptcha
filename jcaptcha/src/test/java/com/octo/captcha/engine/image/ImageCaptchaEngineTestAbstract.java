@@ -6,16 +6,17 @@
 
 package com.octo.captcha.engine.image;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.octo.captcha.engine.CaptchaEngine;
 import com.octo.captcha.engine.CaptchaEngineException;
 import com.octo.captcha.engine.MockImageCaptchaFactory;
-import com.octo.captcha.engine.MockSoundCaptchaFactory;
 import com.octo.captcha.image.ImageCaptchaFactory;
-import com.octo.captcha.sound.SoundCaptchaFactory;
 
-public abstract class ImageCaptchaEngineTestAbstract extends TestCase {
+
+public abstract class ImageCaptchaEngineTestAbstract  {
 
     private static final MockImageCaptchaFactory MOCK_IMAGE_CAPTCHA_FACTORY_1 = new MockImageCaptchaFactory();
     private static final MockImageCaptchaFactory MOCK_IMAGE_CAPTCHA_FACTORY_2 = new MockImageCaptchaFactory();
@@ -61,16 +62,7 @@ public abstract class ImageCaptchaEngineTestAbstract extends TestCase {
         }
     }
 
-    public void testWrongTypeSetFactories() throws Exception {
-        this.defaultImageCaptchaEngine = (ImageCaptchaEngine) buildCaptchaEngine(factories);
 
-        try {
-            defaultImageCaptchaEngine.setFactories(new SoundCaptchaFactory[]{new MockSoundCaptchaFactory()});
-            fail("cannot set wrong type factories");
-        } catch (CaptchaEngineException e) {
-        	assertNotNull(e.getMessage());
-        }
-    }
 
 
     public void testSetFactories() throws Exception {

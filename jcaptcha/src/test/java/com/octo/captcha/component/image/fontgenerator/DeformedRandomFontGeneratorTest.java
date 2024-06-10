@@ -12,9 +12,14 @@
 
 package com.octo.captcha.component.image.fontgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.awt.Font;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
 
 /**
  * <p>Description: </p>
@@ -22,7 +27,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin</a>
  * @version 1.0
  */
-public class DeformedRandomFontGeneratorTest extends TestCase {
+public class DeformedRandomFontGeneratorTest  {
 
     private DeformedRandomFontGenerator deformedRandomFontGenerator;
     private Integer minFontSize = Integer.valueOf(10);
@@ -30,15 +35,17 @@ public class DeformedRandomFontGeneratorTest extends TestCase {
     /**
      * Constructor for DeformedRandomFontGeneratorTest.
      */
-    public DeformedRandomFontGeneratorTest(String name) {
-        super(name);
+    public DeformedRandomFontGeneratorTest() {
+        super();
     }
 
+    @BeforeEach
     public void setUp() {
         this.deformedRandomFontGenerator =
                 new DeformedRandomFontGenerator(this.minFontSize, null);
     }
 
+    @Test
     public void testGetFont() {
         Font test = this.deformedRandomFontGenerator.getFont();
         assertNotNull(test);

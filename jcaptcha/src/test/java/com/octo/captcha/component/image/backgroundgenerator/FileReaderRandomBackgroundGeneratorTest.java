@@ -18,22 +18,29 @@
 
 package com.octo.captcha.component.image.backgroundgenerator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.CaptchaException;
 
-public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
+public class FileReaderRandomBackgroundGeneratorTest {
     FileReaderRandomBackgroundGenerator fileReaderRandomBackgroundGenerator;
 
+    @BeforeEach
     protected void setUp() throws Exception {
-        super.setUp();
         fileReaderRandomBackgroundGenerator =
                 new FileReaderRandomBackgroundGenerator(Integer.valueOf(2), Integer.valueOf(2), "imagedir");
     }
     
+    @Test
     public void testFindDirectoryNotExisting() throws Exception {
 
         try {
@@ -43,7 +50,7 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
             assertNotNull(e.getMessage());
         }
     }
-
+    @Test
     public void testFindDirectoryClasspathDir() throws Exception {
 
     	File dir = fileReaderRandomBackgroundGenerator.findDirectory("imagedir");
@@ -53,13 +60,13 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
         	"com/octo/captcha/component/image/backgroundgenerator");
         assertValidDir(dir, "backgroundgenerator");
     }
-
+    @Test
     public void testFindDirectoryClasspathEmptyDir() throws Exception {
 
     	File dir = fileReaderRandomBackgroundGenerator.findDirectory("emptyimagedir");
         assertValidDir(dir, "emptyimagedir");
     }
-    
+    @Test
     public void testCtorEmptyImageDir() throws Exception {
 
         try {
@@ -69,7 +76,7 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
         	assertNotNull(e.getMessage());
         }        
     }
-
+    @Test
     public void testGetBackground() throws Exception {
     	FileReaderRandomBackgroundGenerator backgroundGenerator = 
     		new FileReaderRandomBackgroundGenerator(Integer.valueOf(2), Integer.valueOf(2), "imagedir");
@@ -81,9 +88,9 @@ public class FileReaderRandomBackgroundGeneratorTest extends TestCase {
      * Requires that directory be a directory, be readable, and have the right name.
      */
     private void assertValidDir(File dir, String expectedName) {
-        assertTrue("should be readable", dir.canRead());
-        assertTrue("should be a directory", dir.canRead());
-        assertEquals("Name of root path should match name of directory", expectedName, dir.getName());
+        assertTrue(dir.canRead(), "should be readable");
+        assertTrue(dir.canRead(), "should be a directory");
+        assertEquals(expectedName, dir.getName(), "Name of root path should match name of directory");
     }
 
 }

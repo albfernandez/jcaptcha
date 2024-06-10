@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.util.Locale;
 
 import com.octo.captcha.Captcha;
-import com.octo.captcha.service.AbstractManageableCaptchaService;
+import com.octo.captcha.service.impl.AbstractManageableCaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.captchastore.CaptchaStore;
 
