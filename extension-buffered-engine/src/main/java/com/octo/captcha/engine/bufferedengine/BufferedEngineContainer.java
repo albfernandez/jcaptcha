@@ -46,7 +46,7 @@ import com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer;
  */
 public abstract class BufferedEngineContainer implements CaptchaEngine {
 
-    private static final Log log = LogFactory.getLog(BufferedEngineContainer.class.getName());
+    private static final Log log = LogFactory.getLog(BufferedEngineContainer.class);
 
     protected CaptchaBuffer persistentBuffer = null;
 

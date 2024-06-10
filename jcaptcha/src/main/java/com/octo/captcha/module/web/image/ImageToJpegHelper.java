@@ -30,7 +30,7 @@ import com.octo.captcha.service.image.ImageCaptchaService;
  */
 public class ImageToJpegHelper {
 
-	 private static final Log log = LogFactory.getLog(ImageToJpegHelper.class.getName());
+	 private static final Log log = LogFactory.getLog(ImageToJpegHelper.class);
 	 
     /**
      * retrieve a new ImageCaptcha using ImageCaptchaService and flush it to the response. Captcha are localized

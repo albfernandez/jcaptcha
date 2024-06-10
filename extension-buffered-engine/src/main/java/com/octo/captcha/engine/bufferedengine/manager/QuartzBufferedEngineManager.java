@@ -42,7 +42,8 @@ import com.octo.captcha.engine.bufferedengine.QuartzBufferedEngineContainer;
  * @author Benoit Doumas
  */
 public class QuartzBufferedEngineManager implements BufferedEngineContainerManager {
-    private static final Log log = LogFactory.getLog(QuartzBufferedEngineManager.class.getName());
+	
+    private static final Log log = LogFactory.getLog(QuartzBufferedEngineManager.class);
 
     Scheduler schduler = null;
 

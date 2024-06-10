@@ -53,7 +53,7 @@ import com.octo.captcha.Captcha;
  */
 public class DatabaseCaptchaBuffer implements CaptchaBuffer {
 
-    private static final Log log = LogFactory.getLog(DatabaseCaptchaBuffer.class.getName());
+    private static final Log log = LogFactory.getLog(DatabaseCaptchaBuffer.class);
 
     //database attributes
     private DataSource datasource;

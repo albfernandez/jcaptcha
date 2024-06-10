@@ -33,7 +33,7 @@ import com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer;
  * @author marc-antoine garrigue
  */
 public class SimpleBufferedEngineContainer extends BufferedEngineContainer {
-    private static final Log log = LogFactory.getLog(SimpleBufferedEngineContainer.class.getName());
+    private static final Log log = LogFactory.getLog(SimpleBufferedEngineContainer.class);
 
     private ClockDaemon clockDaemonFeed;
     private ClockDaemon clockDaemonSwap;

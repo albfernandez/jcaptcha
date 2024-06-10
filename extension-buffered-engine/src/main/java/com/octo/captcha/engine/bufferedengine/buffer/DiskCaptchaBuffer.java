@@ -51,7 +51,8 @@ import com.octo.captcha.CaptchaException;
  * @author Benoit Doumas
  */
 public class DiskCaptchaBuffer implements CaptchaBuffer {
-    private static final Log log = LogFactory.getLog(DiskCaptchaBuffer.class.getName());
+	
+    private static final Log log = LogFactory.getLog(DiskCaptchaBuffer.class);
 
     private RandomAccessFile randomAccessFile;
 
