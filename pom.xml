@@ -29,7 +29,6 @@
 		<module>testing</module>
 		<module>extension-jbosscache-store</module>
 		<module>extension-buffered-engine</module>
-		<module>extension-sound-freetts</module>
 		<module>integration-simple-servlet</module>
 		<module>samples</module>
 	</modules>
