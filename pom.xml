@@ -22,7 +22,6 @@
 		<version.jetty-plugin>12.0.10</version.jetty-plugin>
 	</properties>
 	<modules>
-		<module>site-skin</module>
 		<module>api</module>
 		<module>common-test</module>
 		<module>jcaptcha</module>
