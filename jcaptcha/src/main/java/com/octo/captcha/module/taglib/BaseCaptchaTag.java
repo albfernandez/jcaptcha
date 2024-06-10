@@ -6,9 +6,9 @@
 
 package com.octo.captcha.module.taglib;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.Tag;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.tagext.Tag;
 
 
 import com.octo.captcha.service.CaptchaService;

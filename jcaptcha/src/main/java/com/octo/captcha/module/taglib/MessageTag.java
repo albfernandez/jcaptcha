@@ -8,8 +8,8 @@ package com.octo.captcha.module.taglib;
 
 import java.io.IOException;
 
-import javax.servlet.jsp.tagext.Tag;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.Tag;
+import jakarta.servlet.jsp.JspException;
 
 import com.octo.captcha.module.config.CaptchaModuleConfig;
 import com.octo.captcha.service.CaptchaService;

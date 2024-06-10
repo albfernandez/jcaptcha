@@ -8,7 +8,7 @@ package com.octo.captcha.module.config;
 
 import java.util.ResourceBundle;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Class that provides static utility method to use the Module configuration.
