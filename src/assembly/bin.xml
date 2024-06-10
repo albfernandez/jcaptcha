@@ -32,18 +32,7 @@
     		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>
     </fileSet>
-    <fileSet>
-      <directory>api/target</directory>
-      <outputDirectory>/</outputDirectory>
-    	<includes>
-    		<include>*.jar</include>
-    	</includes>
-    	<excludes>
-    		<exclude>*sources*</exclude>
-    		<exclude>*javadoc*</exclude>
-    		<exclude>*findsecbugs-plugin*</exclude>
-    	</excludes>
-    </fileSet>
+    
     <fileSet>
       <directory>src/main/resources</directory>
       <outputDirectory>backgrounds/</outputDirectory>
@@ -54,20 +43,7 @@
       </includes>
     </fileSet>
 
-    
-    <fileSet>
-    	<directory>integration-simple-servlet/target/</directory>
-    	<outputDirectory>integrations/</outputDirectory>
-    	<includes>
-    		<include>*.jar</include>
-    	</includes>
-    	<excludes>
-    		<exclude>*sources*</exclude>
-    		<exclude>*javadoc*</exclude>
-    		<exclude>*findsecbugs-plugin*</exclude>
-    	</excludes>    	
-    </fileSet> 
-    
+        
     
     <!--  Dependencies -->
     <fileSet>
@@ -109,22 +85,6 @@
     		<include>*sources*.jar</include>
     	</includes>
     </fileSet>
-    <fileSet>
-      <directory>api/target</directory>
-      <outputDirectory>sources/</outputDirectory>
-    	<includes>
-    		<include>*sources*.jar</include>
-    	</includes>
-    </fileSet>
-
-    
-    <fileSet>
-      <directory>integration-simple-servlet/target/</directory>
-      <outputDirectory>sources/</outputDirectory>
-    	<includes>
-    		<include>*sources*.jar</include>
-    	</includes>
-    </fileSet>    
   </fileSets>
   
 </assembly>
