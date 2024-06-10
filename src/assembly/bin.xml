@@ -66,19 +66,6 @@
     		<exclude>*findsecbugs-plugin*</exclude>
     	</excludes>    	
     </fileSet> 
-    <fileSet>
-    	<directory>extension-jbosscache-store/target/</directory>
-    	<outputDirectory>extensions/</outputDirectory>
-    	<includes>
-    		<include>*.jar</include>
-    	</includes>
-    	<excludes>
-    		<exclude>*sources*</exclude>
-    		<exclude>*javadoc*</exclude>
-    		<exclude>*findsecbugs-plugin*</exclude>
-    	</excludes>    	
-    </fileSet> 
-
     
     <fileSet>
     	<directory>integration-simple-servlet/target/</directory>
@@ -131,20 +118,7 @@
     		<include>*javadoc*.jar</include>
     	</includes>
     </fileSet>
-    <fileSet>
-      <directory>extension-jbosscache-store/target/</directory>
-      <outputDirectory>docs/api-docs/</outputDirectory>
-    	<includes>
-    		<include>*javadoc*.jar</include>
-    	</includes>
-    </fileSet>
-    <fileSet>
-      <directory>integration-simple-servlet/target/</directory>
-      <outputDirectory>docs/api-docs/</outputDirectory>
-    	<includes>
-    		<include>*javadoc*.jar</include>
-    	</includes>
-    </fileSet>
+    
     <!-- sources -->
     
     <fileSet>
@@ -168,13 +142,7 @@
     		<include>*sources*.jar</include>
     	</includes>
     </fileSet>
-    <fileSet>
-      <directory>extension-jbosscache-store/target/</directory>
-      <outputDirectory>sources/</outputDirectory>
-    	<includes>
-    		<include>*sources*.jar</include>
-    	</includes>
-    </fileSet>
+    
     <fileSet>
       <directory>integration-simple-servlet/target/</directory>
       <outputDirectory>sources/</outputDirectory>
