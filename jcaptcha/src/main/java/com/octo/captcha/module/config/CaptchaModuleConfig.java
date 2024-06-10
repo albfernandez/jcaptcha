@@ -189,13 +189,11 @@ public class CaptchaModuleConfig {
             if (bundle == null) {
                 throw new CaptchaModuleException("can't initialize module config with a unfound bundle : "
                         + "resource bundle " + getMessageValue() + " has  not been found");
-            } else {
-                if (bundle.getString(getMessageKey()) == null) {
+            } 
+            if (bundle.getString(getMessageKey()) == null) {
                     throw new CaptchaModuleException("can't initialize module config with a unfound message : "
                             + "resource bundle " + getMessageValue() + " has  no key named :" + getMessageKey());
-                }
             }
-
         }
 
         // try to create the CaptchaService

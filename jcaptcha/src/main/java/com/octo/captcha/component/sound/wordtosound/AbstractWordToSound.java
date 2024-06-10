@@ -30,8 +30,8 @@ public abstract class AbstractWordToSound implements WordToSound {
      * @param minAcceptedWordLength Length Minimal of generated words
      * @param maxAcceptedWordLength Length Maximal of generated words
      */
-    public AbstractWordToSound(SoundConfigurator configurator, int minAcceptedWordLength,
-                               int maxAcceptedWordLength) {
+    public AbstractWordToSound(SoundConfigurator configurator, int minAcceptedWordLength, int maxAcceptedWordLength) {
+    	super();
         this.configurator = configurator;
         this.minAcceptedWordLength = minAcceptedWordLength;
         this.maxAcceptedWordLength = maxAcceptedWordLength;

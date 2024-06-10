@@ -158,16 +158,13 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             if (log.isDebugEnabled()) {
                 log.debug("try to remove " + number + " captchas");
             }
-            
             con = datasource.getConnection();
-
-
             ps = con.prepareStatement("select *  from " + table + " where " + localeColumn
                     + " = ? order by " + timeMillisColumn);
 
             psdel = con.prepareStatement("delete from " + table + " where " + timeMillisColumn
                     + "= ? and " + hashCodeColumn
-                    + "= ? ");//and " + localeColumn
+                    + "= ? ");
             //+ "= ?");
             ps.setString(1, locale.toString());
             ps.setMaxRows(number);
@@ -177,18 +174,18 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             while (rs.next() && i < number) {
                 try {
                     i++;
-                    InputStream in = rs.getBinaryStream(captchaColumn);
-                    ObjectInputStream objstr = new ObjectInputStream(in);
-                    Object captcha = objstr.readObject();
-                    if (captcha instanceof Captcha) {
-                    	temp.add((Captcha) captcha);
+                    try (InputStream in = rs.getBinaryStream(captchaColumn)) {
+	                    ObjectInputStream objstr = new ObjectInputStream(in);
+	                    Object captcha = objstr.readObject();
+	                    if (captcha instanceof Captcha) {
+	                    	temp.add((Captcha) captcha);
+	                    }
                     }
                     //and delete
                     long time = rs.getLong(timeMillisColumn);
                     long hash = rs.getLong(hashCodeColumn);
                     psdel.setLong(1, time);
                     psdel.setLong(2, hash);
-                    //psdel.setString(3, rs.getString(localeColumn));
                     psdel.addBatch();
 
                     if (log.isDebugEnabled()) {
@@ -402,7 +399,7 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
         try {
             con = datasource.getConnection();
             ps = con.prepareStatement("delete from " + table);
-            ps.execute();
+            ps.executeUpdate();
             con.commit();
 
         } catch (SQLException e) {
@@ -430,8 +427,6 @@ public class DatabaseCaptchaBuffer implements CaptchaBuffer {
             while (rs.next()) {
                 set.add(rs.getString(1));
             }
-            close(rs);
-            con.commit();
         } catch (SQLException e) {
             log.error(DB_ERROR, e);
         } finally {

@@ -31,18 +31,14 @@ import com.octo.captcha.CaptchaException;
  * @author <a href="mailto:mag@octo.com">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-public class FileReaderRandomBackgroundGenerator extends
-        AbstractBackgroundGenerator {
+public class FileReaderRandomBackgroundGenerator extends  AbstractBackgroundGenerator {
 
     private List<BufferedImage> images = new ArrayList<BufferedImage>();
     private String rootPath = ".";
-    /**
-    *
-    */
-    protected static final Map<String, File> cachedDirectories = new HashMap<String, File>();
 
-    public FileReaderRandomBackgroundGenerator(Integer width,
-                                               Integer height, String rootPath) {
+    private static final Map<String, File> cachedDirectories = new HashMap<String, File>();
+
+    public FileReaderRandomBackgroundGenerator(Integer width, Integer height, String rootPath) {
         super(width, height);
 
         if (rootPath != null)
@@ -191,15 +187,8 @@ public class FileReaderRandomBackgroundGenerator extends
     }
 
     private static BufferedImage getImage(File o) {
-        
-        try {
-            FileInputStream fis = new FileInputStream(o);
-            BufferedImage out =ImageIO.read(fis);
-            fis.close();
-
-            // Return the format name
-            return out;
-            
+        try (FileInputStream fis = new FileInputStream(o)) {
+            return ImageIO.read(fis);
         } catch (IOException e) {
             throw new CaptchaException("Unknown error during file reading ", e);
         } 

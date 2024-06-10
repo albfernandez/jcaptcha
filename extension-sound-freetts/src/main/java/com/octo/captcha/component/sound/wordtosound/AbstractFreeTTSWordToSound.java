@@ -235,7 +235,7 @@ public abstract class AbstractFreeTTSWordToSound implements WordToSound {
          *
          * @return format the audio format
          */
-        public AudioFormat getAudioFormat() {
+        public synchronized AudioFormat getAudioFormat() {
             return currentFormat;
         }
 

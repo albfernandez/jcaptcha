@@ -73,7 +73,7 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
     /**
      * @see com.octo.captcha.component.sound.wordtosound.WordToSound#getSound(java.lang.String)
      */
-    public AudioInputStream getSound(String word) throws CaptchaException {
+    public synchronized AudioInputStream getSound(String word) throws CaptchaException {
         //return a sound generated with the default voice.
         voice = defaultVoice;      
         
@@ -210,7 +210,7 @@ public class FreeTTSWordToSound extends AbstractWordToSound implements WordToSou
          *
          * @return format the audio format
          */
-        public AudioFormat getAudioFormat() {
+        public synchronized  AudioFormat getAudioFormat() {
             return currentFormat;
         }
 

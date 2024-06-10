@@ -40,7 +40,7 @@ public class RandomFontGenerator extends AbstractFontGenerator {
      * Prefixes of font names that are avoided by default.  The default values list fonts that are totally fine in terms of
      * representing characters, of course, but they're too commonly available in OCR programs.
      */
-    public static String[] defaultBadFontNamePrefixes = {
+    private static final String[] defaultBadFontNamePrefixes = {
             "Courier",
             "Times Roman",
     };

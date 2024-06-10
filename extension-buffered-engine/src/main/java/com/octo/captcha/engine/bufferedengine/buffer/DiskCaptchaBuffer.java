@@ -112,9 +112,8 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     }
 
     private void initialiseFiles() throws Exception {
-        dataFile = new File(name + ".data");
-
-        indexFile = new File(name + ".index");
+        this.dataFile = new File(name + ".data");
+        this.indexFile = new File(name + ".index");
 
         readIndex();
 
@@ -122,7 +121,9 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
             if (log.isDebugEnabled()) {
                 log.debug("Index file dirty or empty. Deleting data file " + getDataFileName());
             }
-            dataFile.delete();
+            if (dataFile.exists() && !dataFile.delete()) {
+            	log.warn("Error deleting pre-existing dataFile " + getDataFileName());
+            }
             diskElements = new HashMap<>();
         }
 
@@ -439,40 +440,18 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
         return sb.toString();
     }
 
-    /**
-     * A reference to an on-disk elements.
-     */
-    private static class DiskElement implements Serializable {
-        private static final long serialVersionUID = 3316323681563120107L;
-
-		/**
-         * the file pointer
-         */
-        private long position;
-
-        /**
-         * The size used for data.
-         */
-        private int payloadSize;
-
-        /**
-         * the size of this element.
-         */
-        private int blockSize;
-
-    }
 
     /**
      * @return the total size of the data file and the index file, in bytes.
      */
-    public long getTotalFileSize() {
+    public synchronized long getTotalFileSize() {
         return getDataFileSize() + getIndexFileSize();
     }
 
     /**
      * @return the size of the data file in bytes.
      */
-    public long getDataFileSize() {
+    public synchronized long getDataFileSize() {
         return dataFile.length();
     }
 
@@ -499,7 +478,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @return the size of the index file, in bytes.
      */
-    public long getIndexFileSize() {
+    public synchronized long getIndexFileSize() {
         if (indexFile == null) {
             return 0;
         } else {
@@ -525,16 +504,20 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha()
      */
-    public Captcha removeCaptcha() throws NoSuchElementException {
-        if (isDisposed) return null;
+    public synchronized Captcha removeCaptcha() throws NoSuchElementException {
+        if (isDisposed) {
+        	return null;
+        }
         return removeCaptcha(Locale.getDefault());
     }
 
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha(int)
      */
-    public Collection<Captcha> removeCaptcha(int number) {
-        if (isDisposed) return null;
+    public synchronized Collection<Captcha> removeCaptcha(int number) {
+        if (isDisposed) {
+        	return null;
+        }
         log.debug("Entering removeCaptcha(int number) ");
         Collection<Captcha> c = null;
         try {
@@ -549,7 +532,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#putCaptcha(com.octo.captcha.Captcha)
      */
-    public void putCaptcha(Captcha captcha) {
+    public synchronized void putCaptcha(Captcha captcha) {
         log.debug("Entering putCaptcha(Captcha captcha)");
         putCaptcha(captcha, Locale.getDefault());
     }
@@ -557,23 +540,23 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#putAllCaptcha(java.util.Collection)
      */
-    public void putAllCaptcha(Collection<Captcha> captchas) {
+    public synchronized void putAllCaptcha(Collection<Captcha> captchas) {
         log.debug("Entering putAllCaptcha()");
-
         putAllCaptcha(captchas, Locale.getDefault());
     }
 
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#size()
      */
-    public int size() {
-        if (!isInitalized) return 0;
+    public synchronized int size() {
+        if (!isInitalized) {
+        	return 0;
+        }
         int total = 0;
         
         for (LinkedList<DiskElement> list : diskElements.values()) {
         	total += list.size();
-        }
-        
+        }        
         return total;
     }
 
@@ -585,7 +568,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#removeCaptcha(java.util.Locale)
      */
-    public Captcha removeCaptcha(Locale locale) throws NoSuchElementException {
+    public synchronized Captcha removeCaptcha(Locale locale) throws NoSuchElementException {
         log.debug("entering removeCaptcha(Locale locale)");
 
         Collection<Captcha> captchas = null;
@@ -604,7 +587,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see CaptchaBuffer#removeCaptcha(int, java.util.Locale)
      */
-    public Collection<Captcha> removeCaptcha(int number, Locale locale) {
+    public synchronized Collection<Captcha> removeCaptcha(int number, Locale locale) {
         if (isDisposed) {
         	return null;
         }
@@ -621,7 +604,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @see CaptchaBuffer#putCaptcha(com.octo.captcha.Captcha,
      *      java.util.Locale)
      */
-    public void putCaptcha(Captcha captcha, Locale locale) {
+    public synchronized void putCaptcha(Captcha captcha, Locale locale) {
         if (isDisposed) return;
 
         try {
@@ -636,7 +619,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
      * @see CaptchaBuffer#putAllCaptcha(java.util.Collection,
      *      java.util.Locale)
      */
-    public void putAllCaptcha(Collection<Captcha> captchas, Locale locale) {
+    public synchronized void putAllCaptcha(Collection<Captcha> captchas, Locale locale) {
         if (isDisposed) {
         	return;
         }
@@ -652,7 +635,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#size(java.util.Locale)
      */
-    public int size(Locale locale) {
+    public synchronized int size(Locale locale) {
         if (!isInitalized || isDisposed) {
         	return 0;
         }
@@ -662,7 +645,7 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#clear()
      */
-    public void clear() {
+    public synchronized void clear() {
         try {
             clearFile();
         }
@@ -675,11 +658,35 @@ public class DiskCaptchaBuffer implements CaptchaBuffer {
     /**
      * @see com.octo.captcha.engine.bufferedengine.buffer.CaptchaBuffer#getLocales()
      */
-    public Collection<Locale> getLocales() {
+    public synchronized Collection<Locale> getLocales() {
         if (isDisposed) {
         	return Collections.emptyList();
         }
         return diskElements.keySet();
     }
+    
+    /**
+     * A reference to an on-disk elements.
+     */
+    private static class DiskElement implements Serializable {
+        private static final long serialVersionUID = 3316323681563120107L;
+
+		/**
+         * the file pointer
+         */
+        private long position;
+
+        /**
+         * The size used for data.
+         */
+        private int payloadSize;
+
+        /**
+         * the size of this element.
+         */
+        private int blockSize;
+
+    }
+
 
 }

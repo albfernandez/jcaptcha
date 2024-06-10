@@ -41,13 +41,11 @@ public final class ImageToFile {
     	throw new AssertionError("No instances allowed");
     }
 
-    public static void serialize(BufferedImage image, File file)
-            throws IOException {
+    public static void serialize(BufferedImage image, File file) throws IOException {
         file.createNewFile();
-        FileOutputStream fos = new FileOutputStream(file);
-        encodeJPG(fos, image);
-        fos.flush();
-        fos.close();
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+        	encodeJPG(fos, image);
+        }
     }
 
     public static void encodeJPG(OutputStream sos, BufferedImage image)  throws IOException {
@@ -56,7 +54,5 @@ public final class ImageToFile {
         writer.setOutput(ios);
         writer.write(image);        
     }
-
-
 }
 

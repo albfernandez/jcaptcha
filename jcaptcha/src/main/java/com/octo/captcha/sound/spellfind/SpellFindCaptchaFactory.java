@@ -96,7 +96,7 @@ public class SpellFindCaptchaFactory extends SoundCaptchaFactory {
         StringBuffer response = new StringBuffer();
         for (int i = 0; i < length; i++) {
             //get a new word
-            String word = this.wordGenerator.getWord(Integer.valueOf(getRandomLength().intValue()), locale);
+            String word = this.wordGenerator.getWord(getRandomLength(), locale);
             //add it to collection and add its position
             int position = Math.abs(myRandom.nextInt() % word.length());
             //append to challenge
