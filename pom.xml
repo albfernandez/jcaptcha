@@ -21,7 +21,7 @@
 		<version.servlet-api>5.0.0</version.servlet-api>
 		<version.jsp-api>3.1.1</version.jsp-api>
 		<version.jakarta-el>4.0.0</version.jakarta-el>
-		<version.jetty-plugin>12.0.10</version.jetty-plugin>
+		<version.jetty-plugin>11.0.21</version.jetty-plugin>
 	</properties>
 	<modules>
 		<module>jcaptcha</module>
