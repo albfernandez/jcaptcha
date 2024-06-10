@@ -21,7 +21,7 @@
 		<version.servlet-api>5.0.0</version.servlet-api>
 		<version.jsp-api>3.1.1</version.jsp-api>
 		<version.jakarta-el>4.0.0</version.jakarta-el>
-		<version.jetty-plugin>11.0.21</version.jetty-plugin>
+		<version.jetty-plugin>11.0.2</version.jetty-plugin>
 	</properties>
 	<modules>
 		<module>jcaptcha</module>
@@ -79,21 +79,12 @@
 	<scm>
 		<connection>scm:git:git@github.com:albfernandez/jcaptcha.git</connection>
 		<developerConnection>scm:git:git@github.com:albfernandez/jcaptcha.git</developerConnection>
-		<url>git@github.com:albfernandez - backgrounds (fisheye and gimpy) : in order to generate corresponding captcha
- - modules : optional jars to include in your classpath
- - jcaptcha-all.jar : contains core classes including JHLabs imaging api
- - LICENSE.txt/jcaptcha.git</url>
+		<url>git@github.com:albfernande/jcaptcha.git</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/albfernandez/jcaptcha/issues</url>
 	</issueManagement>
-
-
-	<ciManagement>
-		<url>https://travis-ci.org/albfernandez/jcaptcha</url>
-		<system>Travis</system>
-	</ciManagement>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -110,12 +101,6 @@
 
 	<reporting>
 		<plugins>
-
-			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-				<reportSets> <reportSet> <configuration> <additionalparam> -inferrel -inferdep 
-				-quiet -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 
-				9 -nodefontpackagesize 7 -views </additionalparam> </configuration> <reports> 
-				<report>javadoc</report> </reports> </reportSet> </reportSets> </plugin -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
