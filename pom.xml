@@ -27,7 +27,6 @@
 		<module>common-test</module>
 		<module>jcaptcha</module>
 		<module>testing</module>
-		<module>extension-buffered-engine</module>
 		<module>integration-simple-servlet</module>
 		<module>samples</module>
 	</modules>
