@@ -4,7 +4,15 @@ JCaptcha stands for Java Completely Automated Public Test to tell Computers and 
 
 # License
 
-JCaptcha is LGPL
+JCaptcha is LGPL [https://www.gnu.org/licenses/lgpl-3.0.txt](https://www.gnu.org/licenses/lgpl-3.0.txt)
+
+Package com.octo.jhlabs contains a small subset of [https://gitlab.com/axet/jhlabs](https://gitlab.com/axet/jhlabs) and has Apache License [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+# Requeriments
+
+JCaptcha 3.0 requires:
+ * Java 11.
+ * Jakarta EE9 (if you use servlet related classes)
 
 # Usage (Simple Servlet Integration)
 
@@ -13,14 +21,10 @@ All you need to do is add the jcaptcha jar to your project, make a reference to 
 
 Files to add (version is ommited)
 - jcaptcha.jar
-- jcaptcha-api.jar
-- integrations/jcaptcha-integration-simple-servlet.jar
-- lib/filters.jar
 
-And if you don't have them already:
-
+And if you don't have it already:
 - lib/commons-logging.jar
-- lib/commons-collections.jar
+
 
 Put the reference in your web.xml (checking that the url-pattern path matches up with what you put in your html fragment above):
 
@@ -53,10 +57,10 @@ In your code that manages the submit action add the following code fragment to v
 
 String userCaptchaResponse = request.getParameter("jcaptcha");
 boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
-if(captchaPassed){
-// proceed to submit action
-}else{
-// return error to user
+if (captchaPassed) {
+    // proceed to submit action
+} else {
+    // return error to user
 }
 ```
 
@@ -69,10 +73,26 @@ And that's it!
 Clone the repository or download de tar file from releases page on github, then run the Maven command:
 
     git clone https://github.com/albfernandez/jcaptcha.git
-    git checkout tags/v2.0.0
+    git checkout tags/v3.0.0
     cd jcaptcha
     mvn clean package verify 
     mvn assembly:single -Dmaven.test.skip=true
 
 
-The result file is ``target/jcaptcha-2.0.0-dist.zip``
+The result file is ``target/jcaptcha-3.0.0-dist.zip``
+
+
+# Changes from 2.0 to 3.0
+
+* Upgraded Java requeriment to 11.
+* Upgrade to Jakarta EE 9.
+* Remove dependency on commons-collections.
+* Remove dependency on sl4j.
+* Remove extension-sound-freetts extension and all sound related code.
+* Remove buffered-engine extension.
+* Remove jboss-cache extension.
+* Integrate api, jcaptcha and servlet-integration in an unique jar.
+* Integrate only used filters from filters library.
+
+
+
