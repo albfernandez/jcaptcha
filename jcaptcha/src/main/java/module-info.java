@@ -4,7 +4,6 @@ module com.octo.captcha {
 	requires transitive jakarta.servlet;
 	requires jakarta.servlet.jsp;
 	requires transitive org.apache.commons.logging;
-	requires filters;
 	
 	exports com.octo.captcha;
 	exports com.octo.captcha.engine;
