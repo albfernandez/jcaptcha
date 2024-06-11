@@ -190,7 +190,7 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
 		return dst;
 	}
 
-	final private int getPixel( int[] pixels, int x, int y, int width, int height ) {
+	private int getPixel( int[] pixels, int x, int y, int width, int height ) {
 		if (x < 0 || x >= width || y < 0 || y >= height) {
 			switch (edgeAction) {
 			case ZERO:

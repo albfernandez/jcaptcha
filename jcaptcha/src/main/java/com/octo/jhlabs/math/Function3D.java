@@ -17,6 +17,6 @@ limitations under the License.
 package com.octo.jhlabs.math;
 
 public interface Function3D {
-	public float evaluate(float x, float y, float z);
+	float evaluate(float x, float y, float z);
 }
 
