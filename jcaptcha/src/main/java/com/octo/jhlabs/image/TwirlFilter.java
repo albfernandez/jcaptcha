@@ -14,29 +14,32 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.jhlabs.image;
+package com.octo.jhlabs.image;
 
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 /**
- * A filter which performs the popular whirl-and-pinch distortion effect.
+ * A Filter which distorts an image by twisting it from the centre out.
+ * The twisting is centred at the centre of the image and extends out to the smallest of
+ * the width and height. Pixels outside this radius are unaffected.
  */
-public class PinchFilter extends TransformFilter {
-
+public class TwirlFilter extends TransformFilter {
+	
 	private float angle = 0;
 	private float centreX = 0.5f;
 	private float centreY = 0.5f;
 	private float radius = 100;
-	private float amount = 0.5f;
 
 	private float radius2 = 0;
 	private float icentreX;
 	private float icentreY;
-	private float width;
-	private float height;
-	
-	public PinchFilter() {
+
+	/**
+	 * Construct a TwirlFilter with no distortion.
+	 */
+	public TwirlFilter() {
+		setEdgeAction( CLAMP );
 	}
 
 	/**
@@ -131,31 +134,9 @@ public class PinchFilter extends TransformFilter {
 		return radius;
 	}
 
-	/**
-	 * Set the amount of pinch.
-	 * @param amount the amount
-     * @min-value -1
-     * @max-value 1
-     * @see #getAmount
-	 */
-	public void setAmount(float amount) {
-		this.amount = amount;
-	}
-
-	/**
-	 * Get the amount of pinch.
-	 * @return the amount
-     * @see #setAmount
-	 */
-	public float getAmount() {
-		return amount;
-	}
-
     public BufferedImage filter( BufferedImage src, BufferedImage dst ) {
-		width = src.getWidth();
-		height = src.getHeight();
-		icentreX = width * centreX;
-		icentreY = height * centreY;
+		icentreX = src.getWidth() * centreX;
+		icentreY = src.getHeight() * centreY;
 		if ( radius == 0 )
 			radius = Math.min(icentreX, icentreY);
 		radius2 = radius*radius;
@@ -166,30 +147,19 @@ public class PinchFilter extends TransformFilter {
 		float dx = x-icentreX;
 		float dy = y-icentreY;
 		float distance = dx*dx + dy*dy;
-
-		if ( distance > radius2 || distance == 0 ) {
+		if (distance > radius2) {
 			out[0] = x;
 			out[1] = y;
 		} else {
-			float d = (float)Math.sqrt( distance / radius2 );
-			float t = (float)Math.pow( Math.sin( Math.PI*0.5 * d ), -amount);
-
-			dx *= t;
-			dy *= t;
-
-			float e = 1 - d;
-			float a = angle * e * e;
-
-			float s = (float)Math.sin( a );
-			float c = (float)Math.cos( a );
-
-			out[0] = icentreX + c*dx - s*dy;
-			out[1] = icentreY + s*dx + c*dy;
+			distance = (float)Math.sqrt(distance);
+			float a = (float)Math.atan2(dy, dx) + angle * (radius-distance) / radius;
+			out[0] = icentreX + distance*(float)Math.cos(a);
+			out[1] = icentreY + distance*(float)Math.sin(a);
 		}
 	}
 
 	public String toString() {
-		return "Distort/Pinch...";
+		return "Distort/Twirl...";
 	}
 
 }

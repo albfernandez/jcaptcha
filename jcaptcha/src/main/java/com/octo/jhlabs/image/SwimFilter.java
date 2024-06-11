@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.jhlabs.image;
+package com.octo.jhlabs.image;
 
-import com.jhlabs.math.Noise;
+import com.octo.jhlabs.math.Noise;
 
 /**
  * A filter which distorts an image as if it were underwater.

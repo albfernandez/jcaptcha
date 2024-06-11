@@ -22,8 +22,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 
-import com.jhlabs.image.SwimFilter;
-import com.jhlabs.math.ImageFunction2D;
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
 import com.octo.captcha.component.image.color.SingleColorGenerator;
@@ -39,6 +37,8 @@ import com.octo.captcha.component.image.textpaster.glyphsvisitor.TranslateAllToR
 import com.octo.captcha.component.image.wordtoimage.DeformedComposedWordToImage;
 import com.octo.captcha.component.word.wordgenerator.RandomWordGenerator;
 import com.octo.captcha.engine.image.ListImageCaptchaEngine;
+import com.octo.jhlabs.image.SwimFilter;
+import com.octo.jhlabs.math.ImageFunction2D;
 
 /**
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is

@@ -41,17 +41,17 @@ public class SimpleFishEyeEngine extends ListImageCaptchaEngine {
      */
     protected void buildInitialFactories() {
         //build filters
-        com.jhlabs.image.SphereFilter sphere = new com.jhlabs.image.SphereFilter();
-        com.jhlabs.image.RippleFilter ripple = new com.jhlabs.image.RippleFilter();
-        com.jhlabs.image.TwirlFilter twirl = new com.jhlabs.image.TwirlFilter();
-        com.jhlabs.image.WaterFilter water = new com.jhlabs.image.WaterFilter();
+        com.octo.jhlabs.image.SphereFilter sphere = new com.octo.jhlabs.image.SphereFilter();
+        com.octo.jhlabs.image.RippleFilter ripple = new com.octo.jhlabs.image.RippleFilter();
+        com.octo.jhlabs.image.TwirlFilter twirl = new com.octo.jhlabs.image.TwirlFilter();
+        com.octo.jhlabs.image.WaterFilter water = new com.octo.jhlabs.image.WaterFilter();
 
-        ripple.setWaveType(com.jhlabs.image.RippleFilter.NOISE);
+        ripple.setWaveType(com.octo.jhlabs.image.RippleFilter.NOISE);
         ripple.setXAmplitude(10);
         ripple.setYAmplitude(10);
         ripple.setXWavelength(10);
         ripple.setYWavelength(10);
-        ripple.setEdgeAction(com.jhlabs.image.TransformFilter.CLAMP);
+        ripple.setEdgeAction(com.octo.jhlabs.image.TransformFilter.CLAMP);
 
         water.setAmplitude(10);
  //       water.setAntialias(true);

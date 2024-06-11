@@ -23,8 +23,6 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jhlabs.image.PinchFilter;
-import com.jhlabs.math.ImageFunction2D;
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
 import com.octo.captcha.component.image.color.RandomListColorGenerator;
@@ -45,6 +43,8 @@ import com.octo.captcha.component.word.wordgenerator.ComposeDictionaryWordGenera
 import com.octo.captcha.component.word.wordgenerator.WordGenerator;
 import com.octo.captcha.engine.image.ListImageCaptchaEngine;
 import com.octo.captcha.image.gimpy.GimpyFactory;
+import com.octo.jhlabs.image.PinchFilter;
+import com.octo.jhlabs.math.ImageFunction2D;
 
 /**
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is

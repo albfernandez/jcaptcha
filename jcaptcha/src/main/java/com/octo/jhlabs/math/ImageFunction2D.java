@@ -14,15 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.jhlabs.math;
+package com.octo.jhlabs.math;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.image.PixelGrabber;
 
-import com.jhlabs.image.ImageMath;
-import com.jhlabs.image.PixelUtils;
+import com.octo.jhlabs.image.ImageMath;
+import com.octo.jhlabs.image.PixelUtils;
 
 public class ImageFunction2D implements Function2D {
 

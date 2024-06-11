@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.jhlabs.math;
+package com.octo.jhlabs.math;
 
-public interface Function3D {
-	public float evaluate(float x, float y, float z);
+public interface Function2D {
+	public float evaluate(float x, float y);
 }
 

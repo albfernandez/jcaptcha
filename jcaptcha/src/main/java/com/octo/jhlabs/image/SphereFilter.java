@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.jhlabs.image;
+package com.octo.jhlabs.image;
 
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
