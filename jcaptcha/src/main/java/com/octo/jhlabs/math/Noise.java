@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.octo.jhlabs.math;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -23,7 +24,7 @@ import java.util.Random;
  */
 public class Noise implements Function1D, Function2D, Function3D {
 
-	private static Random randomGenerator = new Random();
+	private static Random randomGenerator = new SecureRandom();
 	
 	public float evaluate(float x) {
 		return noise1(x);

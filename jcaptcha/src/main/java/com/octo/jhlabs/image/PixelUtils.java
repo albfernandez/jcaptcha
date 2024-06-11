@@ -17,6 +17,7 @@ limitations under the License.
 package com.octo.jhlabs.image;
 
 import java.awt.Color;
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -47,7 +48,7 @@ public class PixelUtils {
 	public final static int ALPHA = 19;
 	public final static int ALPHA_TO_GRAY = 20;
 
-	private static Random randomGenerator = new Random();
+	private static Random randomGenerator = new SecureRandom();
 
 	/**
 	 * Clamp a value to the range 0..255
