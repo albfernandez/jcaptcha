@@ -16,11 +16,15 @@ limitations under the License.
 
 package com.jhlabs.image;
 
-import java.awt.*;
-import java.awt.image.*;
-import java.lang.reflect.*;
-import java.beans.*;
-import java.util.*;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 
 /**
  * A filter which uses another filter to perform a transition.
@@ -48,11 +52,7 @@ public class TransitionFilter extends AbstractBufferedImageOp {
      */
     protected float maxValue;
 
-    /**
-     * Construct a TransitionFilter.
-     */
-	private TransitionFilter() {
-	}
+
 
     /**
      * Construct a TransitionFilter.
@@ -139,7 +139,7 @@ public class TransitionFilter extends AbstractBufferedImageOp {
      */
 	public void prepareFilter( float transition ) {
         try {
-            method.invoke( filter, new Object[] { new Float( transition ) } );
+            method.invoke( filter, new Object[] { Float.valueOf( transition ) } );
         }
         catch ( Exception e ) {
             throw new IllegalArgumentException("Error setting value for property: "+property);

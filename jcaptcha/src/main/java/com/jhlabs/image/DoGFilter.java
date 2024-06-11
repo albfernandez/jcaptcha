@@ -16,9 +16,10 @@ limitations under the License.
 
 package com.jhlabs.image;
 
-import java.awt.*;
-import java.awt.image.*;
-import com.jhlabs.composite.*;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import com.jhlabs.composite.SubtractComposite;
 
 /**
  * Edge detection by difference of Gaussians.

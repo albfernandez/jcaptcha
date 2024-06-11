@@ -16,10 +16,14 @@ limitations under the License.
 
 package com.jhlabs.image;
 
-import java.awt.*;
-import java.awt.image.*;
-import java.util.*;
-import com.jhlabs.math.*;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.util.Random;
+
+import com.jhlabs.math.FBM;
+import com.jhlabs.math.Function2D;
+import com.jhlabs.math.Noise;
 
 public class SkyFilter extends PointFilter {
 

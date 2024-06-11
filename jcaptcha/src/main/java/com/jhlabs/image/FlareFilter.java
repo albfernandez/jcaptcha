@@ -16,10 +16,9 @@ limitations under the License.
 
 package com.jhlabs.image;
 
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.util.*;
-import com.jhlabs.math.*;
+import java.awt.geom.Point2D;
+
+import com.jhlabs.math.Noise;
 
 /**
  * An experimental filter for rendering lens flares.
