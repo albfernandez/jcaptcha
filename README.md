@@ -87,7 +87,7 @@ The result file is ``target/jcaptcha-3.0.0-dist.zip``
 * Upgraded Java requeriment to 11.
 * Upgrade to Jakarta EE 9.
 * Remove dependency on commons-collections.
-* Remove dependency on sl4j.
+* Remove dependency on slf4j.
 * Remove extension-sound-freetts extension and all sound related code.
 * Remove buffered-engine extension.
 * Remove jboss-cache extension.
