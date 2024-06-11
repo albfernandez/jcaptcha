@@ -43,7 +43,7 @@ import com.octo.captcha.component.image.wordtoimage.DeformedComposedWordToImage;
 import com.octo.captcha.component.word.wordgenerator.RandomWordGenerator;
 import com.octo.captcha.engine.image.ListImageCaptchaEngine;
 import com.octo.jhlabs.image.SwimFilter;
-import com.octo.jhlabs.math.ImageFunction2D;
+import com.octo.jhlabs.image.TransformFilter;
 
 /**
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is
@@ -100,7 +100,7 @@ public class HotmailEngine extends ListImageCaptchaEngine {
         swim.setTurbulence(1);
         swim.setAmount(2);
         swim.setTime(0);
-        swim.setEdgeAction(ImageFunction2D.CLAMP);
+        swim.setEdgeAction(TransformFilter.CLAMP);
 
         java.util.List<ImageDeformation> def =  new ArrayList<ImageDeformation>();
               def.add(new ImageDeformationByBufferedImageOp(swim));

@@ -38,7 +38,7 @@ import com.octo.captcha.component.image.wordtoimage.DeformedComposedWordToImage;
 import com.octo.captcha.component.word.wordgenerator.RandomWordGenerator;
 import com.octo.captcha.engine.image.ListImageCaptchaEngine;
 import com.octo.jhlabs.image.SwimFilter;
-import com.octo.jhlabs.math.ImageFunction2D;
+import com.octo.jhlabs.image.TransformFilter;
 
 /**
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is
@@ -88,13 +88,13 @@ public class HotmailEngine2008 extends ListImageCaptchaEngine {
 
         swim.setScale(30);
         swim.setAmount(10);
-        swim.setEdgeAction(ImageFunction2D.CLAMP);
+        swim.setEdgeAction(TransformFilter.CLAMP);
 
         SwimFilter swim2= new SwimFilter();
         swim2.setScale(30);
         swim2.setAmount(10);
         swim2.setTime(90);
-        swim2.setEdgeAction(ImageFunction2D.CLAMP);
+        swim2.setEdgeAction(TransformFilter.CLAMP);
 
         java.util.List<ImageDeformation> def =  new ArrayList<ImageDeformation>();
 

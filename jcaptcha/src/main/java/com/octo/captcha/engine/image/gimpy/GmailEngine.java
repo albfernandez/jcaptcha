@@ -44,7 +44,7 @@ import com.octo.captcha.component.word.wordgenerator.WordGenerator;
 import com.octo.captcha.engine.image.ListImageCaptchaEngine;
 import com.octo.captcha.image.gimpy.GimpyFactory;
 import com.octo.jhlabs.image.PinchFilter;
-import com.octo.jhlabs.math.ImageFunction2D;
+import com.octo.jhlabs.image.TransformFilter;
 
 /**
  * This is the default captcha engine. It provides a sample gimpy challenge that has no automated solution known. It is
@@ -99,7 +99,7 @@ public class GmailEngine extends ListImageCaptchaEngine {
         pinch.setAngle((float) (Math.PI/16));
         pinch.setCentreX(0.5f);
         pinch.setCentreY(-0.01f);
-        pinch.setEdgeAction(ImageFunction2D.CLAMP);       
+        pinch.setEdgeAction(TransformFilter.CLAMP);       
 
         PinchFilter pinch2 = new PinchFilter();
         pinch2.setAmount(-.6f);
@@ -107,7 +107,7 @@ public class GmailEngine extends ListImageCaptchaEngine {
         pinch2.setAngle((float) (Math.PI/16));
         pinch2.setCentreX(0.3f);
         pinch2.setCentreY(1.01f);
-        pinch2.setEdgeAction(ImageFunction2D.CLAMP);
+        pinch2.setEdgeAction(TransformFilter.CLAMP);
 
         PinchFilter pinch3 = new PinchFilter();
         pinch3.setAmount(-.6f);
@@ -115,7 +115,7 @@ public class GmailEngine extends ListImageCaptchaEngine {
         pinch3.setAngle((float) (Math.PI/16));
         pinch3.setCentreX(0.8f);
         pinch3.setCentreY(-0.01f);
-        pinch3.setEdgeAction(ImageFunction2D.CLAMP);
+        pinch3.setEdgeAction(TransformFilter.CLAMP);
 
 
 
