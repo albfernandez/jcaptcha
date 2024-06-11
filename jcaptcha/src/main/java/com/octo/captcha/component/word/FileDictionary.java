@@ -25,7 +25,7 @@ public class FileDictionary implements DictionaryReader {
         myBundle = bundle;
     }
 
-    public SizeSortedWordList getWordList() {
+    public SizeSortedWordList getWordList() {    	
         ResourceBundle bundle = ResourceBundle.getBundle(myBundle);
         SizeSortedWordList list = generateWordList(Locale.getDefault(), bundle);
         return list;

@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
@@ -52,7 +51,6 @@ public class FileDictionaryTest {
     }
 
     @Test
-    @Disabled("temporal, fails to load bundles in test")
     public void testGetWordList() {
         SizeSortedWordList test = this.fileDictionary.getWordList();
         assertNotNull(test);

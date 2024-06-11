@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.Captcha;
@@ -24,7 +23,6 @@ import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.captchastore.CaptchaStore;
 import com.octo.captcha.service.captchastore.impl.MapCaptchaStore;
 
-@Disabled("slow")
 public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstractCaptchaServiceTest {
     public static int MIN_GUARANTED_STORAGE_DELAY_IN_SECONDS = 1;
     public static int CAPTCHA_STORE_LOAD_BEFORE_GARBAGE_COLLECTION = 2 * SIZE;

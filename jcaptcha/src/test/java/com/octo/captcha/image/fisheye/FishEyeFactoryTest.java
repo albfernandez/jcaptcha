@@ -26,7 +26,6 @@ import java.awt.Color;
 import java.awt.Point;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
@@ -43,10 +42,9 @@ public class FishEyeFactoryTest  {
     }
 
     @Test
-    @Disabled("cannot read resource bundle in tests")
     public void testGetImageCaptcha() throws Exception {
         for (int i = 0; i < 10; i++) {
-            assertTrue(fishEyeFactory.getImageCaptcha().getChallenge() != null, "sould be not null");
+            assertTrue(fishEyeFactory.getImageCaptcha().getChallenge() != null, "should be not null");
         }
         
         try {
@@ -60,7 +58,7 @@ public class FishEyeFactoryTest  {
         this.fishEyeFactory = new FishEyeFactory(new UniColorBackgroundGenerator(Integer.valueOf(10), Integer.valueOf(10),
                 Color.black), new ImageDeformationByFilters(null), Integer.valueOf(1), Integer.valueOf(10));
         for (int i = 0; i < 10; i++) {
-            assertTrue(fishEyeFactory.getImageCaptcha().validateResponse(new Point(5, 5)).booleanValue(), "sould be never fail");
+            assertTrue(fishEyeFactory.getImageCaptcha().validateResponse(new Point(5, 5)).booleanValue(), "should be never fail");
         }
     }
 }

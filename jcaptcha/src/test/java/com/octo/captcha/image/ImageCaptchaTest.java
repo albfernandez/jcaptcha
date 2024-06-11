@@ -34,7 +34,6 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.octo.captcha.Captcha;
@@ -51,7 +50,6 @@ import com.octo.captcha.image.gimpy.GimpyFactory;
  * @author <a href="mailto:antoine.veret@gmail.com">Antoine Véret</a>
  * @version 1.1
  */
-@Disabled("temporal, fails to load bundles in test")
 public class ImageCaptchaTest {
 
     private ImageCaptcha pixCaptcha;
