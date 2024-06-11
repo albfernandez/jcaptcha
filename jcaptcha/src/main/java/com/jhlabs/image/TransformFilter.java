@@ -19,7 +19,6 @@ package com.jhlabs.image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
-import java.awt.image.WritableRaster;
 
 /**
  * An abstract superclass for filters which distort images in some way. The subclass only needs to override
@@ -128,11 +127,9 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
 	protected void transformSpace(Rectangle rect) {
 	}
 
-    public BufferedImage filter( BufferedImage src, BufferedImage dst ) {
+    public BufferedImage filter( BufferedImage src, BufferedImage dst) {
         int width = src.getWidth();
         int height = src.getHeight();
-		int type = src.getType();
-		WritableRaster srcRaster = src.getRaster();
 
 		originalSpace = new Rectangle(0, 0, width, height);
 		transformedSpace = new Rectangle(0, 0, width, height);
@@ -142,7 +139,7 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
             ColorModel dstCM = src.getColorModel();
 			dst = new BufferedImage(dstCM, dstCM.createCompatibleWritableRaster(transformedSpace.width, transformedSpace.height), dstCM.isAlphaPremultiplied(), null);
 		}
-		WritableRaster dstRaster = dst.getRaster();
+
 
 		int[] inPixels = getRGB( src, 0, 0, width, height, null );
 
@@ -156,7 +153,7 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
 		int outWidth = transformedSpace.width;
 		int outHeight = transformedSpace.height;
 		int outX, outY;
-		int index = 0;
+
 		int[] outPixels = new int[outWidth];
 
 		outX = transformedSpace.x;

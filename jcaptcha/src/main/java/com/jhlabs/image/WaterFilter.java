@@ -167,9 +167,6 @@ public class WaterFilter extends TransformFilter {
 		return radius;
 	}
 
-	private boolean inside(int v, int a, int b) {
-		return a <= v && v <= b;
-	}
 	
     public BufferedImage filter( BufferedImage src, BufferedImage dst ) {
 		icentreX = src.getWidth() * centreX;
