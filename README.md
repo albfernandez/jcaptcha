@@ -30,12 +30,12 @@ Put the reference in your web.xml (checking that the url-pattern path matches up
 
 ```xml
 <servlet>
-    <servlet-name>jcaptcha</servlet-name>
-        <servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
+  <servlet-name>jcaptcha</servlet-name>
+  <servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-        <servlet-name>jcaptcha</servlet-name>
-        <url-pattern>/jcaptcha.jpg</url-pattern>
+  <servlet-name>jcaptcha</servlet-name>
+  <url-pattern>/jcaptcha.jpg</url-pattern>
 </servlet-mapping>
 ```
 
@@ -44,9 +44,9 @@ Add the folowing image tag to the form you want to protect, this call will asks 
 ```html
 
 <form action="submit.action">
-
-    <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
-
+    <img src="jcaptcha.jpg" /> 
+    <input type="text" name="jcaptcha" value="" />
+    <input type="submit" />
 </form>
 
 ```
