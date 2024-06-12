@@ -54,7 +54,7 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 	}
 
 	public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse){
-         if(request.getSession(false)==null) {
+         if (request.getSession(false) == null) {
         	 //if no session found
         	 return false;
          }

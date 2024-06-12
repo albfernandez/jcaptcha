@@ -1,53 +1,55 @@
 <!--
-  ~ JCaptcha, the open source java framework for captcha definition and integration
+  ~ JCaptcha, the open source java framework for captcha definition and
+integration
   ~ Copyright (c)  2007 jcaptcha.net. All Rights Reserved.
   ~ See the LICENSE.txt file distributed with this package.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>jcaptcha-samples</artifactId>
-    <groupId>com.github.albfernandez</groupId>
-    <version>3.0.0-SNAPSHOT</version>
-  </parent>
-  <properties>
-  	<automatic.module.name>samples.image</automatic.module.name>
-  </properties>
-  <artifactId>jcaptcha-integration-simple-servlet-image-sample</artifactId>
-  <packaging>war</packaging>
-  <name>Simple Image Servlet Webapp Sample</name>
-  <dependencies>
-    <dependency>
-      <groupId>com.github.albfernandez</groupId>
-      <artifactId>jcaptcha</artifactId>
-      <version>3.0.0-SNAPSHOT</version>
-    </dependency>
-
-
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${version.commons-logging}</version>
-        </dependency>	
-         <dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>${version.servlet-api}</version>
-		    <scope>provided</scope>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>jcaptcha-samples</artifactId>
+		<groupId>com.github.albfernandez</groupId>
+		<version>3.0.0-SNAPSHOT</version>
+	</parent>
+	<properties>
+		<automatic.module.name>samples.image</automatic.module.name>
+	</properties>
+	<artifactId>jcaptcha-integration-simple-servlet-image-sample</artifactId>
+	<packaging>war</packaging>
+	<name>Simple Image Servlet Webapp Sample</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.albfernandez</groupId>
+			<artifactId>jcaptcha</artifactId>
+			<version>3.0.0-SNAPSHOT</version>
 		</dependency>
 
-  </dependencies>
-  <build>
-    <finalName>jcaptcha-integration-simple-servlet-sample</finalName>
 
-      <plugins>
-		<plugin>
-		    <groupId>org.eclipse.jetty</groupId>
-		    <artifactId>jetty-maven-plugin</artifactId>
-		  <version>${version.jetty-plugin}</version>
-		</plugin>
-	</plugins>
-  </build>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${version.commons-logging}</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${version.servlet-api}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>jcaptcha-integration-simple-servlet-sample</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${version.jetty-plugin}</version>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

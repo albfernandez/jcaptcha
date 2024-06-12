@@ -1,21 +1,23 @@
 <!--
-  ~ JCaptcha, the open source java framework for captcha definition and integration
+  ~ JCaptcha, the open source java framework for captcha definition and
+integration
   ~ Copyright (c)  2007 jcaptcha.net. All Rights Reserved.
   ~ See the LICENSE.txt file distributed with this package.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">         
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>jcaptcha-home</artifactId>
-        <groupId>com.github.albfernandez</groupId>
-        <version>3.0.0-SNAPSHOT</version>
-    </parent>
-    <artifactId>jcaptcha</artifactId>
-    <name>JCaptcha</name>
-    <packaging>jar</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>jcaptcha-home</artifactId>
+		<groupId>com.github.albfernandez</groupId>
+		<version>3.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>jcaptcha</artifactId>
+	<name>JCaptcha</name>
+	<packaging>jar</packaging>
 
-    <description><![CDATA[<b>JCAPTCHA</b>, for <b>J</b>ava <b>C</b>ompletely <b>A</b>utomated <b>P</b>ublic <b>T</b>est to tell <b>C</b>omputers and <b>H</b>umans <b>A</b>part
+	<description><![CDATA[<b>JCAPTCHA</b>, for <b>J</b>ava <b>C</b>ompletely <b>A</b>utomated <b>P</b>ublic <b>T</b>est to tell <b>C</b>omputers and <b>H</b>umans <b>A</b>part
 <br/>The open source java framework for captcha definition and integration
 <br/>
 
@@ -24,75 +26,46 @@
  This jar aims to provide interfaces and implementation of generic and typed captcha and captcha factories.<BR/>
  It uses the word generator, types sub packages (image) components (word to image)
  to build typed captchas captchas.]]></description>
-	<prerequisites>
-		<maven>3.0.4</maven>
-	</prerequisites>
+
 	<properties>
 		<automatic.module.name>jcaptcha</automatic.module.name>
 	</properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.1.0</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/assembly/uber-jar.xml</descriptor>
-                    </descriptors>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
-  <issueManagement>
-    <system>Jira</system>
-    <url>http://forge.octo.com/jcaptcha/jira/browse/FWK</url>
-  </issueManagement>  
-
-    <dependencies>
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${version.commons-logging}</version>
-        </dependency>
-
+	<dependencies>
 		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>${version.servlet-api}</version>
-		    <scope>provided</scope>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${version.commons-logging}</version>
 		</dependency>
 
-        <dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>${version.jsp-api}</version>
-		    <scope>provided</scope>
-		</dependency>
-		
 		<dependency>
-		    <groupId>jakarta.el</groupId>
-		    <artifactId>jakarta.el-api</artifactId>
-		    <version>${version.jakarta-el}</version>
-		    <scope>provided</scope>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${version.servlet-api}</version>
+			<scope>provided</scope>
 		</dependency>
-		
-		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>${version.jsp-api}</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-	        <groupId>org.junit.jupiter</groupId>
-	        <artifactId>junit-jupiter-engine</artifactId>
-	        <version>${version.junit}</version>
-	        <scope>test</scope>
-	    </dependency>
 
-    </dependencies>
-    
+		<dependency>
+			<groupId>jakarta.servlet.jsp</groupId>
+			<artifactId>jakarta.servlet.jsp-api</artifactId>
+			<version>${version.jsp-api}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.el</groupId>
+			<artifactId>jakarta.el-api</artifactId>
+			<version>${version.jakarta-el}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>

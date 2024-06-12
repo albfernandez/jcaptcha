@@ -15,6 +15,10 @@
       <outputDirectory>/</outputDirectory>
     </file>
     <file>
+      <source>jcaptcha/APACHE_LICENSE_v2.txt</source>
+      <outputDirectory>/</outputDirectory>
+    </file>
+    <file>
       <source>src/assembly/README.txt</source>
       <outputDirectory>/</outputDirectory>
     </file>   
@@ -51,7 +55,6 @@
     	<outputDirectory>lib/</outputDirectory>
     	<includes>
     		<include>commons-*.jar</include>
-    		<include>filters-*.jar</include>
     	</includes>
     	<excludes>
     		<exclude>*sources*</exclude>
@@ -63,13 +66,6 @@
     <!-- javadoc -->
     <fileSet>
       <directory>jcaptcha/target</directory>
-      <outputDirectory>docs/api-docs/</outputDirectory>
-    	<includes>
-    		<include>*javadoc*.jar</include>
-    	</includes>
-    </fileSet>
-    <fileSet>
-      <directory>api/target</directory>
       <outputDirectory>docs/api-docs/</outputDirectory>
     	<includes>
     		<include>*javadoc*.jar</include>

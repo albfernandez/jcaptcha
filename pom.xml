@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -14,14 +15,26 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<automatic.module.name>home</automatic.module.name>
-		<compilerLevel>11</compilerLevel>
-		
+		<compiler.level>11</compiler.level>
+
 		<version.junit>5.10.2</version.junit>
 		<version.commons-logging>1.3.2</version.commons-logging>
 		<version.servlet-api>5.0.0</version.servlet-api>
 		<version.jsp-api>3.1.1</version.jsp-api>
 		<version.jakarta-el>4.0.0</version.jakarta-el>
+
 		<version.jetty-plugin>11.0.2</version.jetty-plugin>
+		<version.compiler-plugin>3.13.0</version.compiler-plugin>
+		<version.surefire-plugin>3.2.5</version.surefire-plugin>
+		<version.spotbugs-plugin>4.8.5.0</version.spotbugs-plugin>
+		<version.pmd-plugin>3.22.0</version.pmd-plugin>
+		<version.findsecbugs-plugin>1.13.0</version.findsecbugs-plugin>
+		<version.jar-plugin>3.4.1</version.jar-plugin>
+		<version.war-plugin>3.4.0</version.war-plugin>
+		<version.source-plugin>3.3.1</version.source-plugin>
+		<version.javadoc-plugin>3.7.0</version.javadoc-plugin>
+		<version.assembly-plugin>3.7.1</version.assembly-plugin>
+
 	</properties>
 	<modules>
 		<module>jcaptcha</module>
@@ -29,8 +42,8 @@
 	</modules>
 	<licenses>
 		<license>
-			<name>LGPL v2.1</name>
-			<url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+			<name>LGPL v3</name>
+			<url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
 		</license>
 	</licenses>
 
@@ -74,8 +87,6 @@
 	<inceptionYear>2003</inceptionYear>
 
 
-
-
 	<scm>
 		<connection>scm:git:git@github.com:albfernandez/jcaptcha.git</connection>
 		<developerConnection>scm:git:git@github.com:albfernandez/jcaptcha.git</developerConnection>
@@ -86,147 +97,86 @@
 		<url>https://github.com/albfernandez/jcaptcha/issues</url>
 	</issueManagement>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
-
-
-
-	<reporting>
-		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
-				<configuration>
-					<linkXRef>on</linkXRef>
-				</configuration>
-			</plugin>
-
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-surefire-report-plugin</artifactId>
-			    <version>3.2.3</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clover-plugin</artifactId>
-				<version>2.4.1</version>
-				<configuration>
-					<licenseLocation>${clover.licenseLocation}</licenseLocation>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.5</version>
-			</plugin>
-
-			<plugin>
-			    <groupId>org.codehaus.mojo</groupId>
-			    <artifactId>taglist-maven-plugin</artifactId>
-			    <version>2.4</version>
-			</plugin>
-
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-jxr-plugin</artifactId>
-			    <version>2.5</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.8</version>
-				<configuration>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-idea-plugin</artifactId>
-				<version>2.2.1</version>
-				<configuration>
-					<downloadSources>false</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>
-
-		</plugins>
-	</reporting>
 
 	<build>
 		<resources>
-		     <resource>
-		       <directory>src/main/resources/</directory>
-		       <includes>
-		            <include>**/*.properties</include>
-		        </includes>
-		     </resource>		     
-		   </resources>
-		   <testResources>
-				<testResource>
-					<directory>src/main/resources/</directory>
-			       <includes>
-			            <include>**/*.properties</include>
-			        </includes>
-				</testResource>
-				<testResource>
-					<directory>src/test/resources/</directory>
-			       <includes>
-			            <include>**/*</include>
-			        </includes>
-				</testResource>
-		   </testResources>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.2.5</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/main/resources/</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources/</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
+				<version>${version.compiler-plugin}</version>
 				<configuration>
-					<source>${compilerLevel}</source>
-					<target>${compilerLevel}</target>
+					<source>${compiler.level}</source>
+					<target>${compiler.level}</target>
 				</configuration>
 			</plugin>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-    			<artifactId>maven-war-plugin</artifactId>
-    			<version>3.2.2</version>
-    		</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war-plugin}</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<inherited>true</inherited>
+				<version>${version.surefire-plugin}</version>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${version.source-plugin}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clover-plugin</artifactId>
-				<version>2.4.1</version>				
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${version.javadoc-plugin}</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>${version.assembly-plugin}</version>
 				<configuration>
 					<descriptors>
 						<descriptor>src/assembly/bin.xml</descriptor>
@@ -239,44 +189,31 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>${version.jar-plugin}</version>
 				<configuration>
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
-						<manifestEntries>							
-							<Build-Time>${maven.build.timestamp}</Build-Time>
-							<Automatic-Module-Name>com.github.albfernandez.jcaptcha.${automatic.module.name}</Automatic-Module-Name>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
 
+
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin>
-			<plugin>
-			    <groupId>com.github.spotbugs</groupId>
-	            <artifactId>spotbugs-maven-plugin</artifactId>
-	            <version>4.8.5.0</version>
-	            <configuration>
-	                <plugins>
-	                    <plugin>
-	                        <groupId>com.h3xstream.findsecbugs</groupId>
-	                        <artifactId>findsecbugs-plugin</artifactId>
-	                        <version>1.13.0</version>
-	                    </plugin>
-	                </plugins>
-	            </configuration>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${version.spotbugs-plugin}</version>
+				<configuration>
+					<plugins>
+						<plugin>
+							<groupId>com.h3xstream.findsecbugs</groupId>
+							<artifactId>findsecbugs-plugin</artifactId>
+							<version>${version.findsecbugs-plugin}</version>
+						</plugin>
+					</plugins>
+				</configuration>
 				<executions>
 					<execution>
 						<id>spotbugs-check</id>
@@ -293,7 +230,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.22.0</version>
+				<version>${version.pmd-plugin}</version>
 				<configuration>
 					<verbose>true</verbose>
 					<failOnViolation>false</failOnViolation>
