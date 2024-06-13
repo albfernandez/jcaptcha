@@ -18,8 +18,7 @@ import java.awt.geom.AffineTransform;
 public class DeformedRandomFontGenerator extends RandomFontGenerator {
 
 
-    public DeformedRandomFontGenerator(Integer minFontSize,
-                                       Integer maxFontSize) {
+    public DeformedRandomFontGenerator(Integer minFontSize, Integer maxFontSize) {
         super(minFontSize, maxFontSize);
     }
 
@@ -33,9 +32,6 @@ public class DeformedRandomFontGenerator extends RandomFontGenerator {
     protected Font applyCustomDeformationOnGeneratedFont(Font font) {
         // rotate each letter by -0.33, +0.33 or about 20 degrees
         float theta = (myRandom.nextBoolean() ? 1 : -1) * myRandom.nextFloat() / 3;
-
-        // private DecimalFormat debug_fmt = new DecimalFormat();
-        // System.out.println("Creating " + font + " rotated angle = " + debug_fmt.format(theta * 57.2957));
 
         // rotate each letter by this angle
         AffineTransform at = new AffineTransform();

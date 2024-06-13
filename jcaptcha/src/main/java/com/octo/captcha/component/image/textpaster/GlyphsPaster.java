@@ -96,27 +96,9 @@ public class GlyphsPaster extends AbstractTextPaster{
 
         //First decorate
         if (glyphVisitors != null) {
-            //System.out.println("\n"+glyphs);
             for (int i = 0; i < glyphVisitors.length; i++) {
-                //System.out.println(glyphVisitors[i]);
                 glyphVisitors[i].visit(glyphs,backgroundBounds);
-                //System.out.println(glyphs);
             }
-
-
-
-           /* if(!backgroundBounds.contains(glyphs.getBounds())){
-
-                 StringBuffer error =new StringBuffer("Invalid visitor configuration : " +
-                         "\nTrying to move glyphs out of background\n Visitors:");
-                for (int i = 0; i < glyphVisitors.length; i++) {
-                    error.append("\n");
-                    error.append(glyphVisitors[i]);
-                }
-                 error.append("\nResulting string bounds : ");
-                 error.append(glyphs.getBounds());
-                 throw new CaptchaException(error.toString());
-              }  */
         }
 
         for(int i = 0 ; i < glyphs.size(); i++){

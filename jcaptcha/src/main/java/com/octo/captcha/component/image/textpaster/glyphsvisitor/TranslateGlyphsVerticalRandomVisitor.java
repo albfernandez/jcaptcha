@@ -11,19 +11,19 @@ import com.octo.captcha.component.image.textpaster.Glyphs;
  */
 public class TranslateGlyphsVerticalRandomVisitor implements GlyphsVisitors {
 
-    private Random myRandom = new SecureRandom();
-    private double verticalRange = 1;
-    public TranslateGlyphsVerticalRandomVisitor(double verticalRange) {
-        this.verticalRange = verticalRange;
-    }
+	private Random myRandom = new SecureRandom();
+	private double verticalRange = 1;
 
-    public void visit(Glyphs gv, Rectangle2D backroundBounds) {
+	public TranslateGlyphsVerticalRandomVisitor(double verticalRange) {
+		this.verticalRange = verticalRange;
+	}
 
-       for(int i=0;i<gv.size();i++){
-            double tx =0;
-            double ty =verticalRange*myRandom.nextGaussian();
-            //System.out.println("tx="+tx+",ty="+ty);
-            gv.translate(i,tx,ty);
-        }
-    }
+	public void visit(Glyphs gv, Rectangle2D backroundBounds) {
+
+		for (int i = 0; i < gv.size(); i++) {
+			double tx = 0;
+			double ty = verticalRange * myRandom.nextGaussian();
+			gv.translate(i, tx, ty);
+		}
+	}
 }
