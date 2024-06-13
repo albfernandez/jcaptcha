@@ -1,41 +1,51 @@
 <%
 String message = request.getParameter("message");
-String format = request.getParameter("format");
-String msg = "";
+String parameterFormat = request.getParameter("format");
+String format = "";
+String screenMessage = "";
 String color = "black";
 if ("passed".equals(message)) {
-	msg = "captcha validation passed";
+	screenMessage = "captcha validation passed";
 	color = "green";
 }
 else if ("failed".equals(message)) {
-	msg = "captcha validation failed";
+	screenMessage = "captcha validation failed";
 	color = "red";
 }
 
 String image = "jcaptcha.jpg";
-if ("png".equals(format)) {
+if ("png".equalsIgnoreCase(parameterFormat)) {
 	format = "png";
 	image = "jcaptcha.png";
-}
-else if ("jpeg".equals(format) || "jpg".equals(format)) {
-	format = "jpg";
-	image = "jcaptcha.jpg";
 }
 else {
 	format = "jpg";
 	image = "jcaptcha.jpg";
 }
 
+request.setAttribute("color", color);
+request.setAttribute("image", image);
+request.setAttribute("format", format);
+request.setAttribute("screenMessage", screenMessage);
 
 %>
 <!DOCTYPE html>
 <html>
 <head>
 	<style>
-		h4 { color: <%= color %>; }
+		h4 { 
+			color: ${color};
+		}
+		img.captcha {
+			border:none;
+			width:200px;
+			height:70px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		
 	</style>
 	<script>
-	
 	function focus() {
 		var input = document.getElementById('jcaptcha');
 		if (input) {
@@ -47,15 +57,12 @@ else {
 </head>
 <body onload="focus()">
 <h2>Simple Captcha Servlet sample</h2>
-<br/>
-<br/>
-<h4><%= msg %></h4>	
-
-<br/>
-
-<form action="submit.action" method="post">
-     <img src="<%= image %>" /> <input type="text" id="jcaptcha" name="jcaptcha" value="" />
-     <input type="hidden" name="format" value="<%= format%>" />
+<h4>${screenMessage}</h4>
+<form action="submit.action" method="post" autocomplete="off">
+     <img class="captcha" src="${image}" >
+     <br>
+     <input type="text" id="jcaptcha" name="jcaptcha" value="" autocomplete="off" />
+     <input type="hidden" name="format" value="${format}" />
      <input type="submit"/>
 </form>
 </body>
