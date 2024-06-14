@@ -29,7 +29,6 @@ import com.octo.captcha.CaptchaFactory;
  * serialization, and so.
  *
  * @author Marc-Antoine Garrigue
- * @version $Id$
  */
 public interface CaptchaEngine {
 
@@ -51,11 +50,15 @@ public interface CaptchaEngine {
 
 
     /**
+     * Get captcha factories used by this engines
+     * 
      * @return captcha factories used by this engine
      */
     CaptchaFactory[] getFactories();
 
     /**
+     * Set captcha factories for this engine
+     * 
      * @param factories new captcha factories for this engine
      *
      * @throws CaptchaEngineException if the factories are invalid for this engine

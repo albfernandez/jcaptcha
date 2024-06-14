@@ -71,10 +71,6 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
      */
 	protected Rectangle transformedSpace;
 
-    /**
-     * The input image rectangle.
-     */
-	protected Rectangle originalSpace;
 
     /**
      * Set the action to perform for pixels off the edge of the image.
@@ -131,7 +127,6 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
         int width = src.getWidth();
         int height = src.getHeight();
 
-		originalSpace = new Rectangle(0, 0, width, height);
 		transformedSpace = new Rectangle(0, 0, width, height);
 		transformSpace(transformedSpace);
 
@@ -217,7 +212,6 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
 
 		outX = transformedSpace.x;
 		outY = transformedSpace.y;
-		int[] rgb = new int[4];
 		float[] out = new float[2];
 
 		for (int y = 0; y < outHeight; y++) {
@@ -245,7 +239,6 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
 					outPixels[x] = p;
 				} else {
 					int i = srcWidth*srcY + srcX;
-					rgb[0] = inPixels[i];
 					outPixels[x] = inPixels[i];
 				}
 			}

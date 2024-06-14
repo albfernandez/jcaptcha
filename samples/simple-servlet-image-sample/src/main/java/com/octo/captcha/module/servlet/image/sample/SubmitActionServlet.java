@@ -16,11 +16,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
 /**
+ * Servlet to validate user response
  * @author mag
  */
 public class SubmitActionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 7342121576411594220L;
+	
+	/**
+	 * Servlet to validate user response
+	 */
+	public SubmitActionServlet() {
+		super();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

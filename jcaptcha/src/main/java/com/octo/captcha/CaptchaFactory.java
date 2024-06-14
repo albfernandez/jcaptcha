@@ -14,7 +14,6 @@ import java.util.Locale;
  * Defines two methods to build and retrieve a captcha. A no paramterer method and a localized method.
  *
  * @author Marc-Antoine Garrigue
- * @version $Id$
  */
 public interface CaptchaFactory {
 

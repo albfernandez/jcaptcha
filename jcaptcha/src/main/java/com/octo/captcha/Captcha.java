@@ -25,7 +25,6 @@ import java.io.Serializable;
  * challenge must be showed only once ) </li> </ul> ;
  * 
  * @author Marc-Antoine Garrigue
- * @version $Id$
  */
 public interface Captcha extends Serializable {
 

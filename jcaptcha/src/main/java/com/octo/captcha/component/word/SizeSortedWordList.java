@@ -11,7 +11,6 @@ import java.util.Locale;
 /**
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
- * @version $Id$
  */
 public interface SizeSortedWordList {
     Locale getLocale();

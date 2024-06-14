@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
+ * SimpleImageCaptchaServlet to use in applications
  * @author mag
  */
 public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
@@ -29,6 +30,12 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 296035630547992751L;
 	private static final ImageCaptchaService service = new DefaultManageableImageCaptchaService();
 
+	/**
+	 * SimpleImageCaptchaServlet to use in applications
+	 */
+	public SimpleImageCaptchaServlet() {
+		super();
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest httpServletRequest,	HttpServletResponse httpServletResponse) throws ServletException, IOException {
@@ -53,6 +60,12 @@ public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
     	 return requestUri.toLowerCase().endsWith(".png");
 	}
 
+     /**
+      * Validate captcha response
+      * @param request the request
+      * @param userCaptchaResponse the user text response
+      * @return true if valid captcha, false otherwise
+      */
 	public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse){
          if (request.getSession(false) == null) {
         	 //if no session found

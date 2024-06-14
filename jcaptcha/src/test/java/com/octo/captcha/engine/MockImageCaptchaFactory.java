@@ -18,7 +18,6 @@ import com.octo.captcha.image.ImageCaptchaFactory;
 
 /**
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
- * @version $Id$
  */
 public class MockImageCaptchaFactory extends ImageCaptchaFactory {
     /**

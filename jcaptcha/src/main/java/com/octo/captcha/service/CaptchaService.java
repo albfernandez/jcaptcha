@@ -31,7 +31,6 @@ import java.util.Locale;
  * CaptchaException if an error occurs during Captcha Generation. </p>
  *
  * @author Marc-Antoine Garrigue
- * @version $Id$
  */
 public interface CaptchaService {
 

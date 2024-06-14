@@ -24,8 +24,8 @@ public class DefaultManageableImageCaptchaServiceTest {
 		ImageCaptchaService service = new DefaultManageableImageCaptchaService();
 		BufferedImage challenge = service.getImageChallengeForID("testId", Locale.US);
 		Assertions.assertNotNull(challenge);
-		Assertions.assertTrue(challenge.getWidth() > 10);
-		Assertions.assertTrue(challenge.getHeight() > 10);
+		Assertions.assertEquals(200, challenge.getWidth());
+		Assertions.assertEquals(70, challenge.getHeight());
 	}
 
 }

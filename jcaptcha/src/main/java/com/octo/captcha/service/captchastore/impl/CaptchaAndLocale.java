@@ -15,7 +15,6 @@ import com.octo.captcha.Captcha;
  * Composite object used as a container to store a captcha and the locale used to generate it.
  *
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
- * @version $Id$
  */
 public class CaptchaAndLocale implements Serializable {
     private static final long serialVersionUID = -5083602059300496537L;

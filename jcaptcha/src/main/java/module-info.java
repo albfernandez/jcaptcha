@@ -1,3 +1,6 @@
+/**
+ * Module com.octo.captcha
+ */
 module com.octo.captcha {
 	
 	requires java.base;
