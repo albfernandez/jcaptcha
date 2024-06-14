@@ -75,7 +75,7 @@ public class GmailEngine extends ListImageCaptchaEngine {
                                 new Color(23, 67, 172)})
                 ,new GlyphsVisitors[]{
                 new TranslateGlyphsVerticalRandomVisitor(1),
-                new OverlapGlyphsUsingShapeVisitor(3),
+                new OverlapGlyphsUsingShapeVisitor(0),
                 new TranslateAllToRandomPointVisitor()
                 });
 
@@ -85,9 +85,9 @@ public class GmailEngine extends ListImageCaptchaEngine {
         FontGenerator shearedFont = new RandomFontGenerator(50,
                 50,
                 new Font[]{
-                        new Font("nyala",Font.BOLD, 50),
+                        new Font("nyala",Font.BOLD, 50)/*,
                         new Font("Bell MT",  Font.PLAIN, 50),
-                        new Font("Credit valley",  Font.BOLD, 50)
+                        new Font("Credit valley",  Font.BOLD, 50)*/
                 }
         ,false);
 
