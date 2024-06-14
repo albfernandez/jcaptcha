@@ -31,7 +31,10 @@ public class OverlapGlyphsUsingShapeVisitor extends OverlapGlyphsVisitor {
 				double currentOverlapStatus = currentOverlapWidth - realPossibleOverlap;
 				double bestReacheadOverlapStatus = Math.abs(currentOverlapStatus);
 				boolean stillOk = true;
-				while (Math.abs(currentOverlapStatus) >= overlapPixels / 10 && stillOk) {
+				int iteration = 0;
+				int limit = 10;
+				while (Math.abs(currentOverlapStatus) >= overlapPixels / 10 && stillOk && iteration < limit) {
+					iteration++;
 					double step = currentOverlapStatus / 2;
 					gv.translate(i, step, 0);
 					currentOverlapWidth = intersectAndGetOverlapWidth(gv, i);
