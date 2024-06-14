@@ -26,6 +26,56 @@ public class Noise implements Function1D, Function2D, Function3D {
 
 	private static Random randomGenerator = new SecureRandom();
 	
+	private final static int B = 0x100;
+	private final static int BM = 0xff;
+	private final static int N = 0x1000;
+
+	static int[] p = new int[B + B + 2];
+	static float[][] g3 = new float[B + B + 2][3];
+	static float[][] g2 = new float[B + B + 2][2];
+	static float[] g1 = new float[B + B + 2];
+	
+	static {
+		int i, j, k;
+
+		for (i = 0; i < B; i++) {
+			p[i] = i;
+
+			g1[i] = (float)((random() % (B + B)) - B) / B;
+
+			for (j = 0; j < 2; j++) {
+				g2[i][j] = (float)((random() % (B + B)) - B) / B;
+			}
+			normalize2(g2[i]);
+
+			for (j = 0; j < 3; j++) {
+				g3[i][j] = (float)((random() % (B + B)) - B) / B;
+			}
+			normalize3(g3[i]);
+		}
+
+		for (i = B-1; i >= 0; i--) {
+			k = p[i];
+			p[i] = p[j = random() % B];
+			p[j] = k;
+		}
+
+		for (i = 0; i < B + 2; i++) {
+			p[B + i] = p[i];
+			g1[B + i] = g1[i];
+			for (j = 0; j < 2; j++) {
+				g2[B + i][j] = g2[i][j];
+			}
+			for (j = 0; j < 3; j++) {
+				g3[B + i][j] = g3[i][j];
+			}
+		}
+	}
+	
+	public Noise() {
+		super();
+	}
+	
 	public float evaluate(float x) {
 		return noise1(x);
 	}
@@ -48,8 +98,9 @@ public class Noise implements Function1D, Function2D, Function3D {
 	public static float turbulence2(float x, float y, float octaves) {
 		float t = 0.0f;
 
-		for (float f = 1.0f; f <= octaves; f *= 2)
+		for (float f = 1.0f; f <= octaves; f *= 2) {
 			t += Math.abs(noise2(f * x, f * y)) / f;
+		}
 		return t;
 	}
 
@@ -63,20 +114,12 @@ public class Noise implements Function1D, Function2D, Function3D {
 	public static float turbulence3(float x, float y, float z, float octaves) {
 		float t = 0.0f;
 
-		for (float f = 1.0f; f <= octaves; f *= 2)
+		for (float f = 1.0f; f <= octaves; f *= 2) {
 			t += Math.abs(noise3(f * x, f * y, f * z)) / f;
+		}
 		return t;
 	}
 
-	private final static int B = 0x100;
-	private final static int BM = 0xff;
-	private final static int N = 0x1000;
-
-	static int[] p = new int[B + B + 2];
-	static float[][] g3 = new float[B + B + 2][3];
-	static float[][] g2 = new float[B + B + 2][2];
-	static float[] g1 = new float[B + B + 2];
-	static boolean start = true;
 
 	private static float sCurve(float t) {
 		return t * t * (3.0f - 2.0f * t);
@@ -90,11 +133,6 @@ public class Noise implements Function1D, Function2D, Function3D {
 	public static float noise1(float x) {
 		int bx0, bx1;
 		float rx0, rx1, sx, t, u, v;
-
-		if (start) {
-			start = false;
-			init();
-		}
 
 		t = x + N;
 		bx0 = ((int)t) & BM;
@@ -120,10 +158,7 @@ public class Noise implements Function1D, Function2D, Function3D {
 		float rx0, rx1, ry0, ry1, q[], sx, sy, a, b, t, u, v;
 		int i, j;
 
-		if (start) {
-			start = false;
-			init();
-		}
+
 
 		t = x + N;
 		bx0 = ((int)t) & BM;
@@ -171,10 +206,7 @@ public class Noise implements Function1D, Function2D, Function3D {
 		float rx0, rx1, ry0, ry1, rz0, rz1, q[], sy, sz, a, b, c, d, t, u, v;
 		int i, j;
 
-		if (start) {
-			start = false;
-			init();
-		}
+
 
 		t = x + N;
 		bx0 = ((int)t) & BM;
@@ -249,39 +281,5 @@ public class Noise implements Function1D, Function2D, Function3D {
 	private static int random() {
 		return randomGenerator.nextInt() & 0x7fffffff;
 	}
-	
-	private static void init() {
-		int i, j, k;
-
-		for (i = 0; i < B; i++) {
-			p[i] = i;
-
-			g1[i] = (float)((random() % (B + B)) - B) / B;
-
-			for (j = 0; j < 2; j++)
-				g2[i][j] = (float)((random() % (B + B)) - B) / B;
-			normalize2(g2[i]);
-
-			for (j = 0; j < 3; j++)
-				g3[i][j] = (float)((random() % (B + B)) - B) / B;
-			normalize3(g3[i]);
-		}
-
-		for (i = B-1; i >= 0; i--) {
-			k = p[i];
-			p[i] = p[j = random() % B];
-			p[j] = k;
-		}
-
-		for (i = 0; i < B + 2; i++) {
-			p[B + i] = p[i];
-			g1[B + i] = g1[i];
-			for (j = 0; j < 2; j++)
-				g2[B + i][j] = g2[i][j];
-			for (j = 0; j < 3; j++)
-				g3[B + i][j] = g3[i][j];
-		}
-	}
-
 	
 }
