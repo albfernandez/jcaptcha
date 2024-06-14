@@ -71,6 +71,9 @@ public abstract class TransformFilter extends AbstractBufferedImageOp {
      */
 	protected Rectangle transformedSpace;
 
+	protected TransformFilter() {
+		super();
+	}
 
     /**
      * Set the action to perform for pixels off the edge of the image.

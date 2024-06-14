@@ -10,7 +10,6 @@ package com.octo.captcha.service.captchastore.impl;
  * @author <a href="mailto:marc.antoine.garrigue@gmail.com">Marc-Antoine Garrigue</a>
  * @version 1.0
  */
-// Todo Move to impl
 public class FastHashMapCaptchaStore extends MapCaptchaStore {
 	public FastHashMapCaptchaStore() {
     	super();

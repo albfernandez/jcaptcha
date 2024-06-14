@@ -19,7 +19,7 @@ package com.octo.jhlabs.image;
 /**
  * A class containing static math methods useful for image processing.
  */
-public class ImageMath {
+public final class ImageMath {
 
     /**
      * The value of pi as a float.
@@ -40,6 +40,10 @@ public class ImageMath {
      * The value of two pi as a float.
      */
 	public final static float TWO_PI = (float)Math.PI*2.0f;
+	
+	private ImageMath() {
+		throw new AssertionError("No instances allowed");
+	}
 
 	/**
 	 * Clamp a value to an interval.

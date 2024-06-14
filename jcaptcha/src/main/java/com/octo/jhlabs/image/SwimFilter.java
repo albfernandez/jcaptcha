@@ -35,6 +35,7 @@ public class SwimFilter extends TransformFilter {
 	private float m11 = 1.0f;
 
 	public SwimFilter() {
+		super();
 	}
 	
 	/**

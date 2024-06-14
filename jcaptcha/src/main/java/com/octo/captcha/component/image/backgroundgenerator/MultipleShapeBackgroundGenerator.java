@@ -23,8 +23,7 @@ import com.octo.captcha.component.image.color.SingleColorGenerator;
  * @author <a href="mailto:mga@octo.com">Mathieu Gandin </a>
  * @version 1.0
  */
-public class MultipleShapeBackgroundGenerator extends
-        AbstractBackgroundGenerator {
+public class MultipleShapeBackgroundGenerator extends AbstractBackgroundGenerator {
 
     public MultipleShapeBackgroundGenerator(Integer width, Integer height) {
         super(width, height);

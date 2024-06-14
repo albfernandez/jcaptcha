@@ -137,8 +137,9 @@ public class TwirlFilter extends TransformFilter {
     public BufferedImage filter( BufferedImage src, BufferedImage dst ) {
 		icentreX = src.getWidth() * centreX;
 		icentreY = src.getHeight() * centreY;
-		if ( radius == 0 )
+		if ( radius == 0 ) {
 			radius = Math.min(icentreX, icentreY);
+		}
 		radius2 = radius*radius;
 		return super.filter( src, dst );
 	}

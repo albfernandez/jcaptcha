@@ -21,6 +21,7 @@ package com.octo.captcha.engine.image.gimpy;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
@@ -79,12 +80,7 @@ public class HotmailEngine2008 extends ListImageCaptchaEngine {
                 }
         ,false);
 
-
-
-
-        SwimFilter swim= new SwimFilter();
-
-
+       SwimFilter swim= new SwimFilter();
 
         swim.setScale(30);
         swim.setAmount(10);
@@ -96,7 +92,7 @@ public class HotmailEngine2008 extends ListImageCaptchaEngine {
         swim2.setTime(90);
         swim2.setEdgeAction(TransformFilter.CLAMP);
 
-        java.util.List<ImageDeformation> def =  new ArrayList<ImageDeformation>();
+        List<ImageDeformation> def =  new ArrayList<ImageDeformation>();
 
         def.add(new ImageDeformationByBufferedImageOp(swim));
         def.add(new ImageDeformationByBufferedImageOp(swim2)); 

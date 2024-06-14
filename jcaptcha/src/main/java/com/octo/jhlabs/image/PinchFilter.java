@@ -37,6 +37,7 @@ public class PinchFilter extends TransformFilter {
 	private float height;
 	
 	public PinchFilter() {
+		super();
 	}
 
 	/**

@@ -36,6 +36,7 @@ public class SphereFilter extends TransformFilter {
 	private float icentreY;
 
 	public SphereFilter() {
+		super();
 		setEdgeAction( CLAMP );
 		setRadius( 100.0f );
 	}

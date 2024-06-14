@@ -28,6 +28,10 @@ import java.awt.image.ColorModel;
  * A convenience class which implements those methods of BufferedImageOp which are rarely changed.
  */
 public abstract class AbstractBufferedImageOp implements BufferedImageOp, Cloneable {
+	
+	protected AbstractBufferedImageOp() {
+		super();
+	}
 
     public BufferedImage createCompatibleDestImage(BufferedImage src, ColorModel dstCM) {
         if ( dstCM == null )

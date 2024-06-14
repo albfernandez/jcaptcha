@@ -24,7 +24,7 @@ import java.util.Random;
  * Some more useful math functions for image processing.
  * These are becoming obsolete as we move to Java2D. Use MiscComposite instead.
  */
-public class PixelUtils {
+public final class PixelUtils {
 
 	public final static int REPLACE = 0;
 	public final static int NORMAL = 1;
@@ -49,15 +49,21 @@ public class PixelUtils {
 	public final static int ALPHA_TO_GRAY = 20;
 
 	private static Random randomGenerator = new SecureRandom();
+	
+	private PixelUtils() {
+		throw new AssertionError("No instances allowed");
+	}
 
 	/**
 	 * Clamp a value to the range 0..255
 	 */
 	public static int clamp(int c) {
-		if (c < 0)
+		if (c < 0) {
 			return 0;
-		if (c > 255)
+		}
+		if (c > 255) {
 			return 255;
+		}
 		return c;
 	}
 

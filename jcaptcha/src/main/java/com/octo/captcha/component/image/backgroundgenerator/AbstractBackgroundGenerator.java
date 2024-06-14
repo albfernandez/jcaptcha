@@ -24,7 +24,7 @@ public abstract class AbstractBackgroundGenerator
     private int height = 100;
     private int width = 200;
 
-    Random myRandom = new SecureRandom();
+    protected final Random myRandom = new SecureRandom();
 
     /**
      * Default constructor takes a width and a height of the generated backgrounds

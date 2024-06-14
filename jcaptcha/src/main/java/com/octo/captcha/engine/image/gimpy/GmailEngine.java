@@ -128,12 +128,8 @@ public class GmailEngine extends ListImageCaptchaEngine {
                 new ArrayList<ImageDeformation>(),
                 new ArrayList<ImageDeformation>(),
                 textDef
-
-
         );
 
-
 		this.addFactory(new GimpyFactory(dictionnaryWords, word2image, false));
-
     }
 }
