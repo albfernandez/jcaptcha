@@ -193,7 +193,6 @@ public class CaptchaModuleConfig {
         try {
             Class.forName(serviceClass).newInstance();
         } catch (Throwable e) {
-            e.printStackTrace();
             throw new CaptchaModuleException("Error during Service Class initialization", e);
         }
 

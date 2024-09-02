@@ -96,11 +96,8 @@ public class GlyphsPaster extends AbstractTextPaster{
 
         //First decorate
         if (glyphVisitors != null) {
-            //System.out.println("\n"+glyphs);
             for (int i = 0; i < glyphVisitors.length; i++) {
-                //System.out.println(glyphVisitors[i]);
                 glyphVisitors[i].visit(glyphs,backgroundBounds);
-                //System.out.println(glyphs);
             }
 
 

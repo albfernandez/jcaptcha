@@ -372,9 +372,7 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
         assertEquals("we should not been able to garbage collect",
                 0,
                 getMService().getNumberOfGarbageCollectableCaptchas());
-//        System.out.println("before "+System.currentTimeMillis());
         fullLoad();
-//        System.out.println(System.currentTimeMillis());
         
         assertEquals("to be valid we should not been able to garbage collect",
                 0,
@@ -423,8 +421,6 @@ public class RunableAbstractManageableCaptchaServiceTest extends RunableAbstract
                 service.generateAndStoreCaptcha(Locale.getDefault(), id);
             }
         } catch (CaptchaServiceException e) {
-            System.out.println("i = " + i);
-            e.printStackTrace();
             throw e;
         }
     }

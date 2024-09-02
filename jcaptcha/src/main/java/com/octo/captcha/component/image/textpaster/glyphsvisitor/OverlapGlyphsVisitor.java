@@ -23,9 +23,6 @@ public class OverlapGlyphsVisitor implements GlyphsVisitors {
                     -Math.abs(gv.getLSB(i))
                     -overlapPixels;
             double ty = 0;
-            //System.out.println(gv.getRSB(i-1)+" ; " +gv.getLSB(i-1));
-            //System.out.println(gv.getRSB(i)+" ; " +gv.getLSB(i));
-            //System.out.println("tx="+tx+",ty="+ty);
             gv.translate(i,tx,ty);
         }
     }

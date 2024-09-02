@@ -4,11 +4,15 @@ import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 
 import com.octo.captcha.component.image.textpaster.Glyphs;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * @author mag
  */
 public class OverlapGlyphsUsingShapeVisitor extends OverlapGlyphsVisitor {
+	
+	private static Logger log = LoggerFactory.getLogger(OverlapGlyphsUsingShapeVisitor.class);
+	
     private double overlapPixels ;
 
    
@@ -24,7 +28,6 @@ public class OverlapGlyphsUsingShapeVisitor extends OverlapGlyphsVisitor {
         //evaluate overlapPixel
 
         for (int i = 1; i < gv.size(); i++) {
-            //System.out.println("I "+i);
             //first position the shapes near the preceding one
              gv.translate(i, getSidingPosition(gv, i), 0);
 
@@ -42,37 +45,28 @@ public class OverlapGlyphsUsingShapeVisitor extends OverlapGlyphsVisitor {
                 while (Math.abs(currentOverlapStatus) >= overlapPixels / 10 && stillOk && iteration < limit) {
                 	iteration++;
                     double step = currentOverlapStatus/2;
-                    //System.out.println("translated "+ step);
                     gv.translate(i, step, 0);
                     currentOverlapWidth = intersectAndGetOverlapWidth(gv, i);
                     currentOverlapStatus = currentOverlapWidth-realPossibleOverlap;
-                    //System.out.println("bestReacheadOverlapStatus : "+bestReacheadOverlapStatus);
-                    //System.out.println("currentOverlapStatus : "+currentOverlapStatus);
 
 
                     //we already reach the best overlap
                     if(Math.abs(currentOverlapStatus)>=bestReacheadOverlapStatus&&(currentOverlapWidth!=0||gv.getMaxX(i-1)-gv.getMinX(i)>gv.getBoundsWidth(i-1))){
-                        //System.out.println("BREAK");
                         //tranlsate back
                         if(currentOverlapWidth==0){
                             //back to siding
                             gv.translate(i, getSidingPosition(gv, i), 0);
-                            //System.out.println("no overlap");
                         }else{
                             //back on step
                             gv.translate(i, -step, 0);
-                           // System.out.println("best reached");
                         }
-                       // System.out.println("currentOverlapStatus : "+(intersectAndGetOverlapWidth(gv, i)-realPossibleOverlap));
                         stillOk=false;
                     }
                     bestReacheadOverlapStatus = Math.min(Math.abs(currentOverlapStatus),bestReacheadOverlapStatus);
                 }
-            //System.out.println("bestReacheadOverlapStatus : "+bestReacheadOverlapStatus);
-           }else{
-                System.out.println("NOT POSSIBLE");
+           } else {
+                log.warn("NOT POSSIBLE");
             }
-
         }
     }
 
