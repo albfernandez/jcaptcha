@@ -81,6 +81,24 @@ Clone the repository or download de tar file from releases page on github, then 
 
 The result file is ``target/jcaptcha-3.0.0-dist.zip``
 
+# Running sample
+
+Clone the repository or download de tar file from releases page on github, then run the Maven command:
+
+    git clone https://github.com/albfernandez/jcaptcha.git
+    git checkout tags/v3.0.0
+    cd jcaptcha
+    cd samples/simple-servlet-image-sample/    
+    mvn clean package
+
+
+Ensure your 8080 localhost port is not in use
+
+    mvn jetty:run
+
+
+You can browse to http://localhost:8080/
+
 
 # Changes from 2.0 to 3.0
 
