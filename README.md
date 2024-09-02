@@ -88,6 +88,7 @@ Clone the repository or download de tar file from releases page on github, then 
     git clone https://github.com/albfernandez/jcaptcha.git
     git checkout tags/v3.0.0
     cd jcaptcha
+    mvn clean install
     cd samples/simple-servlet-image-sample/    
     mvn clean package
 

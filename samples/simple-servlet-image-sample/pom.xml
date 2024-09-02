@@ -11,7 +11,7 @@ integration
 	<parent>
 		<artifactId>jcaptcha-samples</artifactId>
 		<groupId>com.github.albfernandez</groupId>
-		<version>3.0.0</version>
+		<version>3.1.0-SNAPSHOT</version>
 	</parent>
 	<properties>
 		<automatic.module.name>samples.image</automatic.module.name>
@@ -23,7 +23,7 @@ integration
 		<dependency>
 			<groupId>com.github.albfernandez</groupId>
 			<artifactId>jcaptcha</artifactId>
-			<version>3.0.0</version>
+			<version>3.1.0-SNAPSHOT</version>
 		</dependency>
 
 
