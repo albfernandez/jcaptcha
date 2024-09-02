@@ -44,9 +44,10 @@ else {
 <br/>
 
 <form action="submit.action" method="post">
-     <img src="<%= image %>" /> <input type="text" name="jcaptcha" value="" />
+     <img src="<%= image %>" /> <input type="text" name="jcaptcha" value="" autofocus/>
      <input type="hidden" name="format" value="<%= format%>" />
      <input type="submit"/>
 </form>
+
 </body>
 </html>
