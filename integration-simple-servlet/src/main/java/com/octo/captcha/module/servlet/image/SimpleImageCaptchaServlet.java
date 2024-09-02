@@ -21,13 +21,22 @@ import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 import com.octo.captcha.service.image.ImageCaptchaService;
 
+import com.octo.captcha.engine.image.gimpy.EasyGmailEngine;
+import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;
+
 /**
  * @author mag
  */
 public class SimpleImageCaptchaServlet extends HttpServlet implements Servlet {
 	
 	private static final long serialVersionUID = 296035630547992751L;
-	public static ImageCaptchaService service = new DefaultManageableImageCaptchaService();
+	private static final ImageCaptchaService service = new DefaultManageableImageCaptchaService(
+			new FastHashMapCaptchaStore(), 
+			new EasyGmailEngine(), 
+			180,
+	        100000, 
+	        75000
+	);
 
 
 	@Override
